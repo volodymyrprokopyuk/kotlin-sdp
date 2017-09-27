@@ -68,4 +68,3 @@ object FancyDocumentCreator : DocumentCreator {
     // the only place where concrete Fancy Resume product is referenced
     override fun createResume(name: String): Resume = FancyResume(name)
 }
-
