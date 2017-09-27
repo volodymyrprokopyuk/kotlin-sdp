@@ -6,7 +6,8 @@ Creational patterns **encapsulate knowledge about concrete classes** the system 
 are created** and **separate the system from how the objects are composed**.
 
 - **Abstract Factory** provides an interface for creating families of related or dependent objects without specifying
-their concrete classes. Client code works only with interfaces. Concrete factories are singletons
+their concrete classes. Client code works only with *interfaces* of abstract factory and family products. Concrete
+factories are *singletons*
 - Builder
 - Dependency Injection
 - Factory Method
