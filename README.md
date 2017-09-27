@@ -16,13 +16,15 @@ object at once
 - Dependency Injection
 - **Factory Method** defines an interface for creating a *single object*, but let subclasses decide which class to
 instantiate. Client works only with *interfaces* of the factory method and a single product interface. Concrete
-factories are *signletons* that implement factory method interface 
+factories are *singletons* that implement factory method interface 
 - Lazy Initialization
 - Multiton
 - Object Pool
 - Prototype
 - Resource Acquisition is Initialization
-- Singleton
+- **Singleton** ensures that a class has *only one instance* and provides a *global point of access* to it. Make the
+class constructor private and provide one public static method that always returns the same single instance of the class
+stored in a private static variable
 
 ## Structural Patterns
 

@@ -1,6 +1,6 @@
 package org.vld.sdp.creational
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
@@ -24,7 +24,7 @@ class FactoryMethodTest {
         // and a signle product interface (Article)
         val article: Article = factoryMethod.createArticle(articleName)
         // Then
-        Assertions.assertThat(article).isEqualTo(expectedArticle)
+        assertThat(article).isEqualTo(expectedArticle)
     }
 
     fun factoryMethodProvider(): Stream<Arguments> {
