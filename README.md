@@ -22,7 +22,9 @@ interface
 - Lazy Initialization
 - Multiton
 - Object Pool
-- Prototype
+- [**Prototype**](src/main/kotlin/org/vld/sdp/creational/Prototype.kt) creates new objects *cloning prototypical
+instance*, boosting performance and keeping memory footprint to a minimum. Client works only with *interfaces* of the
+prototype and product interface
 - Resource Acquisition is Initialization
 - [**Singleton**](src/main/kotlin/org/vld/sdp/creational/Singleton.kt) ensures that a class has *only one instance* and
 provides a *global point of access* to it. Make the class constructor private and provide one public static method that
