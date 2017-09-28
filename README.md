@@ -32,4 +32,17 @@ always returns the same single instance of the class stored in a private static 
 
 ## Structural Patterns
 
+Structural patterns provide simple way of implementing **relationships between objects**.
+
+- [**Adapter**](src/main/kotlin/org/vld/sdp/structural/Adapter.kt) converts the interface of a class without 
+modifying its code into another interface that client expects. Client works with the class through *adapter interface* 
+and delegation to the class methods
+- **Bridge**
+- **Composite**
+- **Decorator**
+- **Facade**
+- **Flyweight**
+- **Front Controller**
+- **Proxy**
+
 ## Behavioral Patterns
