@@ -73,7 +73,11 @@ before/after the original request. Multiple decorators can be stacked on top of 
 a system/library easier to use. Facade hides the complexities of a larger system with dependencies and provides a
 simpler interface to the client. Client works only with the facade interface
 
-- **Flyweight**
+- [**Flyweight**](src/main/kotlin/org/vld/sdp/structural/Flyweight.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/structural/FlyweightTest.kt) uses *sharing* to support *large number of similar
+objects* efficiently. Shares the intrinsic/invariant object state in an external data structure. When a new object is
+created provides the cached intrinsic/invariant object state and allows the extrinsic/variant object state to be set
+through the flyweight interface
 
 - **Front Controller**
 
