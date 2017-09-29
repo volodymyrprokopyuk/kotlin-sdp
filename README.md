@@ -17,25 +17,25 @@ representation, allowing the same construction process to create various represe
 initialization method* which configures properties by direct property assignment or function call and returns the
 resulting constructed complex object at once
 
-- Dependency Injection
+- **Dependency Injection**
 
 - [**Factory Method**](src/main/kotlin/org/vld/sdp/creational/FactoryMethod.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/FactoryMethodTest.kt) defines an interface for creating a *single
 object*, but let subclasses decide which class to instantiate. Client works only with *interfaces* of the factory method
 and a single product interface. Concrete factories are *singletons* that implement factory method interface
 
-- Lazy Initialization
+- **Lazy Initialization**
 
-- Multiton
+- **Multiton**
 
-- Object Pool
+- **Object Pool**
 
 - [**Prototype**](src/main/kotlin/org/vld/sdp/creational/Prototype.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt) creates new objects *cloning prototypical instance*,
 boosting performance and keeping memory footprint to a minimum. Client works only with *interfaces* of the prototype and
 product interface
 
-- Resource Acquisition is Initialization
+- **Resource Acquisition is Initialization**
 
 - [**Singleton**](src/main/kotlin/org/vld/sdp/creational/Singleton.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt) ensures that a class has *only one instance* and
@@ -62,7 +62,11 @@ uniformly. Composes objects into *tree structures* to represent part-whole hiera
 implement `Component` interface. `Leaf` class implements the request directly. `Composite` forwards recursively the
 request to its children
 
-- **Decorator**
+- [**Decorator**](src/main/kotlin/org/vld/sdp/structural/Decorator.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/structural/DecoratorTest.kt) attaches *additional behavior* to an individual
+object *dynamically* keeping the same interface without affecting the behavior of other objects of the same
+class. Implement the original object interface by delegating the request to the original object and adding behavior
+before/after the original request. Multiple decorators can be stacked on top of each other
 
 - **Facade**
 

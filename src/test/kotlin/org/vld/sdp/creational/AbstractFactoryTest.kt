@@ -31,23 +31,21 @@ class AbstractFactoryTest {
         assertThat(resume).isEqualTo(expectedResume)
     }
 
-    fun abstractFactoryProvider(): Stream<Arguments> {
-        return Stream.of(
-                Arguments.of(
-                        ModernDocumentCreator,
-                        "Modern Letter",
-                        "Modern Resume",
-                        ModernLetter("Modern Letter"),
-                        ModernResume("Modern Resume")
-                ),
-                Arguments.of(
-                        FancyDocumentCreator,
-                        "Fancy Letter",
-                        "Fancy Resume",
-                        FancyLetter("Fancy Letter"),
-                        FancyResume("Fancy Resume")
-                )
-        )
-    }
+    fun abstractFactoryProvider(): Stream<Arguments> = Stream.of(
+            Arguments.of(
+                    ModernDocumentCreator,
+                    "Modern Letter",
+                    "Modern Resume",
+                    ModernLetter("Modern Letter"),
+                    ModernResume("Modern Resume")
+            ),
+            Arguments.of(
+                    FancyDocumentCreator,
+                    "Fancy Letter",
+                    "Fancy Resume",
+                    FancyLetter("Fancy Letter"),
+                    FancyResume("Fancy Resume")
+            )
+    )
 
 }

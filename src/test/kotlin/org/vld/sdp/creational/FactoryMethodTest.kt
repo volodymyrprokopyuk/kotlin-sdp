@@ -27,19 +27,17 @@ class FactoryMethodTest {
         assertThat(article).isEqualTo(expectedArticle)
     }
 
-    fun factoryMethodProvider(): Stream<Arguments> {
-        return Stream.of(
-                Arguments.of(
-                        ModernArticleCreator,
-                        "Modern Article",
-                        ModernArticle("Modern Article")
-                ),
-                Arguments.of(
-                        FancyArticleCreator,
-                        "Fancy Article",
-                        FancyArticle("Fancy Article")
-                )
-        )
-    }
+    fun factoryMethodProvider(): Stream<Arguments> = Stream.of(
+            Arguments.of(
+                    ModernArticleCreator,
+                    "Modern Article",
+                    ModernArticle("Modern Article")
+            ),
+            Arguments.of(
+                    FancyArticleCreator,
+                    "Fancy Article",
+                    FancyArticle("Fancy Article")
+            )
+    )
 
 }
