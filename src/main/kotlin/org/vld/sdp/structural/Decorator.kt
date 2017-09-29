@@ -10,7 +10,7 @@ interface Coffee {
 /**
  * Component implementation
  */
-class SimpleCoffe : Coffee {
+class SimpleCoffee : Coffee {
     // implement basic behavior
     override fun taste() = "Coffee"
 }
@@ -18,7 +18,7 @@ class SimpleCoffe : Coffee {
 /**
  * Component decorator
  */
-class CoffeeWithSugar(val coffee: Coffee) : Coffee {
+class CoffeeWithSugar(private val coffee: Coffee) : Coffee {
     // provide additional behavior
     override fun taste(): String = "Sweet ${coffee.taste()} with Sugar"
 }
@@ -26,7 +26,7 @@ class CoffeeWithSugar(val coffee: Coffee) : Coffee {
 /**
  * Component decorator
  */
-class CoffeeWithMilk(val coffee: Coffee) : Coffee {
+class CoffeeWithMilk(private val coffee: Coffee) : Coffee {
     // provide additional behavior
     override fun taste(): String = "Tasty ${coffee.taste()} with Milk"
 }

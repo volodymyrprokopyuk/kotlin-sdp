@@ -24,11 +24,11 @@ class DecoratorTest {
 
     fun coffeeProvider(): Stream<Arguments> = Stream.of(
             // basic Coffee interface implementation
-            Arguments.of(SimpleCoffe(), "Coffee"),
+            Arguments.of(SimpleCoffee(), "Coffee"),
             // decorated Coffee is compliant with the Coffee interface
-            Arguments.of(CoffeeWithSugar(SimpleCoffe()), "Sweet Coffee with Sugar"),
+            Arguments.of(CoffeeWithSugar(SimpleCoffee()), "Sweet Coffee with Sugar"),
             // decorators can be stacked on top of each other each time adding new behavior
-            Arguments.of(CoffeeWithMilk(CoffeeWithSugar(SimpleCoffe())), "Tasty Sweet Coffee with Sugar with Milk")
+            Arguments.of(CoffeeWithMilk(CoffeeWithSugar(SimpleCoffee())), "Tasty Sweet Coffee with Sugar with Milk")
     )
 
 }
