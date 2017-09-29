@@ -81,6 +81,9 @@ through the flyweight interface
 
 - **Front Controller**
 
-- **Proxy**
+- [**Proxy**](src/main/kotlin/org/vld/sdp/structural/Proxy.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt) provides a placeholder/wrapper for another object for
+*access control*, *request validation*, *response caching*. The real object and the proxy implement the same interface,
+so the client cannot distingish between the real object and the proxy. The proxy uses delation to the real object
 
 ## Behavioral Patterns
