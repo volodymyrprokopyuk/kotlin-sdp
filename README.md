@@ -87,3 +87,31 @@ through the flyweight interface
 so the client cannot distingish between the real object and the proxy. The proxy uses delation to the real object
 
 ## Behavioral Patterns
+
+Behavioral patterns provide simple way of implementing **interactions between objects**.
+
+- [**Chain of Responsibility**](src/main/kotlin/org/vld/sdp/behavioral/ChainOfResponsibility.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ChainOfResponsibilityTest.kt) chains the receiving objects/functions
+(handlers) and pass the request along the chain until an object/function handles the request completely or
+partially. Avoids coupling of the request sender to the request receiver allowing more than one receiver a chance to
+handle the request
+
+- **Command**
+
+- **Interpreter**
+
+- **Iterator**
+
+- **Mediator**
+
+- **Memento**
+
+- **Observer**
+
+- **State**
+
+- **Strategy**
+
+- **Template Method**
+
+- **Visitor**
