@@ -96,7 +96,11 @@ Behavioral patterns provide simple way of implementing **interactions between ob
 partially. Avoids coupling of the request sender to the request receiver allowing more than one receiver a chance to
 handle the request
 
-- **Command**
+- [**Command**](src/main/kotlin/org/vld/sdp/behavioral/Command.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/CommandTest.kt) encapsulates an action with the request parameters as
+an function/object. Allows action/request queueing, logging and undoable operations. The `Command` object stores the
+request parameters and delegates the request to the `Receiver`. The `Invoker` object uses the `Command` interface and
+provides request queueing, logging and undoable operation functionality
 
 - **Interpreter**
 
