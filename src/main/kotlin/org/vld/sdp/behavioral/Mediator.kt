@@ -1,0 +1,48 @@
+package org.vld.sdp.behavioral
+
+/**
+ * Colleague interface to be used by mediator implementation
+ */
+interface Aircraft {
+    fun send(message: String): Unit?
+    fun receive(message: String): Unit?
+}
+
+/**
+ * Mediator interface to be used by colleague implementation
+ */
+interface ControlTower {
+    fun notifyAirplane(message: String): Unit?
+    fun notifyHelicopter(message: String): Unit?
+}
+
+/**
+ * Colleague interface implementation uses [ControlTower] mediator interface
+ */
+open class Airplane(val controlTower: ControlTower) : Aircraft {
+    override fun receive(message: String) {}
+    /**
+     * Notifies [Helicopter] using only the [ControlTower] mediator interface
+     */
+    override fun send(message: String) = controlTower.notifyHelicopter(message)
+}
+
+/**
+ * Colleague interface implementation uses [ControlTower] mediator interface
+ */
+open class Helicopter(val controlTower: ControlTower) : Aircraft {
+    override fun receive(message: String) {}
+    /**
+     * Notifies [Airplane] using only the [ControlTower] mediator interface
+     */
+    override fun send(message: String) = controlTower.notifyAirplane(message)
+}
+
+/**
+ * Mediator interface implementation wors with the airplane and the helicopter instances
+ * through [Aircraft] colleague interface
+ */
+class AirControlTower(var airplane: Aircraft? = null, var helicopter: Aircraft? = null) : ControlTower {
+    override fun notifyAirplane(message: String) = airplane?.receive(message)
+    override fun notifyHelicopter(message: String) = helicopter?.receive(message)
+}

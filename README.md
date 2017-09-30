@@ -109,7 +109,10 @@ provides request queueing, logging and undoable operation functionality
 object/container sequentially without exposing aggregate underlying representation (data structure). Iterator
 encapsulates the traversal algorithm of a given aggregate object/container
 
-- **Mediator**
+- [**Mediator**](src/main/kotlin/org/vld/sdp/behavioral/Mediator.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MediatorTest.kt) defines an object the encapsulates how a set of
+objects interact. Mediator promotes *loose coupling between colleagues*. Colleagues interact with each other through
+the mediator object
 
 - **Memento**
 
