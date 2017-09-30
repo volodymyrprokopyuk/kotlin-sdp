@@ -104,7 +104,10 @@ provides request queueing, logging and undoable operation functionality
 
 - **Interpreter**
 
-- **Iterator**
+- [**Iterator**](src/main/kotlin/org/vld/sdp/behavioral/Iterator.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt) provides a way to acces the elements of an aggregate
+object/container sequentially without exposing aggregate underlying representation (data structure). Iterator
+encapsulates the traversal algorithm of a given aggregate object/container
 
 - **Mediator**
 
