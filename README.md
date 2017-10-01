@@ -125,7 +125,10 @@ rollback the `Originator`'s internal state the `Caretaker` returns back the `Mem
 a state change in one object (subject) is automatically notified to all subjects' dependents (observers). The subject
 and the observers are loosely coupled as the state change notification is done through the `Observer` interface
 
-- **State**
+- [**State**](src/main/kotlin/org/vld/sdp/behavioral/State.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StateTest.kt) alters objects' behavior when object's state
+changes. State implements a *state machine* where each individual state is a derived class of the state interface and
+each transition is a defined in state interface mathod invokation
 
 - **Strategy**
 
