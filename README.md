@@ -120,7 +120,10 @@ without violating encapsulation. Allows the object to be restored (undo/rollback
 requests the `Originator` to stapshot its internal state into the `Memento` object before using the `Originator`. To
 rollback the `Originator`'s internal state the `Caretaker` returns back the `Memento` object to the `Originator`
 
-- **Observer**
+- [**Observer**](src/main/kotlin/org/vld/sdp/behavioral/Observer.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt) defines a one-to-many dependency between objects where
+a state change in one object (subject) is automatically notified to all subjects' dependents (observers). The subject
+and the observers are loosely coupled as the state change notification is done through the `Observer` interface
 
 - **State**
 
