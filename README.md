@@ -114,7 +114,11 @@ encapsulates the traversal algorithm of a given aggregate object/container
 objects interact. Mediator promotes *loose coupling between colleagues*. Colleagues interact with each other through
 the mediator object
 
-- **Memento**
+- [**Memento**](src/main/kotlin/org/vld/sdp/behavioral/Memento.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MementoTest.kt) captures and externalizes an *object's internal state*
+without violating encapsulation. Allows the object to be restored (undo/rollback) to this state later. `Caretaker`
+requests the `Originator` to stapshot its internal state into the `Memento` object before using the `Originator`. To
+rollback the `Originator`'s internal state the `Caretaker` returns back the `Memento` object to the `Originator`
 
 - **Observer**
 
