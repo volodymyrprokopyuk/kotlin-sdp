@@ -134,6 +134,9 @@ each transition is a defined in state interface mathod invokation
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/StragegyTest.kt) defines a family of interchangeable at run-time
 algorithms
 
-- **Template Method**
+- [**Template Method**](src/main/kotlin/org/vld/sdp/behavioral/TemplateMethod.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/TemplateMethodTest.kt) defines the skeleton of an algorithm (invariant)
+in one operation deferring some steps (variable) to subclasses (inversion of control) and preserving the overall
+structure of the alrogithm
 
 - **Visitor**

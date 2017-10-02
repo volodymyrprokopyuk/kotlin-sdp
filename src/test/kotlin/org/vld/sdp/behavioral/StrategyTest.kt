@@ -14,7 +14,7 @@ class StrategyTest {
     val transportCompany = TransportCompany()
 
     @DisplayName("Given a transport company and a group of tourists. When request a transport. Then return an appropriate transport")
-    @ParameterizedTest(name = "{0}")
+    @ParameterizedTest(name = "{0} tourists -> {1}")
     @MethodSource("transportProvider")
     fun givenTransportCompanyAndGoupOfTourists_whenRequestTransport_thenReturnAppropriateTransport(
             groupSize: Int,
