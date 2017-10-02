@@ -24,7 +24,7 @@ class Waiter(private var pendingOrders: MutableList<Order> = mutableListOf()) {
     fun acceptOrder(vararg orders: Order) = pendingOrders.addAll(orders)
 
     /**
-     * Serves orders by executing the orders through the [Command] interface
+     * Serves orders by executing the orders through the Command interface
      */
     fun serveOrders(): List<String> = pendingOrders.map { it() }
 }

@@ -13,7 +13,7 @@ class Fruits(vararg val fruits: Fruit)
 /**
  * Aggregate object/container of components [Iterator] implementation
  */
-class FruitsIterator(val container: Fruits) : Iterator<Fruit> {
+class FruitsIterator(private val container: Fruits) : Iterator<Fruit> {
     // reuse fruits iterator
     private val iterator = container.fruits.iterator()
     // delegate to iterator

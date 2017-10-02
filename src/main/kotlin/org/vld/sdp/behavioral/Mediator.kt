@@ -19,7 +19,7 @@ interface ControlTower {
 /**
  * Colleague interface implementation uses [ControlTower] mediator interface
  */
-open class Airplane(val controlTower: ControlTower) : Aircraft {
+open class Airplane(private val controlTower: ControlTower) : Aircraft {
     override fun receive(message: String) {}
     /**
      * Notifies [Helicopter] using only the [ControlTower] mediator interface
@@ -30,7 +30,7 @@ open class Airplane(val controlTower: ControlTower) : Aircraft {
 /**
  * Colleague interface implementation uses [ControlTower] mediator interface
  */
-open class Helicopter(val controlTower: ControlTower) : Aircraft {
+open class Helicopter(private val controlTower: ControlTower) : Aircraft {
     override fun receive(message: String) {}
     /**
      * Notifies [Airplane] using only the [ControlTower] mediator interface
@@ -39,7 +39,7 @@ open class Helicopter(val controlTower: ControlTower) : Aircraft {
 }
 
 /**
- * Mediator interface implementation wors with the airplane and the helicopter instances
+ * Mediator interface implementation works with the airplane and the helicopter instances
  * through [Aircraft] colleague interface
  */
 class AirControlTower(var airplane: Aircraft? = null, var helicopter: Aircraft? = null) : ControlTower {

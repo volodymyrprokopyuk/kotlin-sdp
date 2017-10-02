@@ -50,6 +50,6 @@ class Auctioneer(
 /**
  * Observer implementation
  */
-open class Bidder() : BidObserver {
+open class Bidder : BidObserver {
     override fun updateBid(oldBid: Int, newBid: Int) {}
 }

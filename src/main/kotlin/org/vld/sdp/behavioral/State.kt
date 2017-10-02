@@ -27,7 +27,7 @@ class VendingMachine(var state: State? = null) {
 /**
  * Show products step implementation
  */
-class ShowProducts(val vendingMachine: VendingMachine, val request: List<String>) : State {
+class ShowProducts(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Show Products"
@@ -40,7 +40,7 @@ class ShowProducts(val vendingMachine: VendingMachine, val request: List<String>
 /**
  * Select product step implementation
  */
-class SelectProduct(val vendingMachine: VendingMachine, val request: List<String>) : State {
+class SelectProduct(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Select Product"
@@ -53,7 +53,7 @@ class SelectProduct(val vendingMachine: VendingMachine, val request: List<String
 /**
  * Deposit money step implementation
  */
-class DepositMoney(val vendingMachine: VendingMachine, val request: List<String>) : State {
+class DepositMoney(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Deposit Money"
@@ -66,7 +66,7 @@ class DepositMoney(val vendingMachine: VendingMachine, val request: List<String>
 /**
  * Deliver product step implementation
  */
-class DeliverProduct(val vendingMachine: VendingMachine, val request: List<String>) : State {
+class DeliverProduct(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Deliver Product"

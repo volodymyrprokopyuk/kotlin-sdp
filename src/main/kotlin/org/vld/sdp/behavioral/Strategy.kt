@@ -13,11 +13,11 @@ fun goByBus() = "Go by Bus"
 /**
  * Concrete strategy implementation
  */
-fun goByTaxy() = "Go by Taxi"
+fun goByTaxi() = "Go by Taxi"
 
 /**
  * Transport company selects the right transport strategy based on the size of a tourist group
  */
 class TransportCompany {
-    fun requestTransport(groupSize: Int): Transport = if (groupSize <= 4) ::goByTaxy else ::goByBus
+    fun requestTransport(groupSize: Int): Transport = if (groupSize <= 4) ::goByTaxi else ::goByBus
 }

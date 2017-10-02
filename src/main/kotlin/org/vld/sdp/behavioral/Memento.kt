@@ -14,7 +14,7 @@ class Counter(private var count: Int = 0) {
     val value: Int get() = count
     var memento: CounterMemento
         get() = count
-        set(newCount: Int) {
+        set(newCount) {
             count = newCount
         }
 }
