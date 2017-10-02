@@ -139,4 +139,8 @@ algorithms
 in one operation deferring some steps (variable) to subclasses (inversion of control) and preserving the overall
 structure of the alrogithm
 
-- **Visitor**
+- [**Visitor**](src/main/kotlin/org/vld/sdp/behavioral/Visitor.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/VisitorTest.kt) separates an algorithm from an object structure on
+which the algorithm operates. Allows to add new operations through visitors to the existent object structure known as
+elements without modifying the structure. Visitor implements *double dispatch* based on concrete `Visitor` and concrete
+`Element`
