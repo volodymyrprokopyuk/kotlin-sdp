@@ -130,7 +130,9 @@ and the observers are loosely coupled as the state change notification is done t
 changes. State implements a *state machine* where each individual state is a derived class of the state interface and
 each transition is a defined in state interface mathod invokation
 
-- **Strategy**
+- [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Stragegy.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StragegyTest.kt) defines a family of interchangeable at run-time
+algorithms
 
 - **Template Method**
 
