@@ -10,17 +10,15 @@ interface State {
 /**
  * Vending machine implementation
  */
-class VendingMachine(var state: State? = null) {
+class VendingMachine {
 
-    init {
-        // set the initial vending machine state to show products step
-        state = ShowProducts(this, listOf())
-    }
+    // set the initial vending machine state to the show products step
+    var state: State = ShowProducts(this, listOf())
 
     /**
      * Handles the request as per the current state
      */
-    fun proceed(): List<String> = state?.handleRequest() ?: listOf()
+    fun proceed(): List<String> = state.handleRequest()
 
 }
 
