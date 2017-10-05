@@ -11,15 +11,15 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PrototypeTest {
 
-    @DisplayName("Given a prototypical instance. When clone a new instance from the prototype. Return a new cloned instance")
+    @DisplayName("Given a prototypical instance of a cell. When clone a new cell instance from the prototype. Return a new cloned cell instance")
     @ParameterizedTest(name = "{0}")
     @MethodSource("prototypeProvider")
-    fun givenPrototype_whenClonePrototype_thenReturnNewClonedInstance(
+    fun givenCellPrototype_whenCloneCellInstance_thenReturnNewClonedCellInstance(
             prototype: CellPrototype,
             expectedCell: CellPrototype
     ) {
         // Given & When
-        // clone a new Cell instance from the actual prototype using only CellPrototype interface
+        // clone a new cell instance from the actual cell prototype using the `CellPrototype::clone()` method
         val cell = prototype.clone()
         // Then
         assertThat(cell).isEqualTo(expectedCell)

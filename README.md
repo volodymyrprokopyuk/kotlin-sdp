@@ -39,9 +39,13 @@ singletons<br/>
 for creating a single `Article` instance from the two families: modern and fancy
 
 - [**Prototype**](src/main/kotlin/org/vld/sdp/creational/Prototype.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt) creates new objects cloning prototypical instance,
-boosting performance and keeping memory footprint to a minimum. Client works only with interfaces of the prototype and
-product interface
+[(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt)<br/>
+**What**. Prototype creates new objects by cloning prototypical instance, boosting performance and keeping memory
+footprint to a minimum<br/>
+**How**. The client works only with the `Product` interface and uses the `Product::clone()` method for creating new
+instances of the `Product`<br/>
+**Example**. The `ProkaryoteCell`=`Product` and the `EukaryoteCell`=`Product` implements the `CellPrototype`
+interface. In order to create a new instance of the specific cell the `CellPrototype::clone()` method is used
 
 - [**Singleton**](src/main/kotlin/org/vld/sdp/creational/Singleton.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt) ensures that a class has only one instance and
