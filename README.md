@@ -6,9 +6,15 @@ Creational patterns **encapsulate knowledge about concrete classes** the system 
 classes are created** and **separate the system from how the objects are composed and represented**.
 
 - [**Abstract Factory**](src/main/kotlin/org/vld/sdp/creational/AbstractFactory.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/AbstractFactoryTest.kt) provides an interface for creating *families of
-related or dependent objects* without specifying their concrete classes. Client works only with *interfaces* of the
-abstract factory and family products. Concrete factories are *singletons* that implement abstract factory interface
+[(usage)](src/test/kotlin/org/vld/sdp/creational/AbstractFactoryTest.kt)<br/>
+**What** Abstract Factory provides an interface for creating families of related/dependent objects without specifying
+their concrete classes. Abstract Factory abstracts and encapsulates the creation of a suite of products for a given
+platform/family that the system depends on<br/>
+**How** `AbstractFactory` interface provides methods for creating all kinds of producs for a given platform/family. The
+client works only with the `AbstractFactory` and the `Product` interfaces. The concrete factories are singletons<br/>
+**Example** The system depends on a `Letter`=`Product` and a `Resume`=`Product` instances. The system uses a
+`DocumentCreator`=`AbstractFactory` for creating the concrete `Letter` and `Resume` instances from two families: modern
+and fancy
 
 - [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt) separates a construction of a complex object from its

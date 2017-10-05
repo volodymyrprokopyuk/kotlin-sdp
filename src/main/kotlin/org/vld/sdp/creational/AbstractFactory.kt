@@ -1,70 +1,74 @@
 package org.vld.sdp.creational
 
 /**
- * Letter product interface
+ * Product interface
  */
 interface Letter {
     val name: String
 }
 
 /**
- * Resume product interface
+ * Product interface
  */
 interface Resume {
     val name: String
 }
 
 /**
- * Document Creator abstract factory interface
+ * Abstract Factory interface
  */
 interface DocumentCreator {
     /**
-     * Creates Letter product
+     * Creates Letter Product
      */
     fun createLetter(name: String): Letter
 
     /**
-     * Creates Resume product
+     * Creates Resume Product
      */
     fun createResume(name: String): Resume
 }
 
 /**
- * Modern Letter concrete product
+ * Product interface implementation for modern documents
  */
 data class ModernLetter(override val name: String) : Letter
 
 /**
- * Modern Resume concrete product
+ * Product interface implementation for modern documents
  */
 data class ModernResume(override val name: String) : Resume
 
 /**
- * Modern Document Creator concrete factory singleton encapsulates knowledge about Modern documents product family
+ * Abstract Factory interface implementation for modern documents
+ *
+ * Abstract Factory singleton encapsulates knowledge about modern documents product family
  */
 object ModernDocumentCreator : DocumentCreator {
-    // the only place where concrete Modern Letter product is referenced
+    // the only place where the concrete Modern Letter Product class is referenced
     override fun createLetter(name: String): Letter = ModernLetter(name)
-    // the only place where concrete Modern Resume product is referenced
+    // the only place where the concrete Modern Resume Product class is referenced
     override fun createResume(name: String): Resume = ModernResume(name)
 }
 
 /**
- * Fancy Letter concrete product
+ * Product interface implementation for fancy documents
  */
 data class FancyLetter(override val name: String) : Letter
 
 /**
- * Fancy Resume concrete product
+ * Product interface implementation for fancy documents
  */
 data class FancyResume(override val name: String) : Resume
 
 /**
- * Fancy Document creator concrete factory singleton encapsulates knowledge about Fancy documents product family
+ * Abstract Factory interface implementation for fancy documents
+ *
+ * Abstract Factory singleton encapsulates knowledge about fancy documents product family
  */
 object FancyDocumentCreator : DocumentCreator {
-    // the only place where concrete Fancy Letter product is referenced
+    // the only place where the concrete Fancy Letter Product class is referenced
     override fun createLetter(name: String): Letter = FancyLetter(name)
-    // the only place where concrete Fancy Resume product is referenced
+    // the only place where the concrete Fancy Letter Product class is referenced
     override fun createResume(name: String): Resume = FancyResume(name)
 }

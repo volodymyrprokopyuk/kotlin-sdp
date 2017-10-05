@@ -11,10 +11,10 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AbstractFactoryTest {
 
-    @DisplayName("Given an abstract factory. When create a familiy of products. Then return the requested products")
+    @DisplayName("Given an abstract factory. When create a family of products. Then return the products from a given family")
     @ParameterizedTest(name = "{1}, {2}")
     @MethodSource("abstractFactoryProvider")
-    fun givenAbstractFactory_whenCreateProducts_thenReturnRequestedProducts(
+    fun givenAbstractFactory_whenCreateFamilyOfProducts_thenReturnProductsFromAGivenFamily(
             abstractFactory: DocumentCreator,
             letterName: String,
             resumeName: String,
@@ -22,8 +22,8 @@ class AbstractFactoryTest {
             expectedResume: Resume
     ) {
         // Given & When
-        // client works only with abstract factory interface (DocumentCreator)
-        // and family product interfaces (Letter and Resume)
+        // client works only with the abstract factory interface (DocumentCreator)
+        // and the family product interfaces (Letter and Resume)
         val letter: Letter = abstractFactory.createLetter(letterName)
         val resume: Resume = abstractFactory.createResume(resumeName)
         // Then
