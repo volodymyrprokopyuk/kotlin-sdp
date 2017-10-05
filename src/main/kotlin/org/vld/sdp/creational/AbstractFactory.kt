@@ -1,21 +1,21 @@
 package org.vld.sdp.creational
 
 /**
- * Product interface
+ * Letter Product interface
  */
 interface Letter {
     val name: String
 }
 
 /**
- * Product interface
+ * Resume Product interface
  */
 interface Resume {
     val name: String
 }
 
 /**
- * Abstract Factory interface
+ * Document Creator Abstract Factory interface
  */
 interface DocumentCreator {
     /**
@@ -30,19 +30,19 @@ interface DocumentCreator {
 }
 
 /**
- * Product interface implementation for modern documents
+ * Modern Letter Product interface implementation
  */
 data class ModernLetter(override val name: String) : Letter
 
 /**
- * Product interface implementation for modern documents
+ * Modern Resume Product interface implementation
  */
 data class ModernResume(override val name: String) : Resume
 
 /**
- * Abstract Factory interface implementation for modern documents
+ * Modern Document Creator Abstract Factory interface implementation
  *
- * Abstract Factory singleton encapsulates knowledge about modern documents product family
+ * Modern Document Creator singleton encapsulates knowledge about the modern documents product family
  */
 object ModernDocumentCreator : DocumentCreator {
     // the only place where the concrete Modern Letter Product class is referenced
@@ -62,13 +62,13 @@ data class FancyLetter(override val name: String) : Letter
 data class FancyResume(override val name: String) : Resume
 
 /**
- * Abstract Factory interface implementation for fancy documents
+ * Fancy Document Creator Abstract Factory interface implementation
  *
- * Abstract Factory singleton encapsulates knowledge about fancy documents product family
+ * Fancy Document Creator singleton encapsulates knowledge about the fancy documents product family
  */
 object FancyDocumentCreator : DocumentCreator {
     // the only place where the concrete Fancy Letter Product class is referenced
     override fun createLetter(name: String): Letter = FancyLetter(name)
-    // the only place where the concrete Fancy Letter Product class is referenced
+    // the only place where the concrete Fancy Resume Product class is referenced
     override fun createResume(name: String): Resume = FancyResume(name)
 }

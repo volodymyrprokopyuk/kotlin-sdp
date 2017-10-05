@@ -22,8 +22,8 @@ class AbstractFactoryTest {
             expectedResume: Resume
     ) {
         // Given & When
-        // client works only with the abstract factory interface (DocumentCreator)
-        // and the family product interfaces (Letter and Resume)
+        // client works only with the DocumentCreator abstract factory interface
+        // and the Letter and Resume family product interfaces
         val letter: Letter = abstractFactory.createLetter(letterName)
         val resume: Resume = abstractFactory.createResume(resumeName)
         // Then
