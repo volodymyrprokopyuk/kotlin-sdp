@@ -1,6 +1,6 @@
 package org.vld.sdp.structural
 
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.* // ktlint-disable no-wildcard-imports
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest

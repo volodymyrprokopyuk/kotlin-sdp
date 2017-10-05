@@ -1,6 +1,6 @@
 package org.vld.sdp.structural
 
-import org.mockito.Mockito.*
+import org.mockito.Mockito.* // ktlint-disable no-wildcard-imports
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance

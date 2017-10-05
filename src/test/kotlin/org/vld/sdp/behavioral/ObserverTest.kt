@@ -3,7 +3,7 @@ package org.vld.sdp.behavioral
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import org.mockito.Mockito.*
+import org.mockito.Mockito.* // ktlint-disable no-wildcard-imports
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ObserverTest {

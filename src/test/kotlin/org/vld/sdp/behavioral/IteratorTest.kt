@@ -1,6 +1,6 @@
 package org.vld.sdp.behavioral
 
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.* // ktlint-disable no-wildcard-imports
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -16,7 +16,7 @@ class IteratorTest {
         // When
         val values: MutableList<Fruit> = mutableListOf()
         // by providing iterator extension function, Fruits can be used in the for loop
-        for(fruit in fruits) values.add(fruit)
+        for (fruit in fruits) values.add(fruit)
         // Then
         val expectedValues = listOf<Fruit>("apple", "banana", "orange")
         assertThat(values).isEqualTo(expectedValues)

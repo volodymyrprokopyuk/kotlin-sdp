@@ -1,13 +1,12 @@
 package org.vld.sdp.structural
 
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.* // ktlint-disable no-wildcard-imports
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class FlyweightTest {
-
 
     @Test
     @DisplayName("Given a glyph factory. When retrieve the same glyph twice. Then return the shared/cached glyph")
