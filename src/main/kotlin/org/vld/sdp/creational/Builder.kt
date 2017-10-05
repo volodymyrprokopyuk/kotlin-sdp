@@ -1,10 +1,9 @@
 package org.vld.sdp.creational
 
 /**
- * Car with a private constructor. Car instances must be built through a call to
- * `Car.build {}` builder DSL initialization method
+ * Car
  */
-data class Car private constructor(val make: String, val model: String, val year: Int) {
+data class Car constructor(val make: String, val model: String, val year: Int) {
 
     /**
      * Car private constructor to be used from `Car.build {}` builder DSL initialization method
@@ -13,8 +12,9 @@ data class Car private constructor(val make: String, val model: String, val year
 
     companion object {
         /**
-         * Builds a Car Builder instance as defined in the [init] function and then builds a Car instance
-         * using private Car's constructor and based on the initialized in the [init] function Car Builder's properties
+         * Builds a [Car.Builder] instance as defined in the [init] function and
+         * then builds a [Car] instance using private [Car]'s constructor and
+         * based on the initialized in the [init] function [Car.Builder]'s properties
          */
         fun build(init: Builder.() -> Unit): Car = Builder(init).build()
     }
@@ -24,18 +24,18 @@ data class Car private constructor(val make: String, val model: String, val year
      */
     class Builder private constructor() {
 
-        /**
-         * Car Builder constructor for applying initialization logic through the [init] function
-         * to the Car Builder instance
-         */
-        constructor(init: Builder.() -> Unit): this() {
-            init()
-        }
-
         // variable Car Builder's properties to be initialized in the Car Builder's constructor init function
         var make: String = ""
         var model: String = ""
         var year: Int = 0
+
+        /**
+         * [Car.Builder] constructor for applying the initialization logic through
+         * the [init] function to the [Car.Builder] instance
+         */
+        constructor(init: Builder.() -> Unit): this() {
+            init()
+        }
 
         // variable Car Builder's properties initialization functions
         // to be called within the Car Builder's constructor init function
@@ -46,11 +46,10 @@ data class Car private constructor(val make: String, val model: String, val year
         fun year(init: Builder.() -> Int) = apply { year = init() }
 
         /**
-         * Calls private Car's constructor by passing the Car Builder instance
-         * with initialized properties for Car's instance initialization
+         * Calls [Car]'s constructor by passing the [Car.Builder] instance
+         * with the initialized properties for [Car] instance initialization
          */
         fun build(): Car = Car(this)
-
     }
 
 }
