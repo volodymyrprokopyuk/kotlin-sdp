@@ -44,13 +44,17 @@ for creating a single `Article` instance from the two families: modern and fancy
 footprint to a minimum<br/>
 **How**. The client works only with the `Product` interface and uses the `Product::clone()` method for creating new
 instances of the `Product`<br/>
-**Example**. The `ProkaryoteCell`=`Product` and the `EukaryoteCell`=`Product` implements the `CellPrototype`
+**Example**. The `ProkaryoteCell`=`Product` and the `EukaryoteCell`=`Product` implement the `CellPrototype`
 interface. In order to create a new instance of the specific cell the `CellPrototype::clone()` method is used
 
 - [**Singleton**](src/main/kotlin/org/vld/sdp/creational/Singleton.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt) ensures that a class has only one instance and
-provides a global point of access to it. Make the class constructor private and provide one public static method that
-always returns the same single instance of the class stored in a private static variable
+[(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt)<br/>
+**What**. Singleton ensures that a class has only one instance and provides a global point of access to the
+instance<br/>
+**How**. Make the class constructor private and provide one public static method that always returns the same single
+instance of the class stored in a private static variable<br/>
+**Example**. The expression `object Singleton` defines a Singleton class and immediately instantiate the class with the
+single point of access to the instance being the `Singleton` class name
 
 ## Structural Patterns
 
