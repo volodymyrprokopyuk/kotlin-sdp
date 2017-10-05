@@ -42,7 +42,7 @@ data class ModernResume(override val name: String) : Resume
 /**
  * Modern Document Creator Abstract Factory interface implementation
  *
- * Modern Document Creator singleton encapsulates knowledge about the modern documents product family
+ * Modern Document Creator singleton encapsulates the knowledge about the modern documents product family
  */
 object ModernDocumentCreator : DocumentCreator {
     // the only place where the concrete Modern Letter Product class is referenced
@@ -64,7 +64,7 @@ data class FancyResume(override val name: String) : Resume
 /**
  * Fancy Document Creator Abstract Factory interface implementation
  *
- * Fancy Document Creator singleton encapsulates knowledge about the fancy documents product family
+ * Fancy Document Creator singleton encapsulates the knowledge about the fancy documents product family
  */
 object FancyDocumentCreator : DocumentCreator {
     // the only place where the concrete Fancy Letter Product class is referenced

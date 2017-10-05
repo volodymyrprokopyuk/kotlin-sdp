@@ -11,17 +11,17 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class FactoryMethodTest {
 
-    @DisplayName("Given a factory method. When create a single product. Then return the requested product")
+    @DisplayName("Given a factory method. When create a single product. Then return the requested single product")
     @ParameterizedTest(name = "{1}")
     @MethodSource("factoryMethodProvider")
-    fun givenFactoryMethod_whenCreateProduct_thenReturnRequestedProduct(
+    fun givenFactoryMethod_whenCreateSingleProduct_thenReturnRequestedSingleProduct(
             factoryMethod: ArticleCreator,
             articleName: String,
             expectedArticle: Article
     ) {
         // Given & When
-        // client works only with factory method interface (ArticleCreator)
-        // and a signle product interface (Article)
+        // client works only with the ArticleCreator factory method interface
+        // and the Article signle product interface
         val article: Article = factoryMethod.createArticle(articleName)
         // Then
         assertThat(article).isEqualTo(expectedArticle)

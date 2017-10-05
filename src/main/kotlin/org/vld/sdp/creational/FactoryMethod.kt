@@ -1,44 +1,48 @@
 package org.vld.sdp.creational
 
 /**
- * Article product interface
+ * Article Product interface
  */
 interface Article {
     val name: String
 }
 
 /**
- * Article Creator factory method interface
+ * Article Creator Factory Method interface
  */
 interface ArticleCreator {
     /**
-     * Creates Article product (factory method)
+     * Creates Article Product (factory method)
      */
     fun createArticle(name: String): Article
 }
 
 /**
- * Modern Article concrete product
+ * Modern Article Product interface implementation
  */
 data class ModernArticle(override val name: String) : Article
 
 /**
- * Modern Article Creator concrete factory method singleton encapsulates knowledge about Modern Article product
+ * Modern Article Creator Factory Method interface implementation
+ *
+ * Modern Article Creator singleton encapsulates the knowledge about the Modern Article single product
  */
 object ModernArticleCreator : ArticleCreator {
-    // the only place where concrete Modern Article product is referenced (factory method)
+    // the only place where the concrete Modern Article Product class is referenced
     override fun createArticle(name: String): Article = ModernArticle(name)
 }
 
 /**
- * Fancy Article concrete product
+ * Fancy Article Product interface implementation
  */
 data class FancyArticle(override val name: String) : Article
 
 /**
- * Fancy Article creator concrete factory method singleton encapsulates knowledge about Fancy Article product
+ * Fancy Article Creator Factory Method interface implementation
+ *
+ * Modern Article Creator singleton the encapsulates the knowledge about Fancy Article single product
  */
 object FancyArticleCreator : ArticleCreator {
-    // the only place where concrete Fancy Article product is referenced (factory method)
+    // the only place where the concrete Fancy Article Product class is referenced
     override fun createArticle(name: String): Article = FancyArticle(name)
 }

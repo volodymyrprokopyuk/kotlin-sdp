@@ -11,11 +11,11 @@ classes are created** and **separate the system from how the objects are compose
 their concrete classes. Abstract Factory abstracts and encapsulates the creation of a suite of products for a given
 platform/family that the system depends on<br/>
 **How**. `AbstractFactory` interface provides methods for creating all kinds of products for a given
-platform/family. The client works only with the `AbstractFactory` and the `Product` interfaces. The concrete factories
-are singletons<br/>
+platform/family. The client works only with the `AbstractFactory` and the `Product` interfaces. The concrete
+implementations of the `AbstractFactory` interface are singletons<br/>
 **Example**. The system depends on a `Letter`=`Product` and a `Resume`=`Product` instances. The system uses a
-`DocumentCreator`=`AbstractFactory` for creating the concrete `Letter` and `Resume` instances from two families: modern
-and fancy
+`DocumentCreator`=`AbstractFactory` for creating the concrete `Letter` and `Resume` instances from the two families:
+modern and fancy
 
 - [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt)<br/>
@@ -29,9 +29,14 @@ assignment or function call and returns the resulting constructed complex object
 - **Dependency Injection**
 
 - [**Factory Method**](src/main/kotlin/org/vld/sdp/creational/FactoryMethod.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/FactoryMethodTest.kt) defines an interface for creating a single
-object, but let subclasses decide which class to instantiate. Client works only with interfaces of the factory method
-and a single product interface. Concrete factories are singletons that implement factory method interface
+[(usage)](src/test/kotlin/org/vld/sdp/creational/FactoryMethodTest.kt)<br/>
+**What**. Factory method defines an interface for creating a single object, but let subclasses decide which class to
+instantiate<br/>
+**How**. `FactoryMethod` interface provides a method for creating a single object. The client works only with the
+`FactoryMethod` and the `Product` interfaces. The concrete implementations of the `FactoryMethod` interface are
+singletons<br/>
+**Example**. The system depends on an `Article`=`Product` instances. The system uses `ArticleCreator`=`FactoryMethod`
+for creating a single `Article` instance from the two families: modern and fancy
 
 - [**Prototype**](src/main/kotlin/org/vld/sdp/creational/Prototype.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt) creates new objects cloning prototypical instance,
