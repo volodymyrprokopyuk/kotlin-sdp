@@ -24,18 +24,10 @@ resulting constructed complex object at once
 object*, but let subclasses decide which class to instantiate. Client works only with *interfaces* of the factory method
 and a single product interface. Concrete factories are *singletons* that implement factory method interface
 
-- **Lazy Initialization**
-
-- **Multiton**
-
-- **Object Pool**
-
 - [**Prototype**](src/main/kotlin/org/vld/sdp/creational/Prototype.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt) creates new objects *cloning prototypical instance*,
 boosting performance and keeping memory footprint to a minimum. Client works only with *interfaces* of the prototype and
 product interface
-
-- **Resource Acquisition is Initialization**
 
 - [**Singleton**](src/main/kotlin/org/vld/sdp/creational/Singleton.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt) ensures that a class has *only one instance* and
@@ -78,8 +70,6 @@ simpler interface to the client. Client works only with the facade interface
 objects* efficiently. Shares the intrinsic/invariant object state in an external data structure. When a new object is
 created provides the cached intrinsic/invariant object state and allows the extrinsic/variant object state to be set
 through the flyweight interface
-
-- **Front Controller**
 
 - [**Proxy**](src/main/kotlin/org/vld/sdp/structural/Proxy.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt) provides a placeholder/wrapper for another object for
