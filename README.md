@@ -10,19 +10,20 @@ classes are created** and **separate the system from how the objects are compose
 **What**. Abstract Factory provides an interface for creating families of related/dependent objects without specifying
 their concrete classes. Abstract Factory abstracts and encapsulates the creation of a suite of products for a given
 platform/family that the system depends on<br/>
-**How**. `AbstractFactory` interface provides methods for creating all kinds of products for a given platform/family. The
-client works only with the `AbstractFactory` and the `Product` interfaces. The concrete factories are singletons<br/>
+**How**. `AbstractFactory` interface provides methods for creating all kinds of products for a given
+platform/family. The client works only with the `AbstractFactory` and the `Product` interfaces. The concrete factories
+are singletons<br/>
 **Example**. The system depends on a `Letter`=`Product` and a `Resume`=`Product` instances. The system uses a
 `DocumentCreator`=`AbstractFactory` for creating the concrete `Letter` and `Resume` instances from two families: modern
 and fancy
 
 - [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt)<br/>
 **What**. Builder separates a construction of a complex object from its representation, allowing the same construction
-step by step process to create various representations
+step by step process to create various representations<br/>
 **How**. The client uses **(a)** a separate `Builder` object which receives each initialization parameter step by step
 in a fluent interface or **(b)** a `Builder` DSL initialization method which configures properties by direct property
-assignment or function call and returns the resulting constructed complex object at once
+assignment or function call and returns the resulting constructed complex object at once<br/>
 **Example**. `Car.Builder` provides a builder DSL (`Car.build { ... }`) for building a `Car` instance
 
 - **Dependency Injection**
