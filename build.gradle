@@ -57,10 +57,15 @@ ext {
     junitJupiterVersion = "5.0.0"
     assertJVersion = "3.8.0"
     mockitoVersion = "2.10.0"
+    ktLintVersion = "0.9.2"
 }
 
 repositories {
     mavenCentral()
+}
+
+configurations {
+    ktlint
 }
 
 dependencies {
@@ -70,4 +75,20 @@ dependencies {
     testCompile "org.assertj:assertj-core:$assertJVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+    ktlint "com.github.shyiko:ktlint:$ktLintVersion"
+}
+
+task ktLint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style"
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "--verbose", "src/**/*.kt"
+}
+
+check.dependsOn ktLint
+task ktFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations"
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "src/**/*.kt"
 }
