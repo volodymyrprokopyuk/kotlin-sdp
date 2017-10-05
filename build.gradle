@@ -3,17 +3,20 @@ buildscript {
         kotlinGradlePluginVersion = "1.1.51"
         junitPlatformGradlePluginVersion = "1.0.0"
         dokkaGradlePluginVersion = "0.9.15"
+        detektGradlePluginVersion = "1.0.0.RC4-3"
     }
 
     repositories {
         mavenCentral()
         jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinGradlePluginVersion"
         classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformGradlePluginVersion"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokkaGradlePluginVersion"
+        classpath "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektGradlePluginVersion"
     }
 }
 
@@ -46,6 +49,15 @@ apply plugin: "org.jetbrains.dokka"
 dokka {
     outputFormat = "html"
     outputDirectory = "$buildDir/dokka"
+}
+
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+detekt {
+    profile("main") {
+//        config = "$projectDir/detekt.yml"
+        input = "$projectDir/src"
+    }
 }
 
 apply plugin: "application"
