@@ -226,9 +226,14 @@ on the size of the tourist gourp. Both `goByBus` and `goByTaxi` implements the `
 which the algorithms/strategies are provided to the client
 
 - [**Template Method**](src/main/kotlin/org/vld/sdp/behavioral/TemplateMethod.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/TemplateMethodTest.kt) defines the skeleton of an algorithm (invariant)
-in one operation deferring some steps (variable) to subclasses (inversion of control) and preserving the overall
-structure of the algorithm
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/TemplateMethodTest.kt)<br/>
+**What**. Template Method defines the skeleton of an algorithm (invariant) in one operation deferring some steps
+(variable) to subclasses (inversion of control) and preserving the overall structure of the algorithm<br/>
+**How**. The abstract class defines the abstract algorithm `Template` with the overall algorithm structure. The
+invariant algorithm steps are defined as final methods in the abstract class and the variant steps are open for
+overriding in the `Template` specializations<br/>
+**Example**. The `Employee`=`Template` defines the overall algorithm structure, the invariant and variant algorithm
+steps. The `Developer` and the `Architect` algorithm specialization override the variable algorithm steps
 
 - [**Visitor**](src/main/kotlin/org/vld/sdp/behavioral/Visitor.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/VisitorTest.kt) separates an algorithm from an object structure on

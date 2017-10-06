@@ -11,15 +11,15 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TemplateMethodTest {
 
-    @DisplayName("Given a concrete algorithm implementation. When perform the algorithm. Then perform the right actions")
+    @DisplayName("Given an abstract algorithm specialization. When perform the algorithm. Then perform the right actions")
     @ParameterizedTest(name = "{1}")
     @MethodSource("transportProvider")
-    fun givenConcreteAlgorithmImplementation_whenPerformAlgorithm_thenPerformRightActions(
+    fun givenAbstractAlgorithmSpecialization_whenPerformAlgorithm_thenPerformRightActions(
             employee: Employee,
             expectedActions: List<String>
     ) {
         // Given & When
-        // client uses abstract algorith interface
+        // client uses abstract algorithm template interface and executes the specialized algorithm in one operation
         val actions = employee.act()
         // Then
         assertThat(actions).isEqualTo(expectedActions)
