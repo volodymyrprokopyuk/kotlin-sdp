@@ -102,9 +102,11 @@ other<br/>
 accept the `Coffe` instance to delegate to
 
 - [**Facade**](src/main/kotlin/org/vld/sdp/structural/Facade.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/FacadeTest.kt) defines a higher-level simplified interface that makes
-a system/library easier to use. Facade hides the complexities of a larger system with dependencies and provides a
-simpler interface to the client. Client works only with the facade interface
+[(usage)](src/test/kotlin/org/vld/sdp/structural/FacadeTest.kt)<br/>
+**What**. Facade defines a higher-level simplified interface that makes a system/library easier to use. Facade hides the
+complexities of a larger system with dependencies and provides a simpler interface to the client<br/>
+**How**. Client works only with the `Facade` highter-level simplified interface to interact with the larger system
+**Example**.
 
 - [**Flyweight**](src/main/kotlin/org/vld/sdp/structural/Flyweight.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/FlyweightTest.kt) uses sharing to support large number of similar

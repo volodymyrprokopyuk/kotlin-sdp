@@ -9,12 +9,12 @@ import org.junit.jupiter.api.TestInstance
 class FacadeTest {
 
     @Test
-    @DisplayName("Given a computer facade. When switch on computer. Then orchestarte and manage computer subsystems")
+    @DisplayName("Given a computer facade. When switch on the computer. Then orchestarte and manage the computer subsystems")
     fun givenComputerFacade_whenSwitchOnComputer_thenOrchestrateAndManagerComputerSubsystems() {
         // Given
         val computer: Computer = Desktop(Cpu(), Ram(), Ssd())
         // When
-        // client works only with Computer facade interface
+        // client works only with Computer higher-level, simplified Facade interface
         val result = computer.switchOn()
         // Then
         val expectedResult = "CPU started, RAM loaded, SSD read"

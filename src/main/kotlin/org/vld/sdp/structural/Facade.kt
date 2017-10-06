@@ -1,35 +1,35 @@
 package org.vld.sdp.structural
 
 /**
- * CPU subsystem
+ * CPU subsystem/dependency of a larger [Computer] system
  */
 class Cpu {
     fun start(): String = "CPU started"
 }
 
 /**
- * RAM subsystem
+ * RAM subsystem/dependency of a larger [Computer] system
  */
 class Ram {
     fun load(): String = "RAM loaded"
 }
 
 /**
- * SSD subsystem
+ * SSD subsystem/dependency of a larger [Computer] system
  */
 class Ssd {
     fun read(): String = "SSD read"
 }
 
 /**
- * Computer facade interface
+ * Computer Facade higher-level, simplified interface to a larger [Computer] system
  */
 interface Computer {
     fun switchOn(): String
 }
 
 /**
- * Computer facade interface implementation
+ * Computer Facade higher-level, simplified interface implementation
  */
 class Desktop(private val cpu: Cpu, private val ram: Ram, private val ssd: Ssd) : Computer {
     // hide complexities and dependencies of a larger system
