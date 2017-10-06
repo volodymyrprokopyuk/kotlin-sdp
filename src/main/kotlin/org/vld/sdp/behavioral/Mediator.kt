@@ -42,7 +42,11 @@ open class Helicopter(private val controlTower: ControlTower) : Aircraft {
  * Mediator interface implementation works with the [Airplane] and the [Helicopter] instances
  * through the [Aircraft] Colleague interface
  */
-class AirControlTower(var airplane: Aircraft? = null, var helicopter: Aircraft? = null) : ControlTower {
+class AirControlTower() : ControlTower {
+    var airplane: Aircraft? = null
+    var helicopter: Aircraft? = null
+
     override fun notifyAirplane(message: String) = airplane?.receive(message)
+
     override fun notifyHelicopter(message: String) = helicopter?.receive(message)
 }

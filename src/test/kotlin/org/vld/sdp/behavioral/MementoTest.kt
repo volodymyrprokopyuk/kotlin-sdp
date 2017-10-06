@@ -14,7 +14,7 @@ class MementoTest {
         // Given
         val counter = Counter()
         // When
-        // increment the counter three times
+        // increment the counter three times without Memento
         counter.increment()
         counter.increment()
         counter.increment()
@@ -34,13 +34,13 @@ class MementoTest {
         // When
         // increment the counter three times
         counter.increment()
-        // snapshot the counter state to memento
+        // snapshot the counter state to a Memento in between
         val memento = counter.memento
         counter.increment()
-        // restore the counter state from memento
+        // restore the counter state from the Memento
         counter.memento = memento
         counter.increment()
-        // the counter values is incremented by tree not three
+        // the counter values is incremented by two not three
         val value = counter.value
         // Then
         val expectedValue = 2

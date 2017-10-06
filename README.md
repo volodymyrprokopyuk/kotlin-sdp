@@ -177,17 +177,22 @@ of `Fruit`=`Component`
 coupling between the colleagues<br/>
 **How**. The `Colleague`s interact with each other through the `Mediator` interface without having any references to
 each other<br/>. The `Mediator` object has references to every `Colleague` and interacts with a `Colleague` through a
-common `Colleague` interface
+common `Colleague` interface<br/>
 **Example**. The `Airplane`=`Colleague` and the `Helicopter`=`Colleague` implement the `Aircraft`=`Colleague` interface
 and accept the `ControlTower`=`Mediator`. The `Airplane` and the `Helicopter` communicate with each other through the
 `ControlTower` interface. The `ControlTower` has the references to the `Airplane` and the `Helicopter` and forwards the
 messages through the `Aircraft` interface
 
 - [**Memento**](src/main/kotlin/org/vld/sdp/behavioral/Memento.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MementoTest.kt) captures and externalizes an *objects internal state*
-without violating encapsulation. Allows the object to be restored (undo/rollback) to this state later. `Caretaker`
-requests the `Originator` to snapshot its internal state into the `Memento` object before using the `Originator`. To
-rollback the `Originator`s internal state the `Caretaker` returns back the `Memento` object to the `Originator`
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MementoTest.kt)<br/>
+**What**. Memento captures and externalizes an object's internal state without violating encapsulation. Allows the
+object to be restored (undo/rollback) to the captured state later<br/>
+**How**. The `Caretaker` requests the `Originator` to snapshot `Originator`'s internal state into the `Memento` object
+before using the `Originator`. To rollback the `Originator`'s internal state the `Caretaker` returns back the `Memento`
+object to the `Originator`<br/>
+**Example**. The `Counter`=`Originator` object provides a `CounterMemento`=`Memento` object to store to/retrieve from
+the `Counter` internal state. The incremental count of the `Counter` object could be altered by using the
+`CounterMemento` object
 
 - [**Observer**](src/main/kotlin/org/vld/sdp/behavioral/Observer.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt) defines a one-to-many dependency between objects where
