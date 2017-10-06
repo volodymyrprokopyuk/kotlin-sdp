@@ -80,10 +80,15 @@ implemented by delegating to its `Implementation`<br/>
 `Vendor` implementation. The `Device::switchOn()` method delegates to the `Vendor::support(Device)` method
 
 - [**Composite**](src/main/kotlin/org/vld/sdp/structural/Composite.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/CompositeTest.kt) treats individual objects and composition of objects
-uniformly. Composes objects into tree structures to represent part-whole hierarchies. `Leaf` and `Composite` classes
-implement `Component` interface. `Leaf` class implements the request directly. `Composite` forwards recursively the
-request to its children
+[(usage)](src/test/kotlin/org/vld/sdp/structural/CompositeTest.kt)<br/>
+**What**. Composite treats individual objects and composition of objects uniformly. Composes objects into tree
+structures to represent part-whole hierarchies<br/>
+**How**. The `Leaf` and the `Composite` classes implement the `Component` interface. The `Leaf` class implements the
+request directly while the `Composite` class forwards recursively the request to composite's children<br/>
+**Example**. The `Expression`=`Component` is a uniform `Component` interface. The `Operand`=`Leaf` implements the
+request directly by returning the operand value. The `Operation`=`Composite` implements the request recustively by
+evaluating its right and left expressions and than applying the actual operation to the results of the left and right
+expression evaluations
 
 - [**Decorator**](src/main/kotlin/org/vld/sdp/structural/Decorator.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/DecoratorTest.kt) attaches additional behavior to an individual

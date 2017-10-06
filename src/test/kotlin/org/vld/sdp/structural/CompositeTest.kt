@@ -31,9 +31,9 @@ class CompositeTest {
         val add: (Int, Int) -> Int = { x, y -> x + y }
         val mul: (Int, Int) -> Int = { x, y -> x * y }
         return Stream.of(
-                // Expression has tree structure
+                // Expressions have tree structure
                 Arguments.of("1", Operand(1), 1),
-                Arguments.of("1+2", Operation(Operand(1), Operand(2), { x, y -> x + y }), 3),
+                Arguments.of("1+2", Operation(Operand(1), Operand(2), add), 3),
                 Arguments.of("1+2*3", Operation(Operand(1), Operation(Operand(2), Operand(3), mul), add), 7)
         )
     }

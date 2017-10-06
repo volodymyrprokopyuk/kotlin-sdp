@@ -18,6 +18,6 @@ class Operand(val value: Int) : Expression {
  * Composite implements Component interface recursively
  */
 class Operation(val left: Expression, val right: Expression, val operate: (Int, Int) -> Int) : Expression {
-    // recursively evaluate left and right expressions, than apply operation
+    // recursively evaluate left and right expressions, than apply the operation
     override fun evaluate(): Int = operate(left.evaluate(), right.evaluate())
 }
