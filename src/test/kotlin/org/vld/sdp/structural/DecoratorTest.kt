@@ -16,7 +16,7 @@ class DecoratorTest {
     @MethodSource("coffeeProvider")
     fun givenDecoratedCoffee_whenTasteCoffee_thenReturnDecoratedCoffeeTaste(coffee: Coffee, expectedTaste: String) {
         // Given & When
-        // client works only with Coffee interface for both simple coffee and decorated coffee
+        // client works only with the Coffee interface for both simple coffee and decorated coffee instances
         val taste = coffee.taste()
         // Then
         assertThat(taste).isEqualTo(expectedTaste)

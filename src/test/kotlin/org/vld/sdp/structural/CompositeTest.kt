@@ -15,7 +15,7 @@ class CompositeTest {
     @ParameterizedTest(name = "{0} = {2}")
     @MethodSource("expressionProvider")
     fun givenExpression_whenEvaluateExpression_thenReturnExpressionValue(
-            expressionText: String,
+            @Suppress("UNUSED_PARAMETER") expressionText: String,
             expression: Expression,
             expectedValue: Int
     ) {

@@ -91,10 +91,15 @@ evaluating its right and left expressions and than applying the actual operation
 expression evaluations
 
 - [**Decorator**](src/main/kotlin/org/vld/sdp/structural/Decorator.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/DecoratorTest.kt) attaches additional behavior to an individual
-object dynamically keeping the same interface without affecting the behavior of other objects of the same
-class. Implement the original object interface by delegating the request to the original object and adding behavior
-before/after the original request. Multiple decorators can be stacked on top of each other
+[(usage)](src/test/kotlin/org/vld/sdp/structural/DecoratorTest.kt)<br/>
+**What**. Decorator attaches additional behavior to an individual object dynamically keeping the same interface without
+affecting the behavior of other objects of the same class<br/>
+**How**. The `Decorator` class implements the original `Component` interface by delegating the request to the original
+object and adding behavior before/after the original request. Multiple decorators can be stacked on top of each
+other<br/>
+**Example**. The `SimpleCoffee` original class implements the `Coffee`=`Component` interface. The
+`CoffeeWithSugar`=`Decorator` and the `CoffeeWithMilk`=`Decorator` decorators implement the `Coffee` interface and
+accept the `Coffe` instance to delegate to
 
 - [**Facade**](src/main/kotlin/org/vld/sdp/structural/Facade.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/FacadeTest.kt) defines a higher-level simplified interface that makes
