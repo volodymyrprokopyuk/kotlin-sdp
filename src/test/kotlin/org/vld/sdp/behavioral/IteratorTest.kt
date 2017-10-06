@@ -9,8 +9,8 @@ import org.junit.jupiter.api.TestInstance
 class IteratorTest {
 
     @Test
-    @DisplayName("Given an aggregate with an iterator. When traverse the aggregate in the for loop. Then return the aggregate values")
-    fun givenAggregateWithIterator_whenTraverseAggregateInForLoop_thenReturnAggregateValues() {
+    @DisplayName("Given an aggregate with an iterator. When traverse the aggregate in the for loop. Then return the aggregate component values")
+    fun givenAggregateWithIterator_whenTraverseAggregateInForLoop_thenReturnAggregateComponentValues() {
         // Given
         val fruits = Fruits("apple", "banana", "orange")
         // When

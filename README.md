@@ -161,9 +161,15 @@ the `Order` interface
 - **Interpreter**
 
 - [**Iterator**](src/main/kotlin/org/vld/sdp/behavioral/Iterator.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt) provides a way to access the elements of an aggregate
-object/container sequentially without exposing aggregate underlying representation (data structure). Iterator
-encapsulates the traversal algorithm of a given aggregate object/container
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt)<br/>
+**What**. Iterator provides a way to access the elements of an aggregate object/container of components sequentially
+without exposing aggregate underlying representation (data structure). Iterator encapsulates the traversal algorithm of
+a given aggregate object/container of components<br/>
+**How**. The `ContainerIterator` implements the `Iterator` interface for the `Container` of `Component`s to traverse
+sequentially the `Component`s of the `Container` without exposing the underlying aggregate representation. Client access
+the `Component`s of the `Container` only through the `Iterator` interface
+**Example**. The `FruitsIterator`=`ContainerIterator` implements the `Iterator` interface for the `Fruits`=`Container`
+of `Fruit`=`Component`
 
 - [**Mediator**](src/main/kotlin/org/vld/sdp/behavioral/Mediator.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/MediatorTest.kt) defines an object the encapsulates how a set of
