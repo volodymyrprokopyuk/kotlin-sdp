@@ -105,7 +105,7 @@ accept the `Coffe` instance to delegate to
 [(usage)](src/test/kotlin/org/vld/sdp/structural/FacadeTest.kt)<br/>
 **What**. Facade defines a higher-level simplified interface that makes a system/library easier to use. Facade hides the
 complexities of a larger system with dependencies and provides a simpler interface to the client<br/>
-**How**. Client works only with the `Facade` highter-level simplified interface to interact with the larger system
+**How**. Client works only with the `Facade` highter-level simplified interface to interact with the larger system<br/>
 **Example**. The larger system `Desktop` implements the `Computer`=`Facade` interface which is used by the client. The
 `Desktop` manages internally all the complexities involved with the subsystems `Cpu`, `Ram` and `Ssd`
 
@@ -135,10 +135,18 @@ uses only the `Subject` interface to work with both the real `Account` object or
 Behavioral patterns provide simple way of implementing **interactions between objects**.
 
 - [**Chain of Responsibility**](src/main/kotlin/org/vld/sdp/behavioral/ChainOfResponsibility.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ChainOfResponsibilityTest.kt) chains the receiving objects/functions
-(handlers) and pass the request along the chain until an object/function handles the request completely or
-partially. Avoids coupling of the request sender to the request receiver allowing more than one receiver a chance to
-handle the request
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ChainOfResponsibilityTest.kt)<br/>
+**What**. Chain of Responsibility chains the receiving objects/functions (handlers) and pass the request along the chain
+until an object/function handles the request completely or partially. Avoids coupling of the request sender to the
+request receiver allowing more than one receiver a chance to handle the request<br/>
+**How**. The `Request` represents the initial data, then intermediary results and finally the final result. The
+`RequestHandler` functional interface processes the `Request` partially or completely. The `ChainOfResponsibility`
+composes the `RequestHandler`s and implements the `RequestHandler` functional interface to process the `Request`
+**Example**. The `CashRequestHandlerChain`=`ChainOfResponsibility` composes the `CashRequestHandler`=`RequestHandler`
+and implements the `RequestHandler` interface to process the `CashRequest`=`Request`. The `CashRequest` has the initial
+amount to represent with the set of notes. The `CashRequest` is used to handle intermediary results by representing the
+remaining amount and a set of already processed notes. The `CashRequest` finally represent the final result of the set
+of notes with the amount remainder if any
 
 - [**Command**](src/main/kotlin/org/vld/sdp/behavioral/Command.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/CommandTest.kt) encapsulates an action with the request parameters as

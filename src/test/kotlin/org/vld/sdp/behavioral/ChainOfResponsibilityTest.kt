@@ -21,7 +21,7 @@ class ChainOfResponsibilityTest {
         // Given & When
         // client works only with the CashRequestHandler interface
         // client does not know which individual handler processed the cash request
-        val response = CashRequestHandlerChain(cashRequest)
+        val response = cashRequestHandlerChain(cashRequest)
         // Then
         assertThat(response).isEqualTo(expectedResponse)
     }
