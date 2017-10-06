@@ -106,13 +106,19 @@ accept the `Coffe` instance to delegate to
 **What**. Facade defines a higher-level simplified interface that makes a system/library easier to use. Facade hides the
 complexities of a larger system with dependencies and provides a simpler interface to the client<br/>
 **How**. Client works only with the `Facade` highter-level simplified interface to interact with the larger system
-**Example**.
+**Example**. The larger system `Desktop` implements the `Computer`=`Facade` interface which is used by the client. The
+`Desktop` manages internally all the complexities involved with the subsystems `Cpu`, `Ram` and `Ssd`
 
 - [**Flyweight**](src/main/kotlin/org/vld/sdp/structural/Flyweight.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/FlyweightTest.kt) uses sharing to support large number of similar
-objects efficiently. Shares the intrinsic/invariant object state in an external data structure. When a new object is
-created provides the cached intrinsic/invariant object state and allows the extrinsic/variant object state to be set
-through the flyweight interface
+[(usage)](src/test/kotlin/org/vld/sdp/structural/FlyweightTest.kt)<br/>
+**What**. Flyweight uses sharing to support a large number of similar objects efficiently<br/>
+**How**. Shares the `Invariant`/intrinsic object state in an external data structure. When a new object is created the
+`FlyweightFactory` provides the cached `Invariant`/intrinsic object state and allows the `Variant`/extrinsic object
+state to be set through the `Flyweight` interface<br/>
+**Example**. The `GlyphCode`=`Invariant` repserents the intrinsic glyph state (code) that can be cached and shared
+between glyphs. The `GlyphFlyweight`=`Invariant`+`Variant` class implements the `Glyph`=`Flyweight` interface that
+allows extrinsic glyph state (position) motification. The `GlyphFactory`=`FlyweightFactory` caches and shares
+efficiently the `GlyphCode` instances
 
 - [**Proxy**](src/main/kotlin/org/vld/sdp/structural/Proxy.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt) provides a placeholder/wrapper for another object for

@@ -6,15 +6,16 @@ package org.vld.sdp.structural
 data class GlyphCode(val code: String)
 
 /**
- * Glyph flyweight interface for the extrinsic/variable object state modification
+ * Glyph Flyweight interface for the extrinsic/variable object state modification
  */
 interface Glyph {
+    // position is the extrinsic/variable object state that can be modified
     var position: Int
     fun show(): String
 }
 
 /**
- * Glyph flyweight interface implementation combines the intrinsic/invariant shared object state [GlyphCode]
+ * Glyph Flyweight interface implementation combines the intrinsic/invariant shared object state [GlyphCode]
  * with the extrinsic/variant object state to be passed through or interacted with the [Glyph] interface
  */
 class GlyphFlyweight(private val code: GlyphCode, override var position: Int = 0) : Glyph {
@@ -26,7 +27,9 @@ class GlyphFlyweight(private val code: GlyphCode, override var position: Int = 0
  */
 class GlyphFactory(private val glyphCodes: MutableMap<String, GlyphCode> = mutableMapOf()) {
     /**
-     * Retrieves a [GlyphCode] based on the provided [code]. If the [GlyphCode] does not exist creates a new [GlyphCode]
+     * Retrieves a [GlyphCode] based on the provided [code]
+     *
+     * If the [GlyphCode] does not exist creates a new [GlyphCode]
      * Returns [Glyph] based on the shared [GlyphCode] instance
      */
     fun retrieveGlyph(code: String): Glyph {
