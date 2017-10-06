@@ -215,9 +215,15 @@ each transition is defined in state interface method invocation<br/>
 `DeliverPoduct` `State`s by invoking the `VendingMachine::proceed()` method which deletates to the current
 `State::handleRequest()` method which handles the request and sets the next `VendingMachine` `State`
 
-- [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Stragegy.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StragegyTest.kt) defines a family of interchangeable at run-time
-algorithms
+- [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Strategy.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StrategyTest.kt)<br/>
+**What**. Strategy defines a family of interchangeable at runtime algorithms<br/>
+**How**. Define a set of interchangeable algorithms/strategies that implement the `Strategy` interface. Based on the
+conditions at runtime dynamically select the appropriate algorithm/strategy. Client works only with the `Strategy`
+interface<br/>
+**Example**. The `TransportCompany` dynamically select the appropriate algorithm/stragety `goByBus` or `goByTaxi` based
+on the size of the tourist gourp. Both `goByBus` and `goByTaxi` implements the `Transport`=`Strategy` interface under
+which the algorithms/strategies are provided to the client
 
 - [**Template Method**](src/main/kotlin/org/vld/sdp/behavioral/TemplateMethod.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/TemplateMethodTest.kt) defines the skeleton of an algorithm (invariant)

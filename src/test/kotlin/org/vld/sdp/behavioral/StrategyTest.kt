@@ -13,7 +13,7 @@ class StrategyTest {
 
     val transportCompany = TransportCompany()
 
-    @DisplayName("Given a transport company and a group of tourists. When request a transport. Then return an appropriate transport")
+    @DisplayName("Given a transport company and a group of tourists. When request a transport. Then return an appropriate transport based on the size of the tourist group")
     @ParameterizedTest(name = "{0} tourists -> {1}")
     @MethodSource("transportProvider")
     fun givenTransportCompanyAndGoupOfTourists_whenRequestTransport_thenReturnAppropriateTransport(
@@ -21,6 +21,7 @@ class StrategyTest {
             expectedTransport: String
     ) {
         // Given & When
+        // dynamically select the appropriate transport (strategy) based on the size of the tourist gourp
         val transport = transportCompany.requestTransport(groupSize)()
         // Then
         assertThat(transport).isEqualTo(expectedTransport)
