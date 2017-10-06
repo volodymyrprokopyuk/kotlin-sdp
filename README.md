@@ -121,9 +121,14 @@ allows extrinsic glyph state (position) motification. The `GlyphFactory`=`Flywei
 efficiently the `GlyphCode` instances
 
 - [**Proxy**](src/main/kotlin/org/vld/sdp/structural/Proxy.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt) provides a placeholder/wrapper for another object for
-access control, request validation, response caching. The real object and the proxy implement the same interface,
-so the client cannot distinguish between the real object and the proxy. The proxy uses delegation to the real object
+[(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt)<br/>
+**What**. Proxy provides a placeholder/wrapper for another object for access control, request validation, response
+caching, etc.<br/>
+**How**. The real object and the `Proxy` implement the same `Subject` interface, so the client cannot distinguish
+between the real object and the `Proxy`. The `Proxy` uses delegation to the real object</br>
+**Example**. The real `Account` object implements the `Payment`=`Subject` interface without any balance/amount
+valiadtions. The `PaymentProxy`=`Proxy` implements the `Payment` interface with the balance/amount validation. Client
+uses only the `Subject` interface to work with both the real `Account` object or with the `PaymentProxy` proxy object
 
 ## Behavioral Patterns
 

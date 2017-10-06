@@ -15,7 +15,7 @@ class ProxyTest {
         val account = Account(100.0)
         val paymentProxy: Payment = PaymentProxy(account)
         // When & Then
-        // client works with the proxy only through the Payment interface
+        // client works with the Proxy only through the Payment interface
         assertThatCode { paymentProxy.pay(50.0) }.doesNotThrowAnyException()
     }
 
@@ -26,7 +26,7 @@ class ProxyTest {
         val account = Account(100.0)
         val paymentProxy: Payment = PaymentProxy(account)
         // When & Then
-        // client works with the proxy only through the Payment interface
+        // client works with the Proxy only through the Payment interface
         assertThatThrownBy { paymentProxy.pay(200.0) }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageStartingWith("Not enough balance to satisfy the payment amount")
