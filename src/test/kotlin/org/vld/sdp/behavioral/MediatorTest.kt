@@ -18,12 +18,12 @@ class MediatorTest {
         controlTower.airplane = airplane
         controlTower.helicopter = mockedHelicopter
         // When
-        // the airplane sends a message to the helicopter without haveing any reference to the helicopter
-        // (through the control tower mediator)
+        // the airplane sends a message to the helicopter through the control tower mediator
+        // without haveing any reference to the helicopter
         airplane.send("Hi from Airplane")
         // Then
-        // the helicopter receives the message sent from the airplane without haveing any reference to the airplane
-        // (throuth the control tower mediator)
+        // the helicopter receives the message sent from the airplane throuth the control tower mediator
+        // without haveing any reference to the airplane
         verify(mockedHelicopter).receive("Hi from Airplane")
     }
 
@@ -37,12 +37,12 @@ class MediatorTest {
         controlTower.airplane = mockedAirplane
         controlTower.helicopter = helicopter
         // When
-        // the helicopter sends a message to the airplane without haveing any reference to the airplane
-        // (through the control tower mediator)
+        // the helicopter sends a message to the airplane through the control tower mediator
+        // without haveing any reference to the airplane
         helicopter.send("Hi from Helicopter")
         // Then
-        // the airplane receives the message sent from the helicopter without haveing any reference to the helicopter
-        // (throuth the control tower mediator)
+        // the airplane receives the message sent from the helicopter throuth the control tower mediator
+        // without haveing any reference to the helicopter
         verify(mockedAirplane).receive("Hi from Helicopter")
     }
 

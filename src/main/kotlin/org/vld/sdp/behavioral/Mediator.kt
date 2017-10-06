@@ -1,7 +1,7 @@
 package org.vld.sdp.behavioral
 
 /**
- * Colleague interface to be used by mediator implementation
+ * Colleague interface to be used by the Mediator implementation
  */
 interface Aircraft {
     fun send(message: String): Unit?
@@ -9,7 +9,7 @@ interface Aircraft {
 }
 
 /**
- * Mediator interface to be used by colleague implementation
+ * Mediator interface to be used by Colleague implementation
  */
 interface ControlTower {
     fun notifyAirplane(message: String): Unit?
@@ -22,7 +22,7 @@ interface ControlTower {
 open class Airplane(private val controlTower: ControlTower) : Aircraft {
     override fun receive(message: String) {}
     /**
-     * Notifies [Helicopter] using only the [ControlTower] mediator interface
+     * Notifies [Helicopter] using only the [ControlTower] Mediator interface
      */
     override fun send(message: String) = controlTower.notifyHelicopter(message)
 }
@@ -33,14 +33,14 @@ open class Airplane(private val controlTower: ControlTower) : Aircraft {
 open class Helicopter(private val controlTower: ControlTower) : Aircraft {
     override fun receive(message: String) {}
     /**
-     * Notifies [Airplane] using only the [ControlTower] mediator interface
+     * Notifies [Airplane] using only the [ControlTower] Mediator interface
      */
     override fun send(message: String) = controlTower.notifyAirplane(message)
 }
 
 /**
- * Mediator interface implementation works with the airplane and the helicopter instances
- * through [Aircraft] colleague interface
+ * Mediator interface implementation works with the [Airplane] and the [Helicopter] instances
+ * through the [Aircraft] Colleague interface
  */
 class AirControlTower(var airplane: Aircraft? = null, var helicopter: Aircraft? = null) : ControlTower {
     override fun notifyAirplane(message: String) = airplane?.receive(message)

@@ -167,14 +167,21 @@ without exposing aggregate underlying representation (data structure). Iterator 
 a given aggregate object/container of components<br/>
 **How**. The `ContainerIterator` implements the `Iterator` interface for the `Container` of `Component`s to traverse
 sequentially the `Component`s of the `Container` without exposing the underlying aggregate representation. Client access
-the `Component`s of the `Container` only through the `Iterator` interface
+the `Component`s of the `Container` only through the `Iterator` interface<br/>
 **Example**. The `FruitsIterator`=`ContainerIterator` implements the `Iterator` interface for the `Fruits`=`Container`
 of `Fruit`=`Component`
 
 - [**Mediator**](src/main/kotlin/org/vld/sdp/behavioral/Mediator.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MediatorTest.kt) defines an object the encapsulates how a set of
-objects interact. Mediator promotes loose coupling between colleagues. Colleagues interact with each other through
-the mediator object
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MediatorTest.kt)<br/>
+**What**. Mediator defines an object that encapsulates how a set of other objects interact. Mediator promotes loose
+coupling between the colleagues<br/>
+**How**. The `Colleague`s interact with each other through the `Mediator` interface without having any references to
+each other<br/>. The `Mediator` object has references to every `Colleague` and interacts with a `Colleague` through a
+common `Colleague` interface
+**Example**. The `Airplane`=`Colleague` and the `Helicopter`=`Colleague` implement the `Aircraft`=`Colleague` interface
+and accept the `ControlTower`=`Mediator`. The `Airplane` and the `Helicopter` communicate with each other through the
+`ControlTower` interface. The `ControlTower` has the references to the `Airplane` and the `Helicopter` and forwards the
+messages through the `Aircraft` interface
 
 - [**Memento**](src/main/kotlin/org/vld/sdp/behavioral/Memento.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/MementoTest.kt) captures and externalizes an *objects internal state*
