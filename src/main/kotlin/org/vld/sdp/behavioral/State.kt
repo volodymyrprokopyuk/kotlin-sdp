@@ -1,74 +1,74 @@
 package org.vld.sdp.behavioral
 
 /**
- * Vending machine state interface
+ * Vending Machine State interface
  */
 interface State {
     fun handleRequest(): List<String>
 }
 
 /**
- * Vending machine implementation
+ * Vending Machine implementation
  */
 class VendingMachine {
 
-    // set the initial vending machine state to the show products step
+    // set the initial Vending Machine state to the Show Products step
     var state: State = ShowProducts(this, listOf())
 
     /**
-     * Handles the request as per the current state
+     * Handles the request as per the current state and set the next Vending Machine state
      */
     fun proceed(): List<String> = state.handleRequest()
 
 }
 
 /**
- * Show products step implementation
+ * Show Products step implementation
  */
 class ShowProducts(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Show Products"
-        // set the next step on the vending machine state
+        // set the next Vending Machine step
         vendingMachine.state = SelectProduct(vendingMachine, result)
         return result
     }
 }
 
 /**
- * Select product step implementation
+ * Select Product step implementation
  */
 class SelectProduct(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Select Product"
-        // set the next step on the vending machine state
+        // set the next Vending Machine step
         vendingMachine.state = DepositMoney(vendingMachine, result)
         return result
     }
 }
 
 /**
- * Deposit money step implementation
+ * Deposit Money step implementation
  */
 class DepositMoney(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Deposit Money"
-        // set the next step on the vending machine state
+        // set the next Vending Machine step
         vendingMachine.state = DeliverProduct(vendingMachine, result)
         return result
     }
 }
 
 /**
- * Deliver product step implementation
+ * Deliver Product step implementation
  */
 class DeliverProduct(private val vendingMachine: VendingMachine, private val request: List<String>) : State {
     override fun handleRequest(): List<String> {
         // handle the request
         val result = request + "Deliver Product"
-        // set the next step on the vending machine state (set again the show products step)
+        // set the next Vending Machine step
         vendingMachine.state = ShowProducts(vendingMachine, result)
         return result
     }

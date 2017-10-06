@@ -206,9 +206,14 @@ implements the `AuctioneerSubject`=`Subject` interface. When the bid changes the
 through the `BidObserver` interface
 
 - [**State**](src/main/kotlin/org/vld/sdp/behavioral/State.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StateTest.kt) alters objects' behavior when object's state
-changes. State implements a state machine where each individual state is a derived class of the state interface and
-each transition is a defined in state interface method invocation
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StateTest.kt)<br/>
+**What**. State alters objects' behavior when object's state changes<br/>
+**How**. The `State` inteface implementation provides the request handling functionality and sets the next
+`State`. `State` implements a state machine where each individual state is a derived class of the `State` interface and
+each transition is defined in state interface method invocation<br/>
+**Example**. The `VendingMachine` internal state goes through the `ShowProducts`, `SelectProduct`, `DepositMoney` and
+`DeliverPoduct` `State`s by invoking the `VendingMachine::proceed()` method which deletates to the current
+`State::handleRequest()` method which handles the request and sets the next `VendingMachine` `State`
 
 - [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Stragegy.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/StragegyTest.kt) defines a family of interchangeable at run-time
