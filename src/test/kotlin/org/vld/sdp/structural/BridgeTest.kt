@@ -12,14 +12,15 @@ import java.util.stream.Stream
 class BridgeTest {
 
     @DisplayName("Given a device and a vendor. When switch on the device of the vendor. Then the vendor supports the device")
-    @ParameterizedTest(name = "{1}. (Abstractions: Phone and Tablet devices. Implementations: Xiaomi and Nokia vendors)")
+    @ParameterizedTest(name = "{1}")
     @MethodSource("deviceVendorProvider")
     fun givenDeviceAndVendor_whenSwitchOnVendorDevice_thenVendorSupportsDevice(
             device: Device,
             expectedSupport: String
     ) {
         // Given & When
-        // client only uses the Abstraction interface (Device)
+        // Abstractions: Phone and Tablet devices. Implementations: Xiaomi and Nokia vendors
+        // client only uses the Device Abstraction interface
         val support = device.switchOn()
         // Then
         assertThat(support).isEqualTo(expectedSupport)

@@ -70,9 +70,14 @@ delegation to the class methods<br/>
 client expects and delegates to the `XiaomiPhone` class methods
 
 - [**Bridge**](src/main/kotlin/org/vld/sdp/structural/Bridge.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/BridgeTest.kt) decouples an abstraction from its implementation (two
-orthogonal dimensions) allowing the two to vary independently. The abstraction and its implementation are defined and
-extended independently. The abstraction is implemented by delegating to the implementation
+[(usage)](src/test/kotlin/org/vld/sdp/structural/BridgeTest.kt)<br/>
+**What**. Bridge decouples an abstraction from its implementation (two orthogonal dimensions) allowing the two to vary
+independently<br/>
+**How**. The `Abstraction` and its `Implementation` are defined and extended independently. The `Abstraction` is
+implemented by delegating to its `Implementation`<br/>
+**Example**. The `Device`=`Abstraction` has two implementations `PhoneDevice` and `TabletDevice`. The
+`Vendor`=`Implementation` has two implementations `XiaomiVendoer` and `NokiaVendor`. The `Device` implementations accept
+`Vendor` implementation. The `Device::switchOn()` method delegates to the `Vendor::support(Device)` method
 
 - [**Composite**](src/main/kotlin/org/vld/sdp/structural/Composite.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/CompositeTest.kt) treats individual objects and composition of objects
@@ -131,10 +136,10 @@ objects interact. Mediator promotes loose coupling between colleagues. Colleague
 the mediator object
 
 - [**Memento**](src/main/kotlin/org/vld/sdp/behavioral/Memento.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MementoTest.kt) captures and externalizes an *object's internal state*
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/MementoTest.kt) captures and externalizes an *objects internal state*
 without violating encapsulation. Allows the object to be restored (undo/rollback) to this state later. `Caretaker`
 requests the `Originator` to snapshot its internal state into the `Memento` object before using the `Originator`. To
-rollback the `Originator`'s internal state the `Caretaker` returns back the `Memento` object to the `Originator`
+rollback the `Originator`s internal state the `Caretaker` returns back the `Memento` object to the `Originator`
 
 - [**Observer**](src/main/kotlin/org/vld/sdp/behavioral/Observer.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt) defines a one-to-many dependency between objects where
