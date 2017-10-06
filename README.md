@@ -176,7 +176,7 @@ of `Fruit`=`Component`
 **What**. Mediator defines an object that encapsulates how a set of other objects interact. Mediator promotes loose
 coupling between the colleagues<br/>
 **How**. The `Colleague`s interact with each other through the `Mediator` interface without having any references to
-each other<br/>. The `Mediator` object has references to every `Colleague` and interacts with a `Colleague` through a
+each other. The `Mediator` object has references to every `Colleague` and interacts with a `Colleague` through a
 common `Colleague` interface<br/>
 **Example**. The `Airplane`=`Colleague` and the `Helicopter`=`Colleague` implement the `Aircraft`=`Colleague` interface
 and accept the `ControlTower`=`Mediator`. The `Airplane` and the `Helicopter` communicate with each other through the
@@ -195,9 +195,15 @@ the `Counter` internal state. The incremental count of the `Counter` object coul
 `CounterMemento` object
 
 - [**Observer**](src/main/kotlin/org/vld/sdp/behavioral/Observer.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt) defines a one-to-many dependency between objects where
-a state change in one object (subject) is automatically notified to all subjects' dependents (observers). The subject
-and the observers are loosely coupled as the state change notification is done through the `Observer` interface
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt)<br/>
+**What**. Observer defines a one-to-many dependency between objects where a state change in one object `Subject` is
+automatically notified to all subjects' dependents `Observers`<br/>
+**How**. The `Subject` maintains a list of the `Observer`s which implements the `Observer` interface. When the
+`Subject`'s state changes the `Subject` notifies all the `Observer`s using the `Observer` interface. The `Subject` and
+the `Observer`s are loosely coupled as the state change notification is done through the `Observer` interface<br/>
+**Example**. The `Bidder`=`Observer` implements the `BidObserver`=`Observer` interface. The `Auctioneer`=`Subject`
+implements the `AuctioneerSubject`=`Subject` interface. When the bid changes the `Auctioneer` notifies all the `Bidders`
+through the `BidObserver` interface
 
 - [**State**](src/main/kotlin/org/vld/sdp/behavioral/State.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/StateTest.kt) alters objects' behavior when object's state
