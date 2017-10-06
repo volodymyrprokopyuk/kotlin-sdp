@@ -10,12 +10,13 @@ class AdapterTest {
 
     @Test
     @DisplayName("Given a Xiaomi phone and Xiaomi phone adapter. When switch on phone. Then the Xiaomi phone is turned on")
-    fun givenXiaomiPhoneAndAdapter_whenSwitchOnPhone_thenTurnOnXiaomiPhone() {
+    fun givenXiaomiPhoneAndXiaomiPhoneAdapter_whenSwitchOnPhone_thenTurnOnXiaomiPhone() {
         // Given
         val mockedXiaomiPhone: XiaomiPhone = mock(XiaomiPhone::class.java)
         val phone: Phone = XiaomiPhoneAdapter(mockedXiaomiPhone)
         // When
-        // client works with the Xiaomi phone through the Phone interface and the Xiaomi phone adapter
+        // client works with the Xiaomi Phone through the Xiaomi Phone Adapter implementation
+        // of the Phone interface that client expects
         phone.switchOn()
         // Then
         // `XiaomiPhone::turnOn()` method is called

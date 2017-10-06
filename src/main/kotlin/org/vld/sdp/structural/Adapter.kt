@@ -1,16 +1,6 @@
 package org.vld.sdp.structural
 
 /**
- * Phone interface expected by a client
- */
-interface Phone {
-    /**
-     * Switches on any phone
-     */
-    fun switchOn()
-}
-
-/**
  * Xiaomi phone concrete implementation incompatible with the [Phone] interface expected by a client
  */
 open class XiaomiPhone {
@@ -23,7 +13,19 @@ open class XiaomiPhone {
 }
 
 /**
- * Xiaomi phone adapter to expected by a client the [Phone] interface
+ * Phone interface expected by a client
+ */
+interface Phone {
+    /**
+     * Switches on any phone
+     */
+    fun switchOn()
+}
+
+
+
+/**
+ * Xiaomi Phone Adapter to expected by a client the [Phone] interface
  */
 class XiaomiPhoneAdapter(val xiaomiPhone: XiaomiPhone) : Phone {
     /**

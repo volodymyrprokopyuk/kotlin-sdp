@@ -11,7 +11,7 @@ classes are created** and **separate the system from how the objects are compose
 their concrete classes. Abstract Factory abstracts and encapsulates the creation of a suite of products for a given
 platform/family that the system depends on<br/>
 **How**. `AbstractFactory` interface provides methods for creating all kinds of products for a given
-platform/family. The client works only with the `AbstractFactory` and the `Product` interfaces. The concrete
+platform/family. Client works only with the `AbstractFactory` and the `Product` interfaces. The concrete
 implementations of the `AbstractFactory` interface are singletons<br/>
 **Example**. The system depends on a `Letter`=`Product` and a `Resume`=`Product` instances. The system uses a
 `DocumentCreator`=`AbstractFactory` for creating the concrete `Letter` and `Resume` instances from the two families:
@@ -21,7 +21,7 @@ modern and fancy
 [(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt)<br/>
 **What**. Builder separates a construction of a complex object from its representation, allowing the same construction
 step by step process to create various representations<br/>
-**How**. The client uses **(a)** a separate `Builder` object which receives each initialization parameter step by step
+**How**. Client uses **(a)** a separate `Builder` object which receives each initialization parameter step by step
 in a fluent interface or **(b)** a `Builder` DSL initialization method which configures properties by direct property
 assignment or function call and returns the resulting constructed complex object at once<br/>
 **Example**. `Car.Builder` provides a builder DSL (`Car.build { ... }`) for building a `Car` instance
@@ -32,7 +32,7 @@ assignment or function call and returns the resulting constructed complex object
 [(usage)](src/test/kotlin/org/vld/sdp/creational/FactoryMethodTest.kt)<br/>
 **What**. Factory method defines an interface for creating a single object, but let subclasses decide which class to
 instantiate<br/>
-**How**. `FactoryMethod` interface provides a method for creating a single object. The client works only with the
+**How**. `FactoryMethod` interface provides a method for creating a single object. Client works only with the
 `FactoryMethod` and the `Product` interfaces. The concrete implementations of the `FactoryMethod` interface are
 singletons<br/>
 **Example**. The system depends on an `Article`=`Product` instances. The system uses `ArticleCreator`=`FactoryMethod`
@@ -42,7 +42,7 @@ for creating a single `Article` instance from the two families: modern and fancy
 [(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt)<br/>
 **What**. Prototype creates new objects by cloning prototypical instance, boosting performance and keeping memory
 footprint to a minimum<br/>
-**How**. The client works only with the `Product` interface and uses the `Product::clone()` method for creating new
+**How**. Client works only with the `Product` interface and uses the `Product::clone()` method for creating new
 instances of the `Product`<br/>
 **Example**. The `ProkaryoteCell`=`Product` and the `EukaryoteCell`=`Product` implement the `CellPrototype`
 interface. In order to create a new instance of the specific cell the `CellPrototype::clone()` method is used
@@ -61,9 +61,13 @@ single point of access to the instance being the `Singleton` class name
 Structural patterns provide simple way of implementing **relationships between objects**.
 
 - [**Adapter**](src/main/kotlin/org/vld/sdp/structural/Adapter.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/AdapterTest.kt) converts the interface of a class without modifying its
-code into another interface that client expects. Client works with the class through adapter interface and delegation
-to the class methods
+[(usage)](src/test/kotlin/org/vld/sdp/structural/AdapterTest.kt)<br/>
+**What**. Adapter converts the interface of the class without modifying class code into another interface that client
+expects<br/>
+**How**. Client works with the class through an implementation of the `Adapter` interface that client expects and
+delegation to the class methods<br/>
+**Example**. Client expects the `Phone`=`Adapter` interface. `XiaomiPhoneAdapter` implements the `Phone` interface that
+client expects and delegates to the `XiaomiPhone` class methods
 
 - [**Bridge**](src/main/kotlin/org/vld/sdp/structural/Bridge.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/BridgeTest.kt) decouples an abstraction from its implementation (two
