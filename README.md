@@ -142,17 +142,21 @@ request receiver allowing more than one receiver a chance to handle the request<
 **How**. The `Request` represents the initial data, then intermediary results and finally the final result. The
 `RequestHandler` functional interface processes the `Request` partially or completely. The `ChainOfResponsibility`
 composes the `RequestHandler`s and implements the `RequestHandler` functional interface to process the `Request`
-**Example**. The `CashRequestHandlerChain`=`ChainOfResponsibility` composes the `CashRequestHandler`=`RequestHandler`
+**Example**. The `cashRequestHandlerChain`=`ChainOfResponsibility` composes the `CashRequestHandler`=`RequestHandler`
 and implements the `RequestHandler` interface to process the `CashRequest`=`Request`. The `CashRequest` has the initial
 amount to represent with the set of notes. The `CashRequest` is used to handle intermediary results by representing the
 remaining amount and a set of already processed notes. The `CashRequest` finally represent the final result of the set
 of notes with the amount remainder if any
 
 - [**Command**](src/main/kotlin/org/vld/sdp/behavioral/Command.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/CommandTest.kt) encapsulates an action with the request parameters as
-an function/object. Allows action/request queueing, logging and undoable operations. The `Command` object stores the
-request parameters and delegates the request to the `Receiver`. The `Invoker` object uses the `Command` interface and
-provides request queueing, logging and undoable operation functionality
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/CommandTest.kt)<br/>
+**What**. Command encapsulates an action with the request parameters as an function/object. Allows action/request
+queueing, logging and undoable operations<br/>
+**How**. The `Command` object stores the request parameters and delegates the request to the `Receiver`. The `Invoker`
+object uses the `Command` interface and provides request queueing, logging and undoable operation functionality<br/>
+**Example**. The `cookStarter()`, `cookMainCourse()` and `cookDessert()` functions `Order`=`Command`=`Receiver` objects
+by storing the request arguments in closure. The `Waiter`=`Invoker` queues the `Order`s and serves the `Order`s by using
+the `Order` interface
 
 - **Interpreter**
 

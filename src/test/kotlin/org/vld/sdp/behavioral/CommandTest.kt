@@ -12,13 +12,13 @@ class CommandTest {
     @DisplayName("Given a set of dishes and a waiter. When order dishes. Then serve ordered dishes")
     fun givenSetOfDishesAndWaiter_whenOrderDishes_thenServeOrderedDishes() {
         // Given
-        // create and configure orders as Command objects. The request parameters are stored in a closure
+        // create and configure orders as Command objects. The request arguments (name) are stored in a closure
         val starter: Order = cookStarter("Salad")
         val mainCourse: Order = cookMainCourse("Chicken")
         val dessert: Order = cookDessert("Fruit")
         val waiter = Waiter()
         // When
-        // queue the orders for execution
+        // queue the orders for execution, waiter provides order queueing functionality
         waiter.acceptOrder(starter, mainCourse, dessert)
         // execute orders using the Command interface without knowing the concrete Receivers/Implementors
         val dishes = waiter.serveOrders()
