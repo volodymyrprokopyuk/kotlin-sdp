@@ -236,7 +236,18 @@ overriding in the `Template` specializations<br/>
 steps. The `Developer` and the `Architect` algorithm specialization override the variable algorithm steps
 
 - [**Visitor**](src/main/kotlin/org/vld/sdp/behavioral/Visitor.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/VisitorTest.kt) separates an algorithm from an object structure on
-which the algorithm operates. Allows to add new operations through visitors to the existent object structure known as
-elements without modifying the structure. Visitor implements double dispatch based on concrete `Visitor` and concrete
-`Element`
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/VisitorTest.kt)<br/>
+**What**. Visitor separates an algorithm from an object structure on which the algorithm operates. Visitor allows to add
+new operations through the `Visitor`s to the existent object structure known as `Element`s without modifying the
+structure<br/>
+**How**. The `Element` interface defines a visitor operation for every `Visitor` type based on the abstract `Visitor`
+interface implementing the dynamic dispatch on the abstract `Visitor` interface. Every `Visitor` interface defines the
+overladed for each `Element` type operation implementing the static dispatch on the concrete `Element` type. Every
+`Visitor` interface implementation has the cross between the concrete `Element` and the concrete `Visitor` implementing
+the double dispatch (dynamic on the `Visitor` type and static on the `Element` type)<br/>
+**Example**. The `XiaomiPhone` and the `NokiaPhone` implement the `Phone`=`Element` interface for the dynamic dispatch
+on the abstract `Visitor` type (one operation for each `Visitor` type). The `IntelWiFi` and the `BroadcomWiFi` implement
+the `WiFi`=`Visitor` interface for the static dispatch on the concrete `Phone` type to switch on the `WiFi` visitor
+operation. The `SonyCamera` and the `SamsungCamera` implement the `Camera`=`Visitor` interface for the static dispatch
+on the conrete `Phone` type to take phones with the `Camera` visitor operation. So the two visitor operations (swith on
+WiFi and take photo) are implemented on the `Phone` `Element` structure
