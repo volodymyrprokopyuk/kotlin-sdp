@@ -26,7 +26,17 @@ in a fluent interface or **(b)** a `Builder` DSL initialization method which con
 assignment or function call and returns the resulting constructed complex object at once<br/>
 **Example**. `Car.Builder` provides a builder DSL (`Car.build { ... }`) for building a `Car` instance
 
-- **Dependency Injection**
+- [**Dependency Injection**](src/main/kotlin/org/vld/sdp/creational/DependencyInjection.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/creational/DependencyInjectionTest.kt)<br/>
+**What**. A class (client) accepts the objects (services/dependencies) the class requires from an injector instead of
+creating the objects directly<br/>
+**How**. The `Injector` passes the `Service` object to the `Client` class by the inversion of control. `Injector`
+decouples the `Client` from creating the `Service`. The `Injector` calls the `Client`. The `Client` does not know about
+the `Injector`. The `Client` works only the the `Service` interfaces provided by the `Injector` via constructor
+injection or setter injection<br/>
+**Example**. The `Client` requires the `ConsturctorInjectedDependency` and the `SetterInjectedDependency` both
+implementing the `Service` interface. The `Injector` creates the `Client` and sets up its dependent `Services` via the
+constructor injection and the setter injection
 
 - [**Factory Method**](src/main/kotlin/org/vld/sdp/creational/FactoryMethod.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/FactoryMethodTest.kt)<br/>
@@ -86,7 +96,7 @@ structures to represent part-whole hierarchies<br/>
 **How**. The `Leaf` and the `Composite` classes implement the `Component` interface. The `Leaf` class implements the
 request directly while the `Composite` class forwards recursively the request to composite's children<br/>
 **Example**. The `Expression`=`Component` is a uniform `Component` interface. The `Operand`=`Leaf` implements the
-request directly by returning the operand value. The `Operation`=`Composite` implements the request recustively by
+request directly by returning the operand value. The `Operation`=`Composite` implements the request recursively by
 evaluating its right and left expressions and than applying the actual operation to the results of the left and right
 expression evaluations
 
@@ -105,7 +115,7 @@ accept the `Coffe` instance to delegate to
 [(usage)](src/test/kotlin/org/vld/sdp/structural/FacadeTest.kt)<br/>
 **What**. Facade defines a higher-level simplified interface that makes a system/library easier to use. Facade hides the
 complexities of a larger system with dependencies and provides a simpler interface to the client<br/>
-**How**. Client works only with the `Facade` highter-level simplified interface to interact with the larger system<br/>
+**How**. Client works only with the `Facade` higher-level simplified interface to interact with the larger system<br/>
 **Example**. The larger system `Desktop` implements the `Computer`=`Facade` interface which is used by the client. The
 `Desktop` manages internally all the complexities involved with the subsystems `Cpu`, `Ram` and `Ssd`
 
@@ -115,9 +125,9 @@ complexities of a larger system with dependencies and provides a simpler interfa
 **How**. Shares the `Invariant`/intrinsic object state in an external data structure. When a new object is created the
 `FlyweightFactory` provides the cached `Invariant`/intrinsic object state and allows the `Variant`/extrinsic object
 state to be set through the `Flyweight` interface<br/>
-**Example**. The `GlyphCode`=`Invariant` repserents the intrinsic glyph state (code) that can be cached and shared
+**Example**. The `GlyphCode`=`Invariant` represents the intrinsic glyph state (code) that can be cached and shared
 between glyphs. The `GlyphFlyweight`=`Invariant`+`Variant` class implements the `Glyph`=`Flyweight` interface that
-allows extrinsic glyph state (position) motification. The `GlyphFactory`=`FlyweightFactory` caches and shares
+allows extrinsic glyph state (position) modification. The `GlyphFactory`=`FlyweightFactory` caches and shares
 efficiently the `GlyphCode` instances
 
 - [**Proxy**](src/main/kotlin/org/vld/sdp/structural/Proxy.kt)
@@ -127,7 +137,7 @@ caching, etc.<br/>
 **How**. The real object and the `Proxy` implement the same `Subject` interface, so the client cannot distinguish
 between the real object and the `Proxy`. The `Proxy` uses delegation to the real object</br>
 **Example**. The real `Account` object implements the `Payment`=`Subject` interface without any balance/amount
-valiadtions. The `PaymentProxy`=`Proxy` implements the `Payment` interface with the balance/amount validation. Client
+validations. The `PaymentProxy`=`Proxy` implements the `Payment` interface with the balance/amount validation. Client
 uses only the `Subject` interface to work with both the real `Account` object or with the `PaymentProxy` proxy object
 
 ## Behavioral Patterns
@@ -165,8 +175,8 @@ language sentences<br/>
 **How**. Define an `Expression` class hierarchy for each `TerminalExpression` and `NonterminalExpression` symbol in the
 language. The abstract syntax tree (AST) of the language sentence is a `Composite` of `Expression`s and is used to
 evaluate the sentence. The `TerminalExpression` interprets the expression directly. The `NonterminalExpression` has a
-container of children `Expression`s and recursively interprents every child `Expression`. Interpreter does not describe
-how to buil an AST. The AST can be build with a parser<br/>
+container of children `Expression`s and recursively interprets every child `Expression`. Interpreter does not describe
+how to build an AST. The AST can be build with a parser<br/>
 **Example**. The `Constant`=`TerminalExpression`, the `Add`=`NonterminalExpression` and the
 `Mul`=`NonterminalExpression` implement the `Expression` interface. The `Interpreter` implements the `Expression`
 interpretation algorithm
@@ -219,11 +229,11 @@ through the `BidObserver` interface
 - [**State**](src/main/kotlin/org/vld/sdp/behavioral/State.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/StateTest.kt)<br/>
 **What**. State alters objects' behavior when object's state changes<br/>
-**How**. The `State` inteface implementation provides the request handling functionality and sets the next
+**How**. The `State` interface implementation provides the request handling functionality and sets the next
 `State`. `State` implements a state machine where each individual state is a derived class of the `State` interface and
 each transition is defined in state interface method invocation<br/>
 **Example**. The `VendingMachine` internal state goes through the `ShowProducts`, `SelectProduct`, `DepositMoney` and
-`DeliverPoduct` `State`s by invoking the `VendingMachine::proceed()` method which deletates to the current
+`DeliverPoduct` `State`s by invoking the `VendingMachine::proceed()` method which delegates to the current
 `State::handleRequest()` method which handles the request and sets the next `VendingMachine` `State`
 
 - [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Strategy.kt)
@@ -232,8 +242,8 @@ each transition is defined in state interface method invocation<br/>
 **How**. Define a set of interchangeable algorithms/strategies that implement the `Strategy` interface. Based on the
 conditions at runtime dynamically select the appropriate algorithm/strategy. Client works only with the `Strategy`
 interface<br/>
-**Example**. The `TransportCompany` dynamically select the appropriate algorithm/stragety `goByBus` or `goByTaxi` based
-on the size of the tourist gourp. Both `goByBus` and `goByTaxi` implements the `Transport`=`Strategy` interface under
+**Example**. The `TransportCompany` dynamically select the appropriate algorithm/strategy `goByBus` or `goByTaxi` based
+on the size of the tourist group. Both `goByBus` and `goByTaxi` implements the `Transport`=`Strategy` interface under
 which the algorithms/strategies are provided to the client
 
 - [**Template Method**](src/main/kotlin/org/vld/sdp/behavioral/TemplateMethod.kt)
@@ -253,12 +263,12 @@ new operations through the `Visitor`s to the existent object structure known as 
 structure<br/>
 **How**. The `Element` interface defines a visitor operation for every `Visitor` type based on the abstract `Visitor`
 interface implementing the dynamic dispatch on the abstract `Visitor` interface. Every `Visitor` interface defines the
-overladed for each `Element` type operation implementing the static dispatch on the concrete `Element` type. Every
+overloaded for each `Element` type operation implementing the static dispatch on the concrete `Element` type. Every
 `Visitor` interface implementation has the cross between the concrete `Element` and the concrete `Visitor` implementing
 the double dispatch (dynamic on the `Visitor` type and static on the `Element` type)<br/>
 **Example**. The `XiaomiPhone` and the `NokiaPhone` implement the `Phone`=`Element` interface for the dynamic dispatch
 on the abstract `Visitor` type (one operation for each `Visitor` type). The `IntelWiFi` and the `BroadcomWiFi` implement
 the `WiFi`=`Visitor` interface for the static dispatch on the concrete `Phone` type to switch on the `WiFi` visitor
 operation. The `SonyCamera` and the `SamsungCamera` implement the `Camera`=`Visitor` interface for the static dispatch
-on the conrete `Phone` type to take phones with the `Camera` visitor operation. So the two visitor operations (swith on
-WiFi and take photo) are implemented on the `Phone` `Element` structure
+on the concrete `Phone` type to take phones with the `Camera` visitor operation. So the two visitor operations (switch
+on WiFi and take photo) are implemented on the `Phone` `Element` structure
