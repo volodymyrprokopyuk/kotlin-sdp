@@ -158,7 +158,18 @@ object uses the `Command` interface and provides request queueing, logging and u
 by storing the request arguments in closure. The `Waiter`=`Invoker` queues the `Order`s and serves the `Order`s by using
 the `Order` interface
 
-- **Interpreter**
+- [**Interpreter**](src/main/kotlin/org/vld/sdp/behavioral/Interpreter.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/InterpreterTest.kt)<br/>
+**What**. Given a language (DSL), define a language grammar with an interpreter that use the grammar to interpret the
+language sentences<br/>
+**How**. Define an `Expression` class hierarchy for each `TerminalExpression` and `NonterminalExpression` symbol in the
+language. The abstract syntax tree (AST) of the language sentence is a `Composite` of `Expression`s and is used to
+evaluate the sentence. The `TerminalExpression` interprets the expression directly. The `NonterminalExpression` has a
+container of children `Expression`s and recursively interprents every child `Expression`. Interpreter does not describe
+how to buil an AST. The AST can be build with a parser<br/>
+**Example**. The `Constant`=`TerminalExpression`, the `Add`=`NonterminalExpression` and the
+`Mul`=`NonterminalExpression` implement the `Expression` interface. The `Interpreter` implements the `Expression`
+interpretation algorithm
 
 - [**Iterator**](src/main/kotlin/org/vld/sdp/behavioral/Iterator.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt)<br/>
