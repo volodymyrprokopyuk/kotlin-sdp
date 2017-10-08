@@ -272,3 +272,24 @@ the `WiFi`=`Visitor` interface for the static dispatch on the concrete `Phone` t
 operation. The `SonyCamera` and the `SamsungCamera` implement the `Camera`=`Visitor` interface for the static dispatch
 on the concrete `Phone` type to take phones with the `Camera` visitor operation. So the two visitor operations (switch
 on WiFi and take photo) are implemented on the `Phone` `Element` structure
+
+# Fundamental Software Design Principles
+
+- **KISS - Keep It Simple, Stupid**. Do the simplest thing that could possibly work. Avoid unnecessary
+  complexity. Maintain balance between code simplicity and system flexibility, extensibility
+- **YAGNI - You Aren't Gonna Need It**. Do not write code that is not necessary at the moment, but might be necessary in
+  the future. Do the simplest thing that could possibly work
+- **DRY - Don't Repeat Yourself**. Avoid duplication. Every piece of knowledge must have a single, unambiguous,
+  authoritative representation within the system. The modification of any single element of the system does not require
+  a change in other logically unrelated elements
+- **Information Hiding**. One piece of code that calls another piece of code should not know internals about that other
+  piece of code. This make it possible to change internal parts of the called piece of code without being forced to
+  change the calling piece of code accordingly. Expose as little as possible of the internal implementation details of a
+  module to promote Loose Coupling between modules. Provide a stable interface to module functionality that will protect
+  the clients of the module from changes in module implementation. A module implements the Information Hiding principle
+  by applying the encapsulation technique
+- **High Cohesion**. High Cohesion is a degree to which the components inside a module belongs together. A module has
+  High Cohesion when the module responsibility is clearly defined and the module has as few dependencies as
+  possible. Single Responsibility Principle fosters High Cohesion
+- **Loose Coupling**. Each module in the system has as little knowledge as possible about other modules in the
+  system. Use interfaces to implement Loose Coupling between modules. High Cohesion fosters Loose Coupling
