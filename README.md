@@ -293,3 +293,5 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   possible. Single Responsibility Principle fosters High Cohesion
 - **Loose Coupling**. Each module in the system has as little knowledge as possible about other modules in the
   system. Use interfaces to implement Loose Coupling between modules. High Cohesion fosters Loose Coupling
+- **Top-down approach**.
+- **Bottom-up approach**.
