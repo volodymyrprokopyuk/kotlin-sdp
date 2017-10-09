@@ -34,7 +34,7 @@ creating the objects directly<br/>
 decouples the `Client` from creating the `Service`. The `Injector` calls the `Client`. The `Client` does not know about
 the `Injector`. The `Client` works only the the `Service` interfaces provided by the `Injector` via constructor
 injection or setter injection<br/>
-**Example**. The `Client` requires the `ConsturctorInjectedDependency` and the `SetterInjectedDependency` both
+**Example**. The `Client` requires the `ConstructorInjectedDependency` and the `SetterInjectedDependency` both
 implementing the `Service` interface. The `Injector` creates the `Client` and sets up its dependent `Services` via the
 constructor injection and the setter injection
 
@@ -86,7 +86,7 @@ independently<br/>
 **How**. The `Abstraction` and its `Implementation` are defined and extended independently. The `Abstraction` is
 implemented by delegating to its `Implementation`<br/>
 **Example**. The `Device`=`Abstraction` has two implementations `PhoneDevice` and `TabletDevice`. The
-`Vendor`=`Implementation` has two implementations `XiaomiVendoer` and `NokiaVendor`. The `Device` implementations accept
+`Vendor`=`Implementation` has two implementations `XiaomiVendor` and `NokiaVendor`. The `Device` implementations accept
 `Vendor` implementation. The `Device::switchOn()` method delegates to the `Vendor::support(Device)` method
 
 - [**Composite**](src/main/kotlin/org/vld/sdp/structural/Composite.kt)
@@ -109,7 +109,7 @@ object and adding behavior before/after the original request. Multiple decorator
 other<br/>
 **Example**. The `SimpleCoffee` original class implements the `Coffee`=`Component` interface. The
 `CoffeeWithSugar`=`Decorator` and the `CoffeeWithMilk`=`Decorator` decorators implement the `Coffee` interface and
-accept the `Coffe` instance to delegate to
+accept the `Coffee` instance to delegate to
 
 - [**Facade**](src/main/kotlin/org/vld/sdp/structural/Facade.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/structural/FacadeTest.kt)<br/>
@@ -233,7 +233,7 @@ through the `BidObserver` interface
 `State`. `State` implements a state machine where each individual state is a derived class of the `State` interface and
 each transition is defined in state interface method invocation<br/>
 **Example**. The `VendingMachine` internal state goes through the `ShowProducts`, `SelectProduct`, `DepositMoney` and
-`DeliverPoduct` `State`s by invoking the `VendingMachine::proceed()` method which delegates to the current
+`DeliverProduct` `State`s by invoking the `VendingMachine::proceed()` method which delegates to the current
 `State::handleRequest()` method which handles the request and sets the next `VendingMachine` `State`
 
 - [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Strategy.kt)
@@ -293,5 +293,12 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   possible. Single Responsibility Principle fosters High Cohesion
 - **Loose Coupling**. Each module in the system has as little knowledge as possible about other modules in the
   system. Use interfaces to implement Loose Coupling between modules. High Cohesion fosters Loose Coupling
-- **Top-down approach**.
-- **Bottom-up approach**.
+- **Top-down approach**. Decomposition a system into the compositional subsystems. An overview of the
+  system is formulated specifying but not detailing any first-level subsystems. Each subsystem is then refined in yet
+  greater detail, until the entire specification is reduced to base elements. Emphasize on complete understanding of the
+  system. No coding can begin until a sufficient level of detail has been reached in design phase
+- **Bottom-up approach**. Composition of basic elements together into a more complex system. The individual base
+  elements of a system are first specified in great detail. These elements are then linked together to form larger
+  subsystems, until a complete top-level system is formed. Emphasized coding and early testing, which can begin as soon
+  as the first module has been specified. There is a risk of how the modules can be linked together to form a top-level
+  system
