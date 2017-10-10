@@ -302,3 +302,7 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   subsystems, until a complete top-level system is formed. Emphasized coding and early testing, which can begin as soon
   as the first module has been specified. There is a risk of how the modules can be linked together to form a top-level
   system
+- **RAII - Resource Acquisition Is Initialization**. Smart Pointer: constructor acquires, destructor releases. Smart
+  Pointer is scope-based resource management. When a resource gets out of scope via normal execution or thrown exception
+  the resource is deallocated automatically by the Smart Pointer destructor. RAII only works for resources acquired and
+  released by stack-allocated objects where there is well-defined static object lifetime
