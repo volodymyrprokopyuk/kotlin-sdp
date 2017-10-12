@@ -293,9 +293,9 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   possible. Single Responsibility Principle fosters High Cohesion
 - **Loose Coupling**. Each module in the system has as little knowledge as possible about other modules in the
   system. Use interfaces to implement Loose Coupling between modules. High Cohesion fosters Loose Coupling
-- **Top-down approach**. Decomposition a system into the compositional subsystems. An overview of the
-  system is formulated specifying but not detailing any first-level subsystems. Each subsystem is then refined in yet
-  greater detail, until the entire specification is reduced to base elements. Emphasize on complete understanding of the
+- **Top-down approach**. Decomposition a system into the compositional subsystems. An overview of the system is
+  formulated specifying but not detailing any first-level subsystems. Each subsystem is then refined in yet greater
+  detail, until the entire specification is reduced to base elements. Emphasize on complete understanding of the
   system. No coding can begin until a sufficient level of detail has been reached in design phase
 - **Bottom-up approach**. Composition of basic elements together into a more complex system. The individual base
   elements of a system are first specified in great detail. These elements are then linked together to form larger
@@ -306,3 +306,25 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   Pointer is scope-based resource management. When a resource gets out of scope via normal execution or thrown exception
   the resource is deallocated automatically by the Smart Pointer destructor. RAII only works for resources acquired and
   released by stack-allocated objects where there is well-defined static object lifetime
+- **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging, state hiding, late binding. Object has
+  well encapsulated structure (properties) and provides behavior (methods) through well defined interface. Abstraction,
+  responsibilities and modularization are the keys to master complexity
+- **SRP - Single Responsibility Principle**. Software unit should have only one single and well defined responsibility,
+  only one reason to change. High Cohesion fosters SRP
+- **OCP - Open-Closed Principle**. Software unit should be open for extension (inheritance, Strategy or Decorator design
+  patterns), but closed for modification (interface with multiple polymorphic implementations)
+- **LSP - Liskov Substitution Principle**. Hierarchy is used to build specialized types from a more general
+  type. Polymorphism means that one single interface provides access to objects of different types. Subtype must be
+  completely substitutable for its supertype. Preconditions cannot be strenthened in a subtype. Postconditions cannot be
+  weakened in a subtype. Supertype invariants must be preserved in a subtype
+- **ISP - Interface Segregation Principle**. Segregate one broad single interface into a set of smaller and highly
+  cohesive interfaces
+- **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with the mediation of an abstraction
+  (interface) layer. Each module should depend on abstraction (interface) that draws the behavior needed by the module,
+  not other modules. Common features should be consolidated in a shared abstractions through interfaces
+- **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box reuse through an interface and
+  promotes loose coupling. Inheritance is white box reuse through public/protected members
+- **ADP - Acyclic Dependency Principle**. Circular dependencies should be avoided. Dependency Inversion Principle or
+  creation of a new package with common components breaks the circular dependencies
+- **LoD - Low of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk to strangers, only talk to your
+  immediage neighbors. LoD fosters Loose Coupling and Information Hiding
