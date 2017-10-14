@@ -321,7 +321,7 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   cohesive interfaces
 - **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with the mediation of an abstraction
   (interface) layer. Each module should depend on abstraction (interface) that draws the behavior needed by the module,
-  not other modules. Common features should be consolidated in a shared abstractions through interfaces
+  not other modules directly. Common features should be consolidated in a shared abstractions exposed through interfaces
 - **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box reuse through an interface and
   promotes loose coupling. Inheritance is white box reuse through public/protected members
 - **ADP - Acyclic Dependency Principle**. Circular dependencies should be avoided. Dependency Inversion Principle or
