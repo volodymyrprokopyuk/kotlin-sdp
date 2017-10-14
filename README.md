@@ -28,12 +28,12 @@ assignment or function call and returns the resulting constructed complex object
 
 - [**Dependency Injection**](src/main/kotlin/org/vld/sdp/creational/DependencyInjection.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/DependencyInjectionTest.kt)<br/>
-**What**. A class (client) accepts the objects (services/dependencies) the class requires from an injector instead of
-creating the objects directly<br/>
-**How**. The `Injector` passes the `Service` object to the `Client` class by the inversion of control. `Injector`
-decouples the `Client` from creating the `Service`. The `Injector` calls the `Client`. The `Client` does not know about
-the `Injector`. The `Client` works only the the `Service` interfaces provided by the `Injector` via constructor
-injection or setter injection<br/>
+**What**. A class (client) accepts through an interface the objects (services/dependencies) the class requires from an
+injector instead of creating the objects directly<br/>
+**How**. The `Injector` passes the `Service` object to the `Client` class via the `Service` interface by the inversion
+of control. `Injector` decouples the `Client` from creating the `Service` object directly. The `Injector` creates the
+`Service` object and calls the `Client`. The `Client` does not know about the `Injector`. The `Client` works only with
+the `Service` interfaces provided by the `Injector` via constructor injection or setter injection<br/>
 **Example**. The `Client` requires the `ConstructorInjectedDependency` and the `SetterInjectedDependency` both
 implementing the `Service` interface. The `Injector` creates the `Client` and sets up its dependent `Services` via the
 constructor injection and the setter injection
@@ -60,7 +60,9 @@ interface. In order to create a new instance of the specific cell the `CellProto
 - [**Singleton**](src/main/kotlin/org/vld/sdp/creational/Singleton.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt)<br/>
 **What**. Singleton ensures that a class has only one instance and provides a global point of access to the
-instance<br/>
+instance. Singleton global variable like dependency is not declared in any component interface, but is tightly coupled
+with all component implementations. Replace Singleton pattern with Depencency Injection pattern based on Dependency
+Inversion Principle<br/>
 **How**. Make the class constructor private and provide one public static method that always returns the same single
 instance of the class stored in a private static variable<br/>
 **Example**. The expression `object Singleton` defines a Singleton class and immediately instantiate the class with the
@@ -160,13 +162,14 @@ of notes with the amount remainder if any
 
 - [**Command**](src/main/kotlin/org/vld/sdp/behavioral/Command.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/CommandTest.kt)<br/>
-**What**. Command encapsulates an action with the request parameters as an function/object. Allows action/request
-queueing, logging and undoable operations<br/>
-**How**. The `Command` object stores the request parameters and delegates the request to the `Receiver`. The `Invoker`
-object uses the `Command` interface and provides request queueing, logging and undoable operation functionality<br/>
-**Example**. The `cookStarter()`, `cookMainCourse()` and `cookDessert()` functions `Order`=`Command`=`Receiver` objects
-by storing the request arguments in closure. The `Waiter`=`Invoker` queues the `Order`s and serves the `Order`s by using
-the `Order` interface
+**What**. Command encapsulates an action with the request parameters as an function/object and decouples the request for
+an action from the actual action performer. Allows action/request queueing, logging and undoable operations<br/>
+**How**. The `Command` object stores the request parameters and delegates the request to the `Receiver` which performs
+the action. The `Invoker` object uses the `Command` interface and provides request queueing, logging and undoable
+operation functionality<br/>
+**Example**. The `cookStarter()`, `cookMainCourse()` and `cookDessert()` functions implement the
+`Order`=`Command`=`Receiver` interface and store the request arguments in a closure. The `Waiter`=`Invoker` queues the
+`Order`s and serves the `Order`s by using the `Order` interface
 
 - [**Interpreter**](src/main/kotlin/org/vld/sdp/behavioral/Interpreter.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/InterpreterTest.kt)<br/>
@@ -238,7 +241,8 @@ each transition is defined in state interface method invocation<br/>
 
 - [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Strategy.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/StrategyTest.kt)<br/>
-**What**. Strategy defines a family of interchangeable at runtime algorithms<br/>
+**What**. Strategy defines a family of interchangeable at runtime algorithms and provides excellent support for the
+Open-Closed Principle<br/>
 **How**. Define a set of interchangeable algorithms/strategies that implement the `Strategy` interface. Based on the
 conditions at runtime dynamically select the appropriate algorithm/strategy. Client works only with the `Strategy`
 interface<br/>
@@ -320,8 +324,10 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
 - **ISP - Interface Segregation Principle**. Segregate one broad single interface into a set of smaller and highly
   cohesive interfaces
 - **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with the mediation of an abstraction
-  (interface) layer. Each module should depend on abstraction (interface) that draws the behavior needed by the module,
-  not other modules directly. Common features should be consolidated in a shared abstractions exposed through interfaces
+  (interface) layer. Each module should depend on an abstraction (interface), not other modules directly. The
+  abstraction (interface) provides the behavior needed by the module through possibly multiple implemenattions. Common
+  features should be consolidated in a shared abstractions exposed through interfaces. Depencency Inversion Principel
+  fosters testability of components
 - **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box reuse through an interface and
   promotes loose coupling. Inheritance is white box reuse through public/protected members
 - **ADP - Acyclic Dependency Principle**. Circular dependencies should be avoided. Dependency Inversion Principle or
