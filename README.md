@@ -332,5 +332,5 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   promotes loose coupling. Inheritance is white box reuse through public/protected members
 - **ADP - Acyclic Dependency Principle**. Circular dependencies should be avoided. Dependency Inversion Principle or
   creation of a new package with common components breaks the circular dependencies
-- **LoD - Low of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk to strangers, only talk to your
+- **LoD - Law of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk to strangers, only talk to your
   immediage neighbors. LoD fosters Loose Coupling and Information Hiding
