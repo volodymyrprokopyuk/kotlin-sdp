@@ -1,6 +1,6 @@
 package org.vld.sdp.creational
 
-import org.assertj.core.api.Assertions.* // ktlint-disable wo-wildcard-imports
+import org.assertj.core.api.Assertions.* // ktlint-disable no-wildcard-imports
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance

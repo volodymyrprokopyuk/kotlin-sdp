@@ -22,8 +22,6 @@ interface Phone {
     fun switchOn()
 }
 
-
-
 /**
  * Xiaomi Phone Adapter to expected by a client the [Phone] interface
  */
