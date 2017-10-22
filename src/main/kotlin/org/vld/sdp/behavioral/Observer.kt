@@ -28,7 +28,7 @@ interface AuctioneerSubject {
 /**
  * Subject interface implementation
  */
-class Auctioneer() : AuctioneerSubject {
+class Auctioneer : AuctioneerSubject {
     // current bid
     private var bid: Int = 0
     // list of bidders to notify when the bid changes
