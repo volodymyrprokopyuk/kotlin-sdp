@@ -1,4 +1,4 @@
-# [Kotlin](https://kotlinlang.org/) Software Design Patterns Code Examples
+# Software Design Patterns in [Kotlin](https://kotlinlang.org/)
 
 ## Creational Patterns
 
