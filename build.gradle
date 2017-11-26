@@ -67,6 +67,7 @@ mainClassName = "org.vld.sdp.MainKt"
 ext {
     kotlinVersion = "1.1.51"
     junitJupiterVersion = "5.0.1"
+    junitPlatformVersion = "1.0.1"
     assertJVersion = "3.8.0"
     mockitoVersion = "2.11.0"
     ktLintVersion = "0.10.0"
@@ -84,23 +85,37 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     testCompile "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
     testCompile "org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion"
+    testCompile "org.junit.platform:junit-platform-runner:$junitPlatformVersion"
     testCompile "org.assertj:assertj-core:$assertJVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+    testRuntime "org.junit.platform:junit-platform-console-standalone:$junitPlatformVersion"
     ktlint "com.github.shyiko:ktlint:$ktLintVersion"
+}
+
+// Usage: $ gradle junitPlatformTestConsole -PincludePackage=org.vld.sdp.behavioral
+task junitPlatformTestConsole(type: JavaExec) {
+    description = "JUnit Platform Test Console"
+    jvmArgs "-ea"
+    classpath = project.sourceSets.test.runtimeClasspath
+    main = "org.junit.platform.console.ConsoleLauncher"
+    args "--include-engine=junit-jupiter", "--scan-class-path", "--reports-dir=$project.testReportDir"
+    if (project.hasProperty("includePackage")) {
+        args += "--include-package=$includePackage"
+    }
 }
 
 task ktLint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style"
-    main = "com.github.shyiko.ktlint.Main"
     classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
     args "--verbose", "src/**/*.kt"
 }
 
 check.dependsOn ktLint
 task ktFormat(type: JavaExec, group: "formatting") {
     description = "Fix Kotlin code style deviations"
-    main = "com.github.shyiko.ktlint.Main"
     classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
     args "-F", "src/**/*.kt"
 }
