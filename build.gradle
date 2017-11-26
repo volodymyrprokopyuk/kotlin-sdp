@@ -55,7 +55,7 @@ apply plugin: "io.gitlab.arturbosch.detekt"
 
 detekt {
     profile("main") {
-//        config = "$projectDir/detekt.yml"
+        config = "$projectDir/detekt.yml"
         input = "$projectDir/src"
     }
 }
