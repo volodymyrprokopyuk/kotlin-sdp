@@ -61,7 +61,7 @@ interface. In order to create a new instance of the specific cell the `CellProto
 [(usage)](src/test/kotlin/org/vld/sdp/creational/SingletonTest.kt)<br/>
 **What**. Singleton ensures that a class has only one instance and provides a global point of access to the
 instance. Singleton global variable like dependency is not declared in any component interface, but is tightly coupled
-with all component implementations. Replace Singleton pattern with Depencency Injection pattern based on Dependency
+with all component implementations. Replace Singleton pattern with Dependency Injection pattern based on Dependency
 Inversion Principle<br/>
 **How**. Make the class constructor private and provide one public static method that always returns the same single
 instance of the class stored in a private static variable<br/>
@@ -313,24 +313,39 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
 - **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging, state hiding, late binding. Object has
   well encapsulated structure (properties) and provides behavior (methods) through well defined interface. Abstraction,
   responsibilities and modularization are the keys to master complexity
+- **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box reuse through an interface and
+  promotes loose coupling. Inheritance is white box reuse through public/protected members
+- **ADP - Acyclic Dependency Principle**. Circular dependencies should be avoided. Dependency Inversion Principle or
+  creation of a new package with common components breaks the circular dependencies
+- **LoD - Law of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk to strangers, only talk to your
+  immediate neighbors. LoD fosters Loose Coupling and Information Hiding
+
+# SOLID Principles
+
 - **SRP - Single Responsibility Principle**. Software unit should have only one single and well defined responsibility,
   only one reason to change. High Cohesion fosters SRP
 - **OCP - Open-Closed Principle**. Software unit should be open for extension (inheritance, Strategy or Decorator design
   patterns), but closed for modification (interface with multiple polymorphic implementations)
 - **LSP - Liskov Substitution Principle**. Hierarchy is used to build specialized types from a more general
   type. Polymorphism means that one single interface provides access to objects of different types. Subtype must be
-  completely substitutable for its supertype. Preconditions cannot be strenthened in a subtype. Postconditions cannot be
+  completely substitutable for its supertype. Preconditions cannot be strengthened in a subtype. Postconditions cannot be
   weakened in a subtype. Supertype invariants must be preserved in a subtype
 - **ISP - Interface Segregation Principle**. Segregate one broad single interface into a set of smaller and highly
   cohesive interfaces
 - **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with the mediation of an abstraction
   (interface) layer. Each module should depend on an abstraction (interface), not other modules directly. The
-  abstraction (interface) provides the behavior needed by the module through possibly multiple implemenattions. Common
-  features should be consolidated in a shared abstractions exposed through interfaces. Depencency Inversion Principel
+  abstraction (interface) provides the behavior needed by the module through possibly multiple implementations. Common
+  features should be consolidated in a shared abstractions exposed through interfaces. Dependency Inversion Principle
   fosters testability of components
-- **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box reuse through an interface and
-  promotes loose coupling. Inheritance is white box reuse through public/protected members
-- **ADP - Acyclic Dependency Principle**. Circular dependencies should be avoided. Dependency Inversion Principle or
-  creation of a new package with common components breaks the circular dependencies
-- **LoD - Law of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk to strangers, only talk to your
-  immediage neighbors. LoD fosters Loose Coupling and Information Hiding
+
+# UNIX Principles
+
+- Make each program do one thing and do it well
+- To do a new job build afresh rather than complicate old programs by adding new features
+- Expect the output of every program to become the input to another program. Write programs to handle text streams,
+  because text is a universal interface. Don't clutter the output with extraneous information. Don't insist for
+  interactive input and allow for scripting
+- Favor composability over monolithic design
+- Design and build software to be tried early. Build prototype as soon as possible. Don't hesitate to throw away bad
+  design and rebuild from scratch
+- Use tools or even build tools for repetitive task automation
