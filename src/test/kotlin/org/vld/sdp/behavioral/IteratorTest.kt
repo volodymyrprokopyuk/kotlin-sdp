@@ -21,5 +21,4 @@ class IteratorTest {
         val expectedValues = listOf<Fruit>("apple", "banana", "orange")
         assertThat(values).isEqualTo(expectedValues)
     }
-
 }

@@ -46,7 +46,6 @@ class Auctioneer : AuctioneerSubject {
         bid = newBid
         bidders.forEach { it.updateBid(oldBid, newBid) }
     }
-
 }
 
 /**

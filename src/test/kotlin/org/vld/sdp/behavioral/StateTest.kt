@@ -24,5 +24,4 @@ class StateTest {
         val expectedResult = listOf("Show Products", "Select Product", "Deposit Money", "Deliver Product")
         assertThat(result).isEqualTo(expectedResult)
     }
-
 }

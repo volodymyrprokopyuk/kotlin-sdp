@@ -18,5 +18,4 @@ class SingletonTest {
         val expectedSingleton = Singleton
         assertThat(singleton).isSameAs(expectedSingleton)
     }
-
 }

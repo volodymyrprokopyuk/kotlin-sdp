@@ -26,5 +26,4 @@ class CommandTest {
         val expectedDishes = listOf("Salad Starter", "Chicken Main Course", "Fruit Dessert")
         assertThat(dishes).isEqualTo(expectedDishes)
     }
-
 }

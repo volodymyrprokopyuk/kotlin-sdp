@@ -20,5 +20,4 @@ class FacadeTest {
         val expectedResult = "CPU started, RAM loaded, SSD read"
         assertThat(result).isEqualTo(expectedResult)
     }
-
 }

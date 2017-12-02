@@ -31,5 +31,4 @@ class StrategyTest {
             Arguments.of(4, "Go by Taxi"),
             Arguments.of(14, "Go by Bus")
     )
-
 }

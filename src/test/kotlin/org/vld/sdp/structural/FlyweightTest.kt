@@ -29,5 +29,4 @@ class FlyweightTest {
         // Then
         assertThat(word).isEqualTo("aha")
     }
-
 }

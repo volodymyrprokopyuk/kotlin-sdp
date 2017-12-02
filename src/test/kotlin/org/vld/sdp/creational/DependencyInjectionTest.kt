@@ -19,5 +19,4 @@ class DependencyInjectionTest {
         assertThat(client.constructorInjectedService.name).isEqualTo("Constructor Injected Service")
         assertThat(client.setterInjectedService.name).isEqualTo("Setter Injected Service")
     }
-
 }

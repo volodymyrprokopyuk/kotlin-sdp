@@ -51,5 +51,4 @@ data class Car constructor(val make: String, val model: String, val year: Int) {
          */
         fun build(): Car = Car(this)
     }
-
 }

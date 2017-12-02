@@ -47,5 +47,4 @@ class AbstractFactoryTest {
                     FancyResume("Fancy Resume")
             )
     )
-
 }

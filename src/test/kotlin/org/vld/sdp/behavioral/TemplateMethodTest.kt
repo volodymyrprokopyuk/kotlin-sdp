@@ -29,5 +29,4 @@ class TemplateMethodTest {
             Arguments.of(Developer(), listOf("Employee gets up", "Developer programs", "Employee sleeps")),
             Arguments.of(Architect(), listOf("Employee gets up", "Architect designs", "Employee sleeps"))
     )
-
 }

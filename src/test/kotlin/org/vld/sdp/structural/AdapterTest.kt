@@ -22,5 +22,4 @@ class AdapterTest {
         // `XiaomiPhone::turnOn()` method is called
         verify(mockedXiaomiPhone).turnOn()
     }
-
 }

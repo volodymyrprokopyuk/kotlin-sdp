@@ -37,5 +37,4 @@ class CompositeTest {
                 Arguments.of("1+2*3", Operation(Operand(1), Operation(Operand(2), Operand(3), mul), add), 7)
         )
     }
-
 }

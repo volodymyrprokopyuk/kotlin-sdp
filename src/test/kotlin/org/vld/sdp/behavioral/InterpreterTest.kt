@@ -33,5 +33,4 @@ class InterpreterTest {
             Arguments.of("1+2", Add(Constant(1), Constant(2)), 3),
             Arguments.of("1+2*3", Add(Constant(1), Mul(Constant(2), Constant(3))), 7)
     )
-
 }

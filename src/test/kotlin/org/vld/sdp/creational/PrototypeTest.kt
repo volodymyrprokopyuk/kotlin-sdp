@@ -33,5 +33,4 @@ class PrototypeTest {
                 Arguments.of(eukaryoteCell, eukaryoteCell.copy())
         )
     }
-
 }

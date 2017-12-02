@@ -22,5 +22,4 @@ class ObserverTest {
         verify(mockedBidder1).updateBid(0, 1)
         verify(mockedBidder2).updateBid(0, 1)
     }
-
 }

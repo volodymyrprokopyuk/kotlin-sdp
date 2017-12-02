@@ -23,7 +23,6 @@ class MementoTest {
         // Then
         val expectedValue = 3
         assertThat(value).isEqualTo(expectedValue)
-
     }
 
     @Test
@@ -46,5 +45,4 @@ class MementoTest {
         val expectedValue = 2
         assertThat(value).isEqualTo(expectedValue)
     }
-
 }

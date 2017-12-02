@@ -8,7 +8,6 @@ open class XiaomiPhone {
      * Turns on Xiaomi phone
      */
     open fun turnOn() {
-
     }
 }
 

@@ -55,5 +55,4 @@ class VisitorTest {
             Arguments.of(SonyCamera(), "Take photo with Sony Camera on Xiaomi Phone", "Take photo with Sony Camera on Nokia Phone"),
             Arguments.of(SamsungCamera(), "Take photo with Samsung Camera on Xiaomi Phone", "Take photo with Samsung Camera on Nokia Phone")
     )
-
 }

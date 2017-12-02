@@ -1,9 +1,9 @@
 buildscript {
     ext {
-        kotlinGradlePluginVersion = "1.1.51"
-        junitPlatformGradlePluginVersion = "1.0.1"
+        kotlinGradlePluginVersion = "1.2.0"
+        junitPlatformGradlePluginVersion = "1.0.2"
         dokkaGradlePluginVersion = "0.9.15"
-        detektGradlePluginVersion = "1.0.0.RC4-3"
+        detektGradlePluginVersion = "1.0.0.RC5-6"
     }
 
     repositories {
@@ -65,16 +65,17 @@ apply plugin: "application"
 mainClassName = "org.vld.sdp.MainKt"
 
 ext {
-    kotlinVersion = "1.1.51"
-    junitJupiterVersion = "5.0.1"
-    junitPlatformVersion = "1.0.1"
+    kotlinVersion = "1.2.0"
+    junitJupiterVersion = "5.0.2"
+    junitPlatformVersion = "1.0.2"
     assertJVersion = "3.8.0"
-    mockitoVersion = "2.11.0"
-    ktLintVersion = "0.10.0"
+    mockitoVersion = "2.12.0"
+    ktLintVersion = "0.14.0"
 }
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 configurations {

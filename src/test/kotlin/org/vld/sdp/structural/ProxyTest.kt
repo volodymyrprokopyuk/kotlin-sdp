@@ -31,5 +31,4 @@ class ProxyTest {
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageStartingWith("Not enough balance to satisfy the payment amount")
     }
-
 }

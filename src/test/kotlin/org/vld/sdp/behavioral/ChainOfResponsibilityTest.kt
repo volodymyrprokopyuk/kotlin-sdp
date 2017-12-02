@@ -32,5 +32,4 @@ class ChainOfResponsibilityTest {
             Arguments.of(CashRequest(134), CashRequest(4, listOf(Pair(100, 1), Pair(20, 1), Pair(10, 1)))),
             Arguments.of(CashRequest(484), CashRequest(4, listOf(Pair(100, 4), Pair(50, 1), Pair(20, 1), Pair(10, 1))))
     )
-
 }

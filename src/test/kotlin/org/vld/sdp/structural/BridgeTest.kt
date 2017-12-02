@@ -38,5 +38,4 @@ class BridgeTest {
                 Arguments.of(TabletDevice(nokia), "Nokia supports Tablet")
         )
     }
-
 }

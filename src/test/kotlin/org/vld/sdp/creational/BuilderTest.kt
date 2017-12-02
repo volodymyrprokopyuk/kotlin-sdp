@@ -30,5 +30,4 @@ class BuilderTest {
         // Then
         assertThat(car).isEqualTo(expectedCar)
     }
-
 }

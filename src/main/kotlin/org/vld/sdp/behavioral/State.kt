@@ -19,7 +19,6 @@ class VendingMachine {
      * Handles the request as per the current state and set the next Vending Machine state
      */
     fun proceed(): List<String> = state.handleRequest()
-
 }
 
 /**

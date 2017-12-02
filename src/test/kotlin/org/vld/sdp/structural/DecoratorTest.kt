@@ -30,5 +30,4 @@ class DecoratorTest {
             // decorators can be stacked on top of each other each time adding new behavior
             Arguments.of(CoffeeWithMilk(CoffeeWithSugar(SimpleCoffee())), "Tasty Sweet Coffee with Sugar with Milk")
     )
-
 }

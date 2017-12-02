@@ -39,5 +39,4 @@ class FactoryMethodTest {
                     FancyArticle("Fancy Article")
             )
     )
-
 }

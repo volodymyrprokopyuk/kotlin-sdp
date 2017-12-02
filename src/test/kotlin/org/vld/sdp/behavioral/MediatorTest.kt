@@ -45,5 +45,4 @@ class MediatorTest {
         // without haveing any reference to the helicopter
         verify(mockedAirplane).receive("Hi from Helicopter")
     }
-
 }
