@@ -297,15 +297,18 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   possible. Single Responsibility Principle fosters High Cohesion
 - **Loose Coupling**. Each module in the system has as little knowledge as possible about other modules in the
   system. Use interfaces to implement Loose Coupling between modules. High Cohesion fosters Loose Coupling
-- **Top-down approach**. Mostly used in Object-Oriented Programming (OOP) with interfaces and abstract classes. Decomposition a system into the compositional subsystems. An overview of the system is
-  formulated specifying but not detailing any first-level subsystems. Each subsystem is then refined in yet greater
-  detail, until the entire specification is reduced to base elements. Emphasize on complete understanding of the
-  system. No coding can begin until a sufficient level of detail has been reached in design phase
-- **Bottom-up approach**. Mostly used in Functional Programming (FP) with function composition. Composition of basic elements together into a more complex system. The individual base
-  elements of a system are first specified in great detail. These elements are then linked together to form larger
-  subsystems, until a complete top-level system is formed. Emphasized coding and early testing, which can begin as soon
-  as the first module has been specified. There is a risk of how the modules can be linked together to form a top-level
-  system
+- **Robustness principle**. Be conservative in what you do (produce outputs compliant with the specification). Be
+  liberal in what you accept from others (validate and sanitize inputs as long as the meaning is clear)
+- **Top-down approach**. Mostly used in Object-Oriented Programming (OOP) with interfaces and abstract
+  classes. Decomposition a system into the compositional subsystems. An overview of the system is formulated specifying
+  but not detailing any first-level subsystems. Each subsystem is then refined in yet greater detail, until the entire
+  specification is reduced to base elements. Emphasize on complete understanding of the system. No coding can begin
+  until a sufficient level of detail has been reached in design phase
+- **Bottom-up approach**. Mostly used in Functional Programming (FP) with function composition. Composition of basic
+  elements together into a more complex system. The individual base elements of a system are first specified in great
+  detail. These elements are then linked together to form larger subsystems, until a complete top-level system is
+  formed. Emphasized coding and early testing, which can begin as soon as the first module has been specified. There is
+  a risk of how the modules can be linked together to form a top-level system
 - **RAII - Resource Acquisition Is Initialization**. Smart Pointer: constructor acquires, destructor releases. Smart
   Pointer is scope-based resource management. When a resource gets out of scope via normal execution or thrown exception
   the resource is deallocated automatically by the Smart Pointer destructor. RAII only works for resources acquired and
