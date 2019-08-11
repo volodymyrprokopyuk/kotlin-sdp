@@ -334,7 +334,9 @@ on WiFi and take photo) are implemented on the `Phone` `Element` structure
   completely substitutable for its supertype. Preconditions cannot be strengthened in a subtype. Postconditions cannot be
   weakened in a subtype. Supertype invariants must be preserved in a subtype
 - **ISP - Interface Segregation Principle**. Segregate one broad single interface into a set of smaller and highly
-  cohesive interfaces
+  cohesive interfaces so other program components depend only on small cohesive interfaces instead of depending on a
+  single broad interface, and other probram components won't be required to implement all the functionality of the broad
+  interface
 - **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with the mediation of an abstraction
   (interface) layer. Each module should depend on an abstraction (interface), not other modules directly. The
   abstraction (interface) provides the behavior needed by the module through possibly multiple implementations. Common
