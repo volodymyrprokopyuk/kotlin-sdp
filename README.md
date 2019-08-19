@@ -1,12 +1,12 @@
-# Software Design Patterns in [Kotlin](https://kotlinlang.org/)
+# Software design patterns in [Kotlin](https://kotlinlang.org/)
 
-## Creational Patterns
+## Creational patterns
 
 Creational patterns **encapsulate knowledge about concrete classes** the system use,
 **hide how instances of these classes are created** and **separate the system from how
 the objects are composed and represented**.
 
-- [**Abstract Factory**](src/main/kotlin/org/vld/sdp/creational/AbstractFactory.kt)
+- [**Abstract factory**](src/main/kotlin/org/vld/sdp/creational/AbstractFactory.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/AbstractFactoryTest.kt)<br/>
 **What**. Abstract Factory provides an interface for creating families of
 related/dependent objects without specifying their concrete classes. Abstract Factory
@@ -32,7 +32,7 @@ function call and returns the resulting constructed complex object at once<br/>
 **Example**. `Car.Builder` provides a builder DSL (`Car.build { ... }`) for building a
 `Car` instance
 
-- [**Dependency Injection**](src/main/kotlin/org/vld/sdp/creational/DependencyInjection.kt)
+- [**Dependency injection**](src/main/kotlin/org/vld/sdp/creational/DependencyInjection.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/DependencyInjectionTest.kt)<br/>
 **What**. A class (client) accepts through an interface the objects
 (services/dependencies) the class requires from an injector instead of creating the
@@ -48,7 +48,7 @@ or setter injection<br/>
 creates the `Client` and sets up its dependent `Services` via the constructor injection
 and the setter injection
 
-- [**Factory Method**](src/main/kotlin/org/vld/sdp/creational/FactoryMethod.kt)
+- [**Factory method**](src/main/kotlin/org/vld/sdp/creational/FactoryMethod.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/FactoryMethodTest.kt)<br/>
 **What**. Factory method defines an interface for creating a single object, but let
 subclasses decide which class to instantiate<br/>
@@ -83,7 +83,7 @@ variable<br/>
 instantiate the class with the single point of access to the instance being the
 `Singleton` class name
 
-## Structural Patterns
+## Structural patterns
 
 Structural patterns provide simple way of implementing **relationships between objects**.
 
@@ -174,11 +174,11 @@ without any balance/amount validations. The `PaymentProxy`=`Proxy` implements th
 interface to work with both the real `Account` object or with the `PaymentProxy` proxy
 object
 
-## Behavioral Patterns
+## Behavioral patterns
 
 Behavioral patterns provide simple way of implementing **interactions between objects**.
 
-- [**Chain of Responsibility**](src/main/kotlin/org/vld/sdp/behavioral/ChainOfResponsibility.kt)
+- [**Chain of responsibility**](src/main/kotlin/org/vld/sdp/behavioral/ChainOfResponsibility.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/ChainOfResponsibilityTest.kt)<br/>
 **What**. Chain of Responsibility chains the receiving objects/functions (handlers) and
 pass the request along the chain until an object/function handles the request completely
@@ -306,7 +306,7 @@ algorithm/strategy `goByBus` or `goByTaxi` based on the size of the tourist grou
 `goByBus` and `goByTaxi` implements the `Transport`=`Strategy` interface under which the
 algorithms/strategies are provided to the client
 
-- [**Template Method**](src/main/kotlin/org/vld/sdp/behavioral/TemplateMethod.kt)
+- [**Template method**](src/main/kotlin/org/vld/sdp/behavioral/TemplateMethod.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/TemplateMethodTest.kt)<br/>
 **What**. Template Method defines the skeleton of an algorithm (invariant) in one
 operation deferring some steps (variable) to subclasses (inversion of control) and
@@ -341,7 +341,7 @@ implement the `Camera`=`Visitor` interface for the static dispatch on the concre
 operations (switch on WiFi and take photo) are implemented on the `Phone` `Element`
 structure
 
-# Fundamental Software Design Principles
+# Fundamental software design principles
 
 - **KISS - Keep It Simple, Stupid**. Do the simplest thing that could possibly
   work. Avoid unnecessary complexity. Maintain balance between code simplicity and
@@ -353,7 +353,7 @@ structure
   a single, unambiguous, authoritative representation within the system. The
   modification of any single element of the system does not require a change in other
   logically unrelated elements
-- **Information Hiding**. One piece of code that calls another piece of code should not
+- **Information hiding**. One piece of code that calls another piece of code should not
   know internals about that other piece of code. This make it possible to change
   internal parts of the called piece of code without being forced to change the calling
   piece of code accordingly. Expose as little as possible of the internal implementation
@@ -361,11 +361,11 @@ structure
   interface to module functionality that will protect the clients of the module from
   changes in module implementation. A module implements the Information Hiding principle
   by applying the encapsulation technique
-- **High Cohesion**. High Cohesion is a degree to which the components inside a module
+- **High cohesion**. High Cohesion is a degree to which the components inside a module
   belongs together. A module has High Cohesion when the module responsibility is clearly
   defined and the module has as few dependencies as possible. Single Responsibility
   Principle fosters High Cohesion
-- **Loose Coupling**. Each module in the system has as little knowledge as possible
+- **Loose coupling**. Each module in the system has as little knowledge as possible
   about other modules in the system. Use interfaces to implement Loose Coupling between
   modules. High Cohesion fosters Loose Coupling
 - **Robustness principle**. Be conservative in what you do (produce outputs compliant
@@ -405,7 +405,7 @@ structure
   to strangers, only talk to your immediate neighbors. LoD fosters Loose Coupling and
   Information Hiding
 
-# SOLID Principles
+# SOLID principles
 
 - **SRP - Single Responsibility Principle**. Software unit should have only one single
   and well defined responsibility, only one reason to change. High Cohesion fosters SRP
@@ -443,3 +443,55 @@ structure
 - Design and build software to be tried early. Build prototype as soon as
   possible. Don't hesitate to throw away bad design and rebuild from scratch
 - Use tools or even build tools for repetitive task automation
+
+# Security by design principles
+
+- **Pillars of information security in rest**
+    - Confidentiality - ensure that only an authrized user has access to data
+    - Integrity - ensure that data is not altered by an unauthorized user
+    - Availability - ensure that data is available only to an authorized user
+- **Pillars of information security in transit**. Alice sends a message to Bob
+    - Confidentiality - only Bob can read the message
+    - Integrity - Eve cannot alter the message
+    - Authenticity - only Alice could have sent the message
+- **Principle of least priviledge**. Account should have the least amount of priviledge
+  (CPU/RAM quotas, filesystem/network access, data access permissions, business
+  transaction limits, time-based constraints) explicitly granted to perform its business
+  process with the object to limit intentional or unintentional damage to data. Example:
+  explicitly grant filesyste/network access and database access to a middleware server
+  **Faile-safe defaults**. Prefer explicitly granted access over access exclusion. By
+  default a user do not have access to any resouces untill access to resource has been
+  granted explicitly
+- **Principle of defence in depth**. Multiple security constrols at each architectural
+  level that approach risk from different perspectives are better as it makes much more
+  difficult to exploit vulnerabilities. Example: secure coding, security tests, input
+  data validation/sanitization, secure deployment, proactive application monitoring and
+  auditing, continuous security and risk assesment
+- **Separation of duties**. Do not grant multiple unrelated priviledges to a single
+  account. Require collaboration of multiple accounts to perform important operations
+  securely. Example: application administrators should not be super users of the
+  application; an administrator should not be able to perform business operations on
+  behalf of an application user
+- **Minimize attack surface area**. Asses risks introduced by a new feature, then adapt
+  feature design and define security constols to minimize the attack surface
+  area. Example: a search function of an online help feature may be vulnerable to a SQL
+  injection attack; expose the feature only to authorized users, use data validation and
+  escaping, or eliminate search function from the feature design by providing a better
+  structured user interfdace to reduce the attack surface area
+- **Establish secure defaults**. Delivered out of the box functionality should be secure
+  by default, and it should be up to the user to reduce security and increase risk if
+  they are allowed. Example: user password expiration and complexity should be enabled
+  by default, user might be allowed to simplify password management
+- **Fail securely**. Automatically release resources, decrease priviledges and maybe
+  logout from the account on operation failure
+- **Do not trust services**. Do not assume that third party partners have the same or
+  highter security policies then yours. Put necessary security controls on third party
+  services
+- **Keep security simple**. Avoid complex approaches to security controls
+- **Avoid security by obscurity**. Security of a system should not be reliant upon
+  keeping details hidden. Prefer well tested public security standards over homegrown
+  hidden security controls. Examples: OAuth 2.0. Linux source code is publicly
+  availalbe, yet when properly secured, Linux is hard secure operating system
+- **Fix security issues correctly**. Once a security issue has been identified, a)
+  understand the root caouse of it and determine the scope of it b) develop a fix for it
+  c) implement required tests for it d) add monitoring and auditing of it
