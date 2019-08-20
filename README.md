@@ -446,32 +446,53 @@ structure
 
 # Security by design principles
 
-- **Pillars of information security in rest**
+- **Information security in rest**
     - Confidentiality - ensure that only an authrized user has access to data
     - Integrity - ensure that data is not altered by an unauthorized user
     - Availability - ensure that data is available only to an authorized user
-- **Pillars of information security in transit**. Alice sends a message to Bob
+- **Information security in transit**. Alice sends a message to Bob
     - Confidentiality - only Bob can read the message
     - Integrity - Eve cannot alter the message
     - Authenticity - only Alice could have sent the message
-- **Principle of least priviledge**. Account should have the least amount of priviledge
-  (CPU/RAM quotas, filesystem/network access, data access permissions, business
-  transaction limits, time-based constraints) explicitly granted to perform its business
-  process with the object to limit intentional or unintentional damage to data. Example:
-  explicitly grant filesyste/network access and database access to a middleware server
+- **Least priviledge**. A subject should have the least amount of priviledge (CPU/RAM
+  quotas, filesystem/network access, data access permissions, business transaction
+  limits, time-based constraints) explicitly granted to perform its business process
+  with the objective to limit intentional or unintentional damage to data. The function
+  of the subject (and not the identity) should control the assignement of rights. The
+  right should be immediately removed on a completion or failure of an
+  operation. Example: if a user only needs to read a file, then he should not be granted
+  permission to write the file
   **Faile-safe defaults**. Prefer explicitly granted access over access exclusion. By
-  default a user do not have access to any resouces untill access to resource has been
+  default a user do not have access to any resouce untill access to a resource has been
   granted explicitly
-- **Principle of defence in depth**. Multiple security constrols at each architectural
-  level that approach risk from different perspectives are better as it makes much more
-  difficult to exploit vulnerabilities. Example: secure coding, security tests, input
-  data validation/sanitization, secure deployment, proactive application monitoring and
-  auditing, continuous security and risk assesment
+- **Fail securely**. When a system fails, it should fail to a state where the security
+  of a system is not compromised. Automatically release resources, decrease priviledges,
+  and maybe logout from the account on operation failure
+- **Defence in depth**. Multiple security constrols at each architectural level that
+  approach risk from different perspectives are better as it makes much more difficult
+  to exploit vulnerabilities. Example: secure coding, security tests, input data
+  validation/sanitization, secure deployment, proactive application monitoring and
+  auditing, continuous security and risk assesment. Administrative web interface should
+  be protected a) by authentication, b) only accessible from internal network, c) with
+  enabled audit logging
 - **Separation of duties**. Do not grant multiple unrelated priviledges to a single
   account. Require collaboration of multiple accounts to perform important operations
-  securely. Example: application administrators should not be super users of the
-  application; an administrator should not be able to perform business operations on
-  behalf of an application user
+  securely in order to prevent fraud or error. Example: application administrators
+  should not be super users of the application; an administrator should not be able to
+  perform business operations on behalf of an application user
+- **Complete meidation**. Every access to every resource must be checked for
+  authentication and authorization via system-wide central point of access
+  control. Subsequent accesses to the same resource should also be checked and not
+  cached
+- **Separation of priviledge**. Every security control should be based on more than a
+  single condition in order to remove a single point of failure. Example: when approving
+  a request validate that a) user status is active b) user is authorized to access the
+  resource. Multi-factor authentication
+- **Least common mechanism**. Mechanisms to access a resource should not be shared
+  between multiple subjects to gain access to a resource. Example: provide different
+  login pages for different types of users; if one of the login pages is compromized,
+  other login pages are not impacted. Sharing the access from Internet to a web site
+  between attackers and legit users gives place to DoS attack
 - **Minimize attack surface area**. Asses risks introduced by a new feature, then adapt
   feature design and define security constols to minimize the attack surface
   area. Example: a search function of an online help feature may be vulnerable to a SQL
@@ -482,16 +503,27 @@ structure
   by default, and it should be up to the user to reduce security and increase risk if
   they are allowed. Example: user password expiration and complexity should be enabled
   by default, user might be allowed to simplify password management
-- **Fail securely**. Automatically release resources, decrease priviledges and maybe
-  logout from the account on operation failure
 - **Do not trust services**. Do not assume that third party partners have the same or
   highter security policies then yours. Put necessary security controls on third party
   services
-- **Keep security simple**. Avoid complex approaches to security controls
-- **Avoid security by obscurity**. Security of a system should not be reliant upon
-  keeping details hidden. Prefer well tested public security standards over homegrown
-  hidden security controls. Examples: OAuth 2.0. Linux source code is publicly
-  availalbe, yet when properly secured, Linux is hard secure operating system
+- **Economy of mechanism. Keep security simple**. Avoid complex approaches to security
+  controls as it is much easier to spot functional defects and security flaws in simple
+  designs and it is very difficult to identify problems in complex designs. Complexity
+  does not add security
+- **Open design. Avoid security by obscurity**. Security of a system should not be
+  dependent on the secrecy of its design or implementation. Prefer well tested public
+  security standards over homegrown hidden security controls. Keeping passwords in
+  secret does not violate this principle as a password is not an algorithm. Examples:
+  OAuth 2.0. Linux source code is publicly availalbe, yet when properly secured, Linux
+  is hard secure operating system
 - **Fix security issues correctly**. Once a security issue has been identified, a)
   understand the root caouse of it and determine the scope of it b) develop a fix for it
   c) implement required tests for it d) add monitoring and auditing of it
+- **Weakest link**. A chain is only as strong as it weakest link. Focus on the weakes
+  component in a system
+- **Psychological acceptablity**. Security controls should not make resources more
+  difficult to access than if the security controls were not present. The more user
+  friendly the interface is, the less likely a user will make a mistake when configuring
+  and using a security control and expose the system to security breaches. Error
+  messages should be descriptive and actionable but not convey unnecessary design
+  details that may be used to compromize the system
