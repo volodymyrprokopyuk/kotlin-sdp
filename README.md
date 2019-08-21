@@ -462,7 +462,7 @@ structure
   revoked on a completion or failure of the operation. The function of the subject (and
   not the identity) should control the assignement of rights. Example: if a user only
   needs to read a file, then he should not be granted permission to write the file
-  **Faile-safe defaults**. Prefer explicitly granted access over access exclusion. By
+- **Faile-safe defaults**. Prefer explicitly granted access over access exclusion. By
   default a user do not have access to any resouce untill access to a resource has been
   granted explicitly, so on an operation failure the system security is not compromized
 - **Fail securely**. When a system fails, it should fail to a state where the security
