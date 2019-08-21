@@ -462,9 +462,15 @@ structure
   revoked on a completion or failure of the operation. The function of the subject (and
   not the identity) should control the assignement of rights. Example: if a user only
   needs to read a file, then he should not be granted permission to write the file
-- **Faile-safe defaults**. Prefer explicitly granted access over access exclusion. By
-  default a user do not have access to any resouce untill access to a resource has been
-  granted explicitly, so on an operation failure the system security is not compromized
+- **Establish secure defaults. Security baseline in terms of functionality**. Delivered
+  out of the box functionality should be secure by default, and it should be up to the
+  user to reduce security and increase risk if they are allowed. Example: user password
+  expiration and complexity should be enabled by default, user might be allowed to
+  simplify password management
+- **Faile-safe defaults. Bottom line of user initial privileges**. Prefer explicitly
+  granted access over access exclusion. By default a user do not have access to any
+  resouce untill access to a resource has been granted explicitly, so on an operation
+  failure the system security is not compromized
 - **Fail securely**. When a system fails, it should fail to a state where the security
   of a system is not compromised. Automatically release resources, decrease priviledges,
   and maybe logout from the account on operation failure
@@ -475,15 +481,15 @@ structure
   proactive application monitoring and auditing, continuous security and risk
   assesment. Administrative web interface should be protected a) by authentication, b)
   only accessible from internal network, c) with enabled audit logging
+- **Complete meidation**. Every access to every resource must be checked for
+  authentication and authorization via system-wide central point of access
+  control. Subsequent accesses to the same resource should also be checked and not
+  cached. Peformance (caching) vs security (exlicit check of every request) trade off
 - **Separation of duties**. Do not grant multiple unrelated priviledges to a single
   account. Require collaboration of multiple accounts to perform important operations
   securely in order to prevent fraud or error. Example: application administrators
   should not be super users of the application; an administrator should not be able to
   perform business operations on behalf of an application user
-- **Complete meidation**. Every access to every resource must be checked for
-  authentication and authorization via system-wide central point of access
-  control. Subsequent accesses to the same resource should also be checked and not
-  cached. Peformance (caching) vs security (exlicit check of every request) trade off
 - **Separation of priviledge**. Every security control should be based on more than a
   single condition in order to remove a single point of failure. Example: when approving
   a request validate that a) user status is active b) user is authorized to access the
@@ -493,19 +499,6 @@ structure
   login pages for different types of users; if one of the login pages is compromized,
   other login pages are not impacted. Sharing the access from Internet to a web site
   between attackers and legit users gives place to DoS attack
-- **Minimize attack surface area**. Asses risks introduced by a new feature, then adapt
-  feature design and define security constols to minimize the attack surface
-  area. Example: a search function of an online help feature may be vulnerable to a SQL
-  injection attack; expose the feature only to authorized users, use data validation and
-  escaping, or eliminate search function from the feature design by providing a better
-  structured user interfdace to reduce the attack surface area
-- **Establish secure defaults**. Delivered out of the box functionality should be secure
-  by default, and it should be up to the user to reduce security and increase risk if
-  they are allowed. Example: user password expiration and complexity should be enabled
-  by default, user might be allowed to simplify password management
-- **Do not trust services**. Do not assume that third party partners have the same or
-  highter security policies then yours. Put necessary security controls on third party
-  services
 - **Economy of mechanism. Keep security simple**. Avoid complex approaches to security
   controls as it is much easier to spot functional defects and security flaws in simple
   designs and it is very difficult to identify problems in complex designs. Complexity
@@ -518,14 +511,23 @@ structure
   the security level of homegrown not extensively tested security controls. Examples:
   OAuth 2.0. Linux source code is publicly availalbe, yet when properly secured, Linux
   is hard secure operating system
-- **Fix security issues correctly**. Once a security issue has been identified, a)
-  understand the root caouse of it and determine the scope of it b) develop a fix for it
-  c) implement required tests for it d) add monitoring and auditing of it
-- **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakes
-  component in a system
+- **Minimize attack surface area**. Asses risks introduced by a new feature, then adapt
+  feature design and define security constols to minimize the attack surface
+  area. Example: a search function of an online help feature may be vulnerable to a SQL
+  injection attack; expose the feature only to authorized users, use data validation and
+  escaping, or eliminate search function from the feature design by providing a better
+  structured user interfdace to reduce the attack surface area
 - **Psychological acceptablity**. Security controls should not make resources more
   difficult to access than if the security controls were not present. The more user
   friendly the interface is, the less likely a user will make a mistake when configuring
   and using a security control and expose the system to security breaches. Error
   messages should be descriptive and actionable but not convey unnecessary design
   details that may be used to compromize the system
+- **Do not trust services**. Do not assume that third party partners have the same or
+  highter security policies then yours. Put necessary security controls on third party
+  services
+- **Fix security issues correctly**. Once a security issue has been identified, a)
+  understand the root caouse of it and determine the scope of it b) develop a fix for it
+  c) implement required tests for it d) add monitoring and auditing of it
+- **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakes
+  component in a system
