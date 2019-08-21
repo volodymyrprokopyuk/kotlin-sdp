@@ -457,24 +457,24 @@ structure
 - **Least priviledge**. A subject should have the least amount of priviledge (CPU/RAM
   quotas, filesystem/network access, data access permissions, business transaction
   limits, time-based constraints) explicitly granted to perform its business process
-  with the objective to limit intentional or unintentional damage to data. The function
-  of the subject (and not the identity) should control the assignement of rights. The
-  right should be immediately removed on a completion or failure of an
-  operation. Example: if a user only needs to read a file, then he should not be granted
-  permission to write the file
+  with the objective to limit intentional or unintentional damage to data. The right
+  should be granted just before performing the operation and should be immediately
+  revoked on a completion or failure of the operation. The function of the subject (and
+  not the identity) should control the assignement of rights. Example: if a user only
+  needs to read a file, then he should not be granted permission to write the file
   **Faile-safe defaults**. Prefer explicitly granted access over access exclusion. By
   default a user do not have access to any resouce untill access to a resource has been
-  granted explicitly
+  granted explicitly, so on an operation failure the system security is not compromized
 - **Fail securely**. When a system fails, it should fail to a state where the security
   of a system is not compromised. Automatically release resources, decrease priviledges,
   and maybe logout from the account on operation failure
 - **Defence in depth**. Multiple security constrols at each architectural level that
   approach risk from different perspectives are better as it makes much more difficult
-  to exploit vulnerabilities. Example: secure coding, security tests, input data
-  validation/sanitization, secure deployment, proactive application monitoring and
-  auditing, continuous security and risk assesment. Administrative web interface should
-  be protected a) by authentication, b) only accessible from internal network, c) with
-  enabled audit logging
+  to exploit vulnerabilities. Example: secure coding, explicit resource and privileges
+  management, security tests, input data validation/sanitization, secure deployment,
+  proactive application monitoring and auditing, continuous security and risk
+  assesment. Administrative web interface should be protected a) by authentication, b)
+  only accessible from internal network, c) with enabled audit logging
 - **Separation of duties**. Do not grant multiple unrelated priviledges to a single
   account. Require collaboration of multiple accounts to perform important operations
   securely in order to prevent fraud or error. Example: application administrators
@@ -483,11 +483,11 @@ structure
 - **Complete meidation**. Every access to every resource must be checked for
   authentication and authorization via system-wide central point of access
   control. Subsequent accesses to the same resource should also be checked and not
-  cached
+  cached. Peformance (caching) vs security (exlicit check of every request) trade off
 - **Separation of priviledge**. Every security control should be based on more than a
   single condition in order to remove a single point of failure. Example: when approving
   a request validate that a) user status is active b) user is authorized to access the
-  resource. Multi-factor authentication
+  resource. Multi-factor authentication (something you know, you have, you are)
 - **Least common mechanism**. Mechanisms to access a resource should not be shared
   between multiple subjects to gain access to a resource. Example: provide different
   login pages for different types of users; if one of the login pages is compromized,
@@ -513,13 +513,15 @@ structure
 - **Open design. Avoid security by obscurity**. Security of a system should not be
   dependent on the secrecy of its design or implementation. Prefer well tested public
   security standards over homegrown hidden security controls. Keeping passwords in
-  secret does not violate this principle as a password is not an algorithm. Examples:
+  secret does not violate this principle as a password is not an algorithm. It is better
+  to know the security level of standard security controls rather than not know at all
+  the security level of homegrown not extensively tested security controls. Examples:
   OAuth 2.0. Linux source code is publicly availalbe, yet when properly secured, Linux
   is hard secure operating system
 - **Fix security issues correctly**. Once a security issue has been identified, a)
   understand the root caouse of it and determine the scope of it b) develop a fix for it
   c) implement required tests for it d) add monitoring and auditing of it
-- **Weakest link**. A chain is only as strong as it weakest link. Focus on the weakes
+- **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakes
   component in a system
 - **Psychological acceptablity**. Security controls should not make resources more
   difficult to access than if the security controls were not present. The more user
