@@ -479,8 +479,9 @@ structure
   to exploit vulnerabilities. Example: secure coding, explicit resource and privileges
   management, security tests, input data validation/sanitization, secure deployment,
   proactive application monitoring and auditing, continuous security and risk
-  assesment. Administrative web interface should be protected a) by authentication, b)
-  only accessible from internal network, c) with enabled audit logging
+  assesment. Example: administrative web interface should be protected a) by
+  authentication, b) only accessible from internal network, c) with enabled audit
+  logging
 - **Complete meidation**. Every access to every resource must be checked for
   authentication and authorization via system-wide central point of access
   control. Subsequent accesses to the same resource should also be checked and not
@@ -494,11 +495,6 @@ structure
   single condition in order to remove a single point of failure. Example: when approving
   a request validate that a) user status is active b) user is authorized to access the
   resource. Multi-factor authentication (something you know, you have, you are)
-- **Least common mechanism**. Mechanisms to access a resource should not be shared
-  between multiple subjects to gain access to a resource. Example: provide different
-  login pages for different types of users; if one of the login pages is compromized,
-  other login pages are not impacted. Sharing the access from Internet to a web site
-  between attackers and legit users gives place to DoS attack
 - **Economy of mechanism. Keep security simple**. Avoid complex approaches to security
   controls as it is much easier to spot functional defects and security flaws in simple
   designs and it is very difficult to identify problems in complex designs. Complexity
@@ -511,6 +507,11 @@ structure
   the security level of homegrown not extensively tested security controls. Examples:
   OAuth 2.0. Linux source code is publicly availalbe, yet when properly secured, Linux
   is hard secure operating system
+- **Least common mechanism**. Mechanisms to access a resource should not be shared
+  between multiple subjects to gain access to a resource. Example: provide different
+  login pages for different types of users; if one of the login pages is compromized,
+  other login pages are not impacted. Sharing the access from Internet to a web site
+  between attackers and legit users gives place to DoS attack
 - **Minimize attack surface area**. Asses risks introduced by a new feature, then adapt
   feature design and define security constols to minimize the attack surface
   area. Example: a search function of an online help feature may be vulnerable to a SQL
@@ -529,5 +530,5 @@ structure
 - **Fix security issues correctly**. Once a security issue has been identified, a)
   understand the root caouse of it and determine the scope of it b) develop a fix for it
   c) implement required tests for it d) add monitoring and auditing of it
-- **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakes
+- **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakest
   component in a system
