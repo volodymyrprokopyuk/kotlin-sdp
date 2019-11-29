@@ -444,6 +444,46 @@ structure
   possible. Don't hesitate to throw away bad design and rebuild from scratch
 - Use tools or even build tools for repetitive task automation
 
+# 12-factor SaaS application
+
+1. **Codebase**. One codebase tracked in revision control, many deployments
+    - Use revision control system (Git) to track codebase changes
+    - Set up one repository per app/service
+    - Single codebase is deployed into multiple environments (dev, test, staging,
+      production) with different level of maturity/testing
+1. **Dependencies**. Explicitly declare and isolate dependencies
+    - Use dependency management system (Yarn)
+    - Always explicitly define dependency versions (package.json)
+    - Isolate locally installed dependencies from interference with system-wide packages
+    - Only the language runtime and a depenency manager are required to run the
+      app/service
+    - Explicitly include (into Docker image) all system tools (curl, imagemagick) that
+      app/service dependes on
+1. **Configuration**. Store configuration in the environment
+    - Keep strict separation of the environment-specific configuration from the codebase
+    - Do not store any credentilas and secretes in the codebase
+    - Store environment-specific configuration in the environment variables set up by
+      IaC deployment scripts
+1. **Backing services**. Treat backing services as attached resources accesible via URI
+    - Most of the apps/services use database, queues, cache, email systems, cloud
+      services (resources)
+    - App/service can easily swap backing service by changing the resource URI provided
+      by the environment-specific configuration without any codebase changes
+1. **Build, release, run**. Strictly separate build and run stages
+    - Codebase is transformed into a deployment through the below stages
+    - Build stage transforms a source code repository (Git) into an executable artifact
+      (Docker image). Fetch specific tag, download dependencies, compile an executable
+      artifact
+    - Release stage combines the environment-independent executable artifact with the
+      environment-specific configuration. Every release is immutable and should be
+      uniquely tagged. Any change must create a new release
+    - Run stage launches the app/service in an environment
+1. **Processes**. Execute the app as one or more stateless share-nothing processes
+    - Any data that needs to persist must be stored in a stateful backing service
+    - Process memory and filesystem can be used only as a temporary cache
+    - Every app/service process should be idempotent
+
+
 # Security by design principles
 
 - **Information security in rest**
