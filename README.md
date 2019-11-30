@@ -444,7 +444,7 @@ structure
   possible. Don't hesitate to throw away bad design and rebuild from scratch
 - Use tools or even build tools for repetitive task automation
 
-# 12-factor SaaS application
+# 12-factor SaaS cloud application
 
 1. **Codebase**. One codebase tracked in revision control, many deployments
     - Use revision control system (Git) to track codebase changes
@@ -478,11 +478,45 @@ structure
       environment-specific configuration. Every release is immutable and should be
       uniquely tagged. Any change must create a new release
     - Run stage launches the app/service in an environment
-1. **Processes**. Execute the app as one or more stateless share-nothing processes
+1. **Processes**. Execute the app as one or more stateless, share-nothing processes
     - Any data that needs to persist must be stored in a stateful backing service
     - Process memory and filesystem can be used only as a temporary cache
     - Every app/service process should be idempotent
-
+1. **Port binding**. Export services via port binding + protocol
+    - Avoid executing apps/services inside a web server container (Tomcat, Apache
+      module)
+    - App/service should be completely self-contained and does not rely on any web
+      server execution environment
+    - App/service should export HTTP/AMQP/Redis as a service (Restify.js) by binding to
+      a port
+    - In production a load balancer (NGINX) routes requests from a public-facing
+      hostname to the port-bound app/service
+1. **Concurrency**. Scale out via the process model
+    - User first-class, share-nothing Unix processes/daemons (horizontal scalability)
+      for each type of work load (HTTP requests, background workers, database)
+    - App/service should rely on OS process manager (systemd)
+1. **Disposability**. Maximize robustness with fast startup and graceful shutdown
+    - App/service should be disposable: can be started on stopped at a moment's notice
+      that facilites fast elastic scaling and robust production deployments
+    - App/service should minimiza startup time
+    - App/service should shut down gracefully on SIGTERM:
+        - For HTTP cease listening, let curretn request to finish, and then exit
+        - For AMPQ return current idempotent job to a queue
+1. **Dev/prod parity**. Keep development, staging, and production as similar as possible
+    - App/service delivery pipeline shout be completely automated and use CI/CD
+    - Use the same Docker images in all environments (dev, stage, prod)
+1. **Logs**. Treat logs as event streams
+    - Instrumentalize app/service with logs to get insights, telemetry, and
+      observability
+    - Logs are the stream of time-ordered events collected in centralized log
+      aggregation system (Elasticsearch)
+    - App/serer should only emit all structured (JSON) logs to the STDOUT
+    - Execution environment manages to augement and forward logs to the centralized log
+      aggregation system (Elasticsearch) for introspection, real-time analysis, and
+      alerting
+1. **Admin processes**. Run admin/management taks as one-off processes
+    - IaC admin source code and dependencies should ship with the app/service source
+      code to avoid sync issues
 
 # Security by design principles
 
