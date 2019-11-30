@@ -447,7 +447,7 @@ structure
 # 12-factor SaaS cloud application
 
 1. **Codebase**. One codebase tracked in revision control, many deployments
-    - Use revision control system (Git) to track codebase changes
+    - Use revision control system (Git) to track changes to the codebase
     - Set up one repository per app/service
     - Single codebase is deployed into multiple environments (dev, test, staging,
       production) with different level of maturity/testing
