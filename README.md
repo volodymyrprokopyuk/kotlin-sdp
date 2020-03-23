@@ -615,9 +615,9 @@ structure
 perspective
 
 ```
-**As a** <role, user, who>
-**I want*** <capability, goal, what>,
-**so that** <benefit, reason, why>
+As a <role, user, who>
+I want <capability, goal, what>,
+so that <benefit, reason, why>
 ```
 
 ### Gherkin feature with scenarios (detailed BDD, test perspective)**
@@ -626,8 +626,8 @@ perspective
 language that a user can understand
 
 ```gherkin
-Feature: <feature name>
-    <feature description> (collection of scenarios)
+Feature: <feature name> (collection of scenarios)
+    <feature description>
     Scenario: <scenario> (colleciton of steps)
         Given: <precondition>
         When: <action>
@@ -646,5 +646,5 @@ Goal: <goal in context>
 Precondition: <initial system state>
 Trigger: <actor action>
 Success: <main success scenario>
-Extensions: <alternative schenarios and enhancements>
+Extensions: <alternative scenarios and enhancements>
 ```
