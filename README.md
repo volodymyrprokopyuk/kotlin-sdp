@@ -606,3 +606,45 @@ structure
   c) implement required tests for it d) add monitoring and auditing of it
 - **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakest
   component in a system
+
+## Description of software feature
+
+### User story (high level, user perspective)
+
+**User story** describes in an informal language a software feature from the end user
+perspective
+
+```
+**As a** <role, user, who>
+**I want*** <capability, goal, what>,
+**so that** <benefit, reason, why>
+```
+
+### Gherkin feature with scenarios (detailed BDD, test perspective)**
+
+**Gherkin feature with scenarios** specifies expected sofware behavior in a logical
+language that a user can understand
+
+```gherkin
+Feature: <feature name>
+    <feature description> (collection of scenarios)
+    Scenario: <scenario> (colleciton of steps)
+        Given: <precondition>
+        When: <action>
+        Then: <result>
+```
+
+### Use case (actor interaciton with a system)
+
+**Use case** describes in text + diagram interaction between an actor (human or external
+system) and a system to achieve a goal
+
+```
+Title: <active verb one-liner>
+Actor: <primary actory>
+Goal: <goal in context>
+Precondition: <initial system state>
+Trigger: <actor action>
+Success: <main success scenario>
+Extensions: <alternative schenarios and enhancements>
+```
