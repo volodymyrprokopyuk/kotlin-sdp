@@ -353,6 +353,16 @@ structure
   a single, unambiguous, authoritative representation within the system. The
   modification of any single element of the system does not require a change in other
   logically unrelated elements
+- **Abstraction principle**. Function (interpretation) and structure (representation)
+  should be independent. It should be possible to use a value or a procedure whthout
+  knowing how it is implemented. It should be possible to change the implementation
+  without breaking the client code
+    - **Data abstraction** (abstract data types, ADT). Hide the representation of a data
+      type behind an interface (constructors, selectors, [mutators], type predicate)
+    - **Procedure abstraction** (higher-order functions, HOF). Define the generic
+      algorithm in a function that takes as a parameter(s) other function(s) to perform
+      specific task(s). Examples: map, filter, fold (fundamental iterator), unfold
+      (fundamental constructor)
 - **Information hiding**. One piece of code that calls another piece of code should not
   know internals about that other piece of code. This make it possible to change
   internal parts of the called piece of code without being forced to change the calling
@@ -655,7 +665,7 @@ I want <capability, goal, what>,
 so that <benefit, reason, why>
 ```
 
-### Gherkin feature with scenarios (detailed BDD, test perspective)**
+### Gherkin feature with scenarios (detailed BDD, test perspective)
 
 **Gherkin feature with scenarios** specifies expected software behavior in a logical
 language that a user can understand
