@@ -363,14 +363,15 @@ structure
       algorithm in a function that takes as a parameter(s) other function(s) to perform
       specific task(s). Examples: map, filter, fold (fundamental iterator), unfold
       (fundamental constructor)
-- **Information hiding**. One piece of code that calls another piece of code should not
-  know internals about that other piece of code. This make it possible to change
-  internal parts of the called piece of code without being forced to change the calling
-  piece of code accordingly. Expose as little as possible of the internal implementation
-  details of a module to promote Loose Coupling between modules. Provide a stable
-  interface to module functionality that will protect the clients of the module from
-  changes in module implementation. A module implements the Information Hiding principle
-  by applying the encapsulation technique
+- **Information hiding**. Information should only be made available on a need-to-know
+  basis. **Locality principle** scopes should be as small as possible. One piece of code
+  that calls another piece of code should not know internals about that other piece of
+  code. This make it possible to change internal parts of the called piece of code
+  without being forced to change the calling piece of code accordingly. Expose as little
+  as possible of the internal implementation details of a module to promote Loose
+  Coupling between modules. Provide a stable interface to module functionality that will
+  protect the clients of the module from changes in module implementation. A module
+  implements the Information Hiding principle by applying the encapsulation technique
 - **High cohesion**. High Cohesion is a degree to which the components inside a module
   belongs together. A module has High Cohesion when the module responsibility is clearly
   defined and the module has as few dependencies as possible. Single Responsibility
