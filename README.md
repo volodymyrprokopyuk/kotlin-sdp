@@ -441,7 +441,7 @@ structure
   exposed through interfaces. Dependency Inversion Principle fosters testability of
   components
 
-# UNIX Principles
+# UNIX principles
 
 - Make each program do one thing and do it well
 - To do a new job build afresh rather than complicate old programs by adding new
@@ -454,6 +454,22 @@ structure
 - Design and build software to be tried early. Build prototype as soon as
   possible. Don't hesitate to throw away bad design and rebuild from scratch
 - Use tools or even build tools for repetitive task automation
+
+# Unix philosophy
+
+- Modularity. Write simple parts connected by clean interfaces
+- Clarity. Clarity is better than cleverness
+- Composition. Design programms to be connected to other programs
+- Separation. Separate policies from mechanisms. Separate interfaces from engines
+- Simplicity. Design for simplicity. Add complexity only where you must
+- Parsimony. Write a big program only when nothgin else will do
+- Transparency. Design for visibility to make issue resolution easier
+- Representation. Fold knowledge into data, so program logic can be simple and robust
+- Silence. When a program has nothing surprising to say, it should say nothing
+- Failure. When a program must fail, fail noisily as soon as possible
+- Generation. Write programs to write programs when you can
+- Optimization. Prototype before polishing. Get it working before you optimize it
+- Extensibility. Design for the future, because it will be here sooner than you think
 
 # 12-factor SaaS cloud application
 
