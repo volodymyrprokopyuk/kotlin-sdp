@@ -653,6 +653,14 @@ structure
 - **Polymorphism**. A system should specify only behavior (via message protocol) of
   objects, not their representation
 
+## Philosophy of clarity in programming
+
+- Most programs are more complex than thay need to be because of bad design
+- Data structures, and not algorithms, are central to programming
+- Optimize only after the implementation when a bottleneck is found
+- Use consistent identificator names with minimum length, maximum information in a
+  context
+
 ## Description of software feature
 
 ### User story (high level, user perspective)
