@@ -20,10 +20,10 @@ are singletons<br/>
 instances. The system uses a `DocumentCreator`=`AbstractFactory` for creating the
 concrete `Letter` and `Resume` instances from the two families: modern and fancy
 
-- [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)
+- [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)^#^
 [(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt)<br/>
-**What**. Builder separates a construction of a complex object from its representation,
-allowing the same construction step by step process to create various
+**What**. Builder separates the construction of a complex object from its
+representation, allowing the same step by step construction process to create various
 representations<br/>
 **How**. Client uses **(a)** a separate `Builder` object which receives each
 initialization parameter step by step in a fluent interface or **(b)** a `Builder` DSL
@@ -34,9 +34,8 @@ function call and returns the resulting constructed complex object at once<br/>
 
 - [**Dependency injection**](src/main/kotlin/org/vld/sdp/creational/DependencyInjection.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/creational/DependencyInjectionTest.kt)<br/>
-**What**. A class (client) accepts through an interface the objects
-(services/dependencies) the class requires from an injector instead of creating the
-objects directly<br/>
+**What**. A class (client) accepts through an interface objects (services/dependencies)
+the class requires from an injector instead of creating the objects directly<br/>
 **How**. The `Injector` passes the `Service` object to the `Client` class via the
 `Service` interface by the inversion of control. `Injector` decouples the `Client` from
 creating the `Service` object directly. The `Injector` creates the `Service` object and
@@ -229,9 +228,9 @@ the `Mul`=`NonterminalExpression` implement the `Expression` interface. The
 - [**Iterator**](src/main/kotlin/org/vld/sdp/behavioral/Iterator.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt)<br/>
 **What**. Iterator provides a way to access the elements of an aggregate
-object/container of components sequentially without exposing aggregate underlying
-representation (data structure). Iterator encapsulates the traversal algorithm of a
-given aggregate object/container of components<br/>
+object/container of components sequentially without exposing the underlying
+representation (data structure) of the aggregate. Iterator encapsulates the traversal
+algorithm of a given aggregate object/container of components<br/>
 **How**. The `ContainerIterator` implements the `Iterator` interface for the `Container`
 of `Component`s to traverse sequentially the `Component`s of the `Container` without
 exposing the underlying aggregate representation. Client access the `Component`s of the
@@ -242,7 +241,7 @@ interface for the `Fruits`=`Container` of `Fruit`=`Component`
 - [**Mediator**](src/main/kotlin/org/vld/sdp/behavioral/Mediator.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/MediatorTest.kt)<br/>
 **What**. Mediator defines an object that encapsulates how a set of other objects
-interact. Mediator promotes loose coupling between the colleagues<br/>
+interact. Mediator promotes loose coupling between collaborators<br/>
 **How**. The `Colleague`s interact with each other through the `Mediator` interface
 without having any references to each other. The `Mediator` object has references to
 every `Colleague` and interacts with a `Colleague` through a common `Colleague`
@@ -322,7 +321,7 @@ specialization override the variable algorithm steps
 - [**Visitor**](src/main/kotlin/org/vld/sdp/behavioral/Visitor.kt)
 [(usage)](src/test/kotlin/org/vld/sdp/behavioral/VisitorTest.kt)<br/>
 **What**. Visitor separates an algorithm from an object structure on which the algorithm
-operates. Visitor allows to add new operations through the `Visitor`s to the existent
+operates. Visitor allows to add new operations through the `Visitor`s to the existing
 object structure known as `Element`s without modifying the structure<br/>
 **How**. The `Element` interface defines a visitor operation for every `Visitor` type
 based on the abstract `Visitor` interface implementing the dynamic dispatch on the
