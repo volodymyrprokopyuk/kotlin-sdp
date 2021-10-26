@@ -372,45 +372,46 @@ structure
   protect the clients of the module from changes in module implementation. A module
   implements the Information Hiding principle by applying the encapsulation technique
 - **High cohesion**. High Cohesion is a degree to which the components inside a module
-  belongs together. A module has High Cohesion when the module responsibility is clearly
+  belong together. A module has High Cohesion when the module responsibility is clearly
   defined and the module has as few dependencies as possible. Single Responsibility
   Principle fosters High Cohesion
 - **Loose coupling**. Each module in the system has as little knowledge as possible
   about other modules in the system. Use interfaces to implement Loose Coupling between
   modules. High Cohesion fosters Loose Coupling
-- **Robustness principle**. Be conservative in what you do (produce outputs compliant
-  with the specification). Be liberal in what you accept from others (validate and
-  sanitize inputs as long as the meaning is clear)
+- **Robustness principle** (flexible input, compliant output). Be conservative in what
+  you do (produce outputs compliant with the specification). Be liberal in what you
+  accept from others (validate and sanitize inputs as long as the meaning is clear)
 - **Top-down approach**. Mostly used in Object-Oriented Programming (OOP) with
-  interfaces and abstract classes. Decomposition a system into the compositional
+  interfaces and abstract classes. Decomposition of a system into compositional
   subsystems. An overview of the system is formulated specifying but not detailing any
   first-level subsystems. Each subsystem is then refined in yet greater detail, until
   the entire specification is reduced to base elements. Emphasize on complete
   understanding of the system. No coding can begin until a sufficient level of detail
-  has been reached in design phase
+  has been reached in the design phase
 - **Bottom-up approach**. Mostly used in Functional Programming (FP) with function
-  composition. Composition of basic elements together into a more complex system. The
-  individual base elements of a system are first specified in great detail. These
-  elements are then linked together to form larger subsystems, until a complete
-  top-level system is formed. Emphasized coding and early testing, which can begin as
-  soon as the first module has been specified. There is a risk of how the modules can be
-  linked together to form a top-level system
+  composition. Composition of basic elements together into a more complex
+  components. The individual base elements of a system are first specified in great
+  detail. These elements are then linked together to form larger subsystems, until a
+  complete top-level system is formed. Emphasize coding and early testing, which can
+  begin as soon as the first module has been specified. There is a risk of how the
+  modules can be linked together to form the top-level system
 - **RAII - Resource Acquisition Is Initialization**. Smart Pointer: constructor
-  acquires, destructor releases. Smart Pointer is scope-based resource management. When
-  a resource gets out of scope via normal execution or thrown exception the resource is
-  deallocated automatically by the Smart Pointer destructor. RAII only works for
-  resources acquired and released by stack-allocated objects where there is well-defined
-  static object lifetime
+  acquires, destructor releases. Smart Pointer is the scope-based resource
+  management. When a resource gets out of scope via normal execution or thrown exception
+  the resource is deallocated automatically by the Smart Pointer destructor. RAII only
+  works for resources acquired and released by stack-allocated objects where there is
+  well-defined static object lifetime
 - **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging, state
   hiding, late binding. Object has well encapsulated structure (properties) and provides
-  behavior (methods) through well defined interface. Abstraction, responsibilities and
-  modularization are the keys to master complexity
+  behavior (methods) through well defined interface (messages). Abstraction (hierarchy),
+  separation of concerns (composability) and modularization (orthogonality) are the keys
+  to master complexity
 - **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box
   reuse through an interface and promotes loose coupling. Inheritance is white box reuse
   through public/protected members
 - **ADP - Acyclic Dependency Principle**. Circular dependencies should be
-  avoided. Dependency Inversion Principle or creation of a new package with common
-  components breaks the circular dependencies
+  avoided. Dependency Inversion Principle and creation of a new package with common
+  components breaks circular dependencies
 - **LoD - Law of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk
   to strangers, only talk to your immediate neighbors. LoD fosters Loose Coupling and
   Information Hiding
