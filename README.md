@@ -20,8 +20,8 @@ are singletons<br/>
 instances. The system uses a `DocumentCreator`=`AbstractFactory` for creating the
 concrete `Letter` and `Resume` instances from the two families: modern and fancy
 
-- [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)^#^
-[(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt)<br/>
+- [**Builder**](src/main/kotlin/org/vld/sdp/creational/Builder.kt)
+[(usage)](src/test/kotlin/org/vld/sdp/creational/BuilderTest.kt) #<br/>
 **What**. Builder separates the construction of a complex object from its
 representation, allowing the same step by step construction process to create various
 representations<br/>
@@ -33,7 +33,7 @@ function call and returns the resulting constructed complex object at once<br/>
 `Car` instance
 
 - [**Dependency injection**](src/main/kotlin/org/vld/sdp/creational/DependencyInjection.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/DependencyInjectionTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/creational/DependencyInjectionTest.kt) #<br/>
 **What**. A class (client) accepts through an interface objects (services/dependencies)
 the class requires from an injector instead of creating the objects directly<br/>
 **How**. The `Injector` passes the `Service` object to the `Client` class via the
@@ -59,7 +59,7 @@ concrete implementations of the `FactoryMethod` interface are singletons<br/>
 families: modern and fancy
 
 - [**Prototype**](src/main/kotlin/org/vld/sdp/creational/Prototype.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/creational/PrototypeTest.kt) #<br/>
 **What**. Prototype creates new objects by cloning prototypical instance, boosting
 performance and keeping memory footprint to a minimum<br/>
 **How**. Client works only with the `Product` interface and uses the `Product::clone()`
@@ -109,7 +109,7 @@ independently. The `Abstraction` is implemented by delegating to its
 `Device::switchOn()` method delegates to the `Vendor::support(Device)` method
 
 - [**Composite**](src/main/kotlin/org/vld/sdp/structural/Composite.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/CompositeTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/structural/CompositeTest.kt) #<br/>
 **What**. Composite treats individual objects and composition of objects
 uniformly. Composes objects into tree structures to represent part-whole
 hierarchies<br/>
@@ -123,7 +123,7 @@ left expressions and than applying the actual operation to the results of the le
 right expression evaluations
 
 - [**Decorator**](src/main/kotlin/org/vld/sdp/structural/Decorator.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/DecoratorTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/structural/DecoratorTest.kt) #<br/>
 **What**. Decorator attaches additional behavior to an individual object dynamically
 keeping the same interface without affecting the behavior of other objects of the same
 class<br/>
@@ -161,7 +161,7 @@ class implements the `Glyph`=`Flyweight` interface that allows extrinsic glyph s
 efficiently the `GlyphCode` instances
 
 - [**Proxy**](src/main/kotlin/org/vld/sdp/structural/Proxy.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/structural/ProxyTest.kt) #<br/>
 **What**. Proxy provides a placeholder/wrapper for another object for access control,
 request validation, response caching, etc.<br/>
 **How**. The real object and the `Proxy` implement the same `Subject` interface, so the
@@ -178,7 +178,7 @@ object
 Behavioral patterns provide simple way of implementing **interactions between objects**.
 
 - [**Chain of responsibility**](src/main/kotlin/org/vld/sdp/behavioral/ChainOfResponsibility.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ChainOfResponsibilityTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ChainOfResponsibilityTest.kt) #<br/>
 **What**. Chain of Responsibility chains the receiving objects/functions (handlers) and
 pass the request along the chain until an object/function handles the request completely
 or partially. Avoids coupling of the request sender to the request receiver allowing
@@ -226,7 +226,7 @@ the `Mul`=`NonterminalExpression` implement the `Expression` interface. The
 `Interpreter` implements the `Expression` interpretation algorithm
 
 - [**Iterator**](src/main/kotlin/org/vld/sdp/behavioral/Iterator.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/IteratorTest.kt) #<br/>
 **What**. Iterator provides a way to access the elements of an aggregate
 object/container of components sequentially without exposing the underlying
 representation (data structure) of the aggregate. Iterator encapsulates the traversal
@@ -266,7 +266,7 @@ object to store to/retrieve from the `Counter` internal state. The incremental c
 the `Counter` object could be altered by using the `CounterMemento` object
 
 - [**Observer**](src/main/kotlin/org/vld/sdp/behavioral/Observer.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/ObserverTest.kt) #<br/>
 **What**. Observer defines a one-to-many dependency between objects where a state change
 in one object `Subject` is automatically notified to all subjects' dependents
 `Observers`<br/>
@@ -294,7 +294,7 @@ defined in state interface method invocation<br/>
 `VendingMachine` `State`
 
 - [**Strategy**](src/main/kotlin/org/vld/sdp/behavioral/Strategy.kt)
-[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StrategyTest.kt)<br/>
+[(usage)](src/test/kotlin/org/vld/sdp/behavioral/StrategyTest.kt) #<br/>
 **What**. Strategy defines a family of interchangeable at runtime algorithms and
 provides excellent support for the Open-Closed Principle<br/>
 **How**. Define a set of interchangeable algorithms/strategies that implement the
