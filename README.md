@@ -401,11 +401,12 @@ structure
   the resource is deallocated automatically by the Smart Pointer destructor. RAII only
   works for resources acquired and released by stack-allocated objects where there is
   well-defined static object lifetime
-- **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging, state
-  hiding, late binding. Object has well encapsulated structure (properties) and provides
-  behavior (methods) through well defined interface (messages). Abstraction (hierarchy),
-  separation of concerns (composability) and modularization (orthogonality) are the keys
-  to master complexity
+- **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging
+  (uniform communication), state hiding (data abstraction), late binding (behavioral
+  polymorphism). Object has well encapsulated structure (properties) and provides
+  polymorphic behavior (methods) through a well defined interface
+  (messages). Abstraction (hierarchy), separation of concerns (composability) and
+  modularization (orthogonality) are the keys to master complexity
 - **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box
   reuse through an interface and promotes loose coupling. Inheritance is white box reuse
   through public/protected members
@@ -429,12 +430,12 @@ structure
   supertype. Preconditions cannot be strengthened in a subtype. Postconditions cannot be
   weakened in a subtype. Supertype invariants must be preserved in a subtype
 - **ISP - Interface Segregation Principle**. Segregate one broad single interface into a
-  set of smaller and highly cohesive interfaces so other program components depend only
+  set of smaller and highly cohesive interfaces, so other program components depend only
   on small cohesive interfaces instead of depending on a single broad interface, and
   other program components won't be required to implement all the functionality of the
   broad interface
 - **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with
-  the mediation of an abstraction (interface) layer. Each module should depend on an
+  the mediation of an abstraction layer (interface). Each module should depend on an
   abstraction (interface), not other modules directly. The abstraction (interface)
   provides the behavior needed by the module through possibly multiple
   implementations. Common features should be consolidated in a shared abstractions
@@ -443,32 +444,39 @@ structure
 
 # UNIX principles
 
-- Make each program do one thing and do it well
+- Make each program do one thing and do it well (quality components)
 - To do a new job build afresh rather than complicate old programs by adding new
-  features
+  features (Single Responsibility Principle, separation of concerns)
 - Expect the output of every program to become the input to another program. Write
   programs to handle text streams, because text is a universal interface. Don't clutter
   the output with extraneous information. Don't insist for interactive input and allow
-  for scripting
-- Favor composability over monolithic design
-- Design and build software to be tried early. Build prototype as soon as
-  possible. Don't hesitate to throw away bad design and rebuild from scratch
-- Use tools or even build tools for repetitive task automation
+  for scripting (uniform communication)
+- Favor composability (bottom-up approach in FP) over monolithic design
+- Design and build software to be tried early (bottom-up approach in FP). Build
+  prototype as soon as possible. Don't hesitate to throw away bad design and rebuild
+  from scratch
+- Use tools or even build tools for repetitive task automation (DevOps)
 
 # Unix philosophy
 
-- Modularity. Write simple parts connected by clean interfaces
+- Modularity. Write simple parts connected by clean interfaces (modularity +
+  composability)
 - Clarity. Clarity is better than cleverness
-- Composition. Design programms to be connected to other programs
+- Composition. Design programms to be connected to other programs (composability +
+  uniform communication)
 - Separation. Separate policies from mechanisms. Separate interfaces from engines
+  (orthogonality)
 - Simplicity. Design for simplicity. Add complexity only where you must
 - Parsimony. Write a big program only when nothgin else will do
-- Transparency. Design for visibility to make issue resolution easier
+- Transparency. Design for visibility to make issue resolution easier (Dependency
+  Inversion Principle)
 - Representation. Fold knowledge into data, so program logic can be simple and robust
+  (first data structures and then algorithms)
 - Silence. When a program has nothing surprising to say, it should say nothing
 - Failure. When a program must fail, fail noisily as soon as possible
-- Generation. Write programs to write programs when you can
-- Optimization. Prototype before polishing. Get it working before you optimize it
+- Generation. Write programs to write programs when you can (metaprogramming and DSL)
+- Optimization. Prototype before polishing. Get it working and correct before you
+  optimize it to be fast
 - Extensibility. Design for the future, because it will be here sooner than you think
 
 # 12-factor SaaS cloud application
@@ -673,7 +681,7 @@ structure
 
 - Most programs are more complex than thay need to be because of bad design
 - Data structures, and not algorithms, are central to programming
-- Optimize only after the implementation when a bottleneck is found
+- Optimize only after the implementation when a bottleneck is identified
 - Use consistent identificator names with minimum length, maximum information in a
   context
 
