@@ -25,10 +25,10 @@ concrete `Letter` and `Resume` instances from the two families: modern and fancy
 **What**. Builder separates the construction of a complex object from its
 representation, allowing the same step by step construction process to create various
 representations<br/>
-**How**. Client uses **(a)** a separate `Builder` object which receives each
-initialization parameter step by step in a fluent interface or **(b)** a `Builder` DSL
-initialization method which configures properties by direct property assignment or
-function call and returns the resulting constructed complex object at once<br/>
+**How**. Client uses (a) a separate `Builder` object which receives each initialization
+parameter step by step in a fluent interface or (b) a `Builder` DSL initialization
+method which configures properties by direct property assignment or function call and
+returns the resulting constructed complex object at once<br/>
 **Example**. `Car.Builder` provides a builder DSL (`Car.build { ... }`) for building a
 `Car` instance
 
@@ -401,12 +401,6 @@ structure
   the resource is deallocated automatically by the Smart Pointer destructor. RAII only
   works for resources acquired and released by stack-allocated objects where there is
   well-defined static object lifetime
-- **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging
-  (uniform communication), state hiding (data abstraction), late binding (behavioral
-  polymorphism). Object has well encapsulated structure (properties) and provides
-  polymorphic behavior (methods) through a well defined interface
-  (messages). Abstraction (hierarchy), separation of concerns (composability) and
-  modularization (orthogonality) are the keys to master complexity
 - **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box
   reuse through an interface and promotes loose coupling. Inheritance is white box reuse
   through public/protected members
@@ -489,30 +483,32 @@ structure
 1. **Dependencies**. Explicitly declare and isolate dependencies
     - Use dependency management system (Yarn)
     - Always explicitly define dependency versions (package.json)
-    - Isolate locally installed dependencies from interference with system-wide packages
+    - Isolate locally installed dependencies in `~/.local/lib` from interference with
+      system-wide packages in `/usr/local/lib`
     - Only the language runtime and a dependency manager are required to run the
       app/service
-    - Explicitly include (into Docker image) all system tools (curl, imagemagick) that
-      app/service depends on
+    - Explicitly include (into Docker image) all system tools (curl, imagemagick,
+      pandoc) that app/service depends on
 1. **Configuration**. Store configuration in the environment
     - Keep strict separation of the environment-specific configuration from the codebase
     - Do not store any credentials and secretes in the codebase
     - Store environment-specific configuration in the environment variables set up by
       IaC deployment scripts
 1. **Backing services**. Treat backing services as attached resources accessible via URI
-    - Most of the apps/services use database, queues, cache, email systems, cloud
+    - Most of the apps/services use databases, queues, caches, email systems, cloud
       services (resources)
     - App/service can easily swap backing service by changing the resource URI provided
       by the environment-specific configuration without any codebase changes
-1. **Build, release, run**. Strictly separate build and run stages
-    - Codebase is transformed into a deployment through the below stages
-    - Build stage transforms a source code repository (Git) into an executable artifact
+1. **Build, release, deploy**. Strictly separate build and run stages
+    - A codebase is transformed into a deployment through the below stages (verified
+      build -> immutable release -> automated deployment)
+    - Build stage transforms a source code (Git repository) into an executable artifact
       (Docker image). Fetch specific tag, download dependencies, compile an executable
-      artifact
+      artifact, test the artifact
     - Release stage combines the environment-independent executable artifact with the
-      environment-specific configuration. Every release is immutable and should be
-      uniquely tagged. Any change must create a new release
-    - Run stage launches the app/service in an environment
+      environment-specific configuration into a deployment unit. Every release is
+      immutable and should be uniquely tagged. Any change must create a new release
+    - Deployment stage launches the app/service in an environment
 1. **Processes**. Execute the app as one or more stateless, share-nothing processes
     - Any data that needs to persist must be stored in a stateful backing service
     - Process memory and file system can be used only as a temporary cache
@@ -526,30 +522,33 @@ structure
       a port
     - In production a load balancer (NGINX) routes requests from a public-facing
       hostname to the port-bound app/service
-1. **Concurrency**. Scale out via the process model
-    - User first-class, share-nothing Unix processes/daemons (horizontal scalability)
-      for each type of work load (HTTP requests, background workers, database)
+1. **Concurrency**. Scale out via the OS process model
+    - Use first-class, share-nothing Unix processes/daemons (horizontal scalability)
+      for each type of work load (HTTP traffic, background workers, database)
     - App/service should rely on OS process manager (systemd)
 1. **Disposability**. Maximize robustness with fast startup and graceful shutdown
-    - App/service should be disposable: can be started on stopped at a moment's notice
-      that facilitates fast elastic scaling and robust production deployments
+    - App/service should be disposable: can be started or stopped quickly that
+      facilitates fast elastic scaling and robust production deployments
     - App/service should minimize startup time
     - App/service should shut down gracefully on SIGTERM:
         - For HTTP cease listening, let current request to finish, and then exit
         - For AMPQ return current idempotent job to a queue
-1. **Dev/prod parity**. Keep development, staging, and production as similar as possible
+1. **Dev/prod parity**. Keep development, testing, staging, and production as similar as
+   possible
     - App/service delivery pipeline shout be completely automated and use CI/CD
-    - Use the same Docker images in all environments (dev, stage, prod)
+    - Use the same Git repository, Docker image in all environments (dev, test, stage,
+      prod)
 1. **Logs**. Treat logs as event streams
     - Instrumentalize app/service with logs to get insights, telemetry, and
       observability
-    - Logs are the stream of time-ordered events collected in centralized log
+    - Logs are a stream of time-ordered events collected in a centralized log
       aggregation system (Elasticsearch)
     - App/serer should only emit all structured (JSON) logs to the STDOUT
-    - Execution environment manages to augment and forward logs to the centralized log
+    - Execution environment manages to augment and forward logs to a centralized log
       aggregation system (Elasticsearch) for introspection, real-time analysis, and
       alerting
-1. **Admin processes**. Run admin/management task as one-off processes
+1. **Admin processes**. Run admin/management task as one-off processes in the same
+   codebase
     - IaC admin source code and dependencies should ship with the app/service source
       code to avoid sync issues
 
@@ -563,47 +562,49 @@ structure
     - Confidentiality - only Bob can read the message
     - Integrity - Eve cannot alter the message
     - Authenticity - only Alice could have sent the message
-- **Least privilege**. A subject should have the least amount of privilege (CPU/RAM
+- **Least privilege** #. A subject should have the least amount of privilege (CPU/RAM
   quotas, file system/network access, data access permissions, business transaction
   limits, time-based constraints) explicitly granted to perform its business process
-  with the objective to limit intentional or unintentional damage to data. The right
-  should be granted just before performing the operation and should be immediately
-  revoked on a completion or failure of the operation. The function of the subject (and
-  not the identity) should control the assignment of rights. Example: if a user only
-  needs to read a file, then he should not be granted permission to write the file
-- **Establish secure defaults. Security baseline in terms of functionality**. Delivered
-  out of the box functionality should be secure by default, and it should be up to the
+  with the objective to limit intentional or unintentional damage to data. The
+  permission should be granted just before performing the operation and should be
+  immediately revoked on a completion or failure of the operation. The function of the
+  subject (and not the identity) should control the assignment of permissions. Example:
+  if a user only needs to read a file, then he should not be granted permission to write
+  the file
+- **Secure defaults. Security baseline in terms of functionality**. Delivered
+  out-of-the-box functionality should be secure by default, and it should be up to the
   user to reduce security and increase risk if they are allowed. Example: user password
   expiration and complexity should be enabled by default, user might be allowed to
-  simplify password management
+  weaken password requirements
 - **Fail-safe defaults. Bottom line of user initial privileges**. Prefer explicitly
   granted access over access exclusion. By default a user do not have access to any
-  resource until access to a resource has been granted explicitly, so on an operation
-  failure the system security is not compromized
+  resource until access to a resource is granted explicitly, so on an operation failure
+  the system security is not compromized
 - **Fail securely**. When a system fails, it should fail to a state where the security
   of a system is not compromised. Automatically release resources, decrease privileges,
   and maybe logout from the account on operation failure
-- **Defense in depth**. Multiple security controls at each architectural level that
+- **Defense in depth** #. Multiple security controls at each architectural level that
   approach risk from different perspectives are better as it makes much more difficult
-  to exploit vulnerabilities. Example: secure coding, explicit resource and privileges
-  management, security tests, input data validation/sanitization, secure deployment,
-  proactive application monitoring and auditing, continuous security and risk
-  assessment. Example: administrative web interface should be protected a) by
-  authentication, b) only accessible from internal network, c) with enabled audit
-  logging
-- **Complete mediation**. Every access to every resource must be checked for
+  to exploit vulnerabilities. Example: secure coding + code reviews, explicit resource
+  acquisition and privileges granting, security testing, input data
+  validation/sanitization, secure deployment, proactive application monitoring and
+  auditing, continuous security and risk assessment. Example: administrative web
+  interface should be protected (a) by authentication, (b) only accessible from internal
+  network, (c) with enabled audit logging
+- **Complete mediation** #. Every access to every resource must be checked for
   authentication and authorization via system-wide central point of access
   control. Subsequent accesses to the same resource should also be checked and not
   cached. Performance (caching) vs security (explicit check of every request) trade off
-- **Separation of duties**. Do not grant multiple unrelated privileges to a single
+- **Separation of duties** #. Do not grant multiple unrelated privileges to a single
   account. Require collaboration of multiple accounts to perform important operations
-  securely in order to prevent fraud or error. Example: application administrators
-  should not be super users of the application; an administrator should not be able to
+  securely in order to prevent fraud or error. Example: application administrator
+  should not be a super user of the application; an administrator should not be able to
   perform business operations on behalf of an application user
-- **Separation of privilege**. Every security control should be based on more than a
+- **Separation of privilege** #. Every security control should be based on more than a
   single condition in order to remove a single point of failure. Example: when approving
-  a request validate that a) user status is active b) user is authorized to access the
-  resource. Multi-factor authentication (something you know, you have, you are)
+  a request validate that (a) user is authenticated (b) user status is active (c) user is
+  authorized to access the resource. Multi-factor authentication MFA (something you know,
+  you have, you are)
 - **Economy of mechanism. Keep security simple**. Avoid complex approaches to security
   controls as it is much easier to spot functional defects and security flaws in simple
   designs and it is very difficult to identify problems in complex designs. Complexity
@@ -617,12 +618,12 @@ structure
   OAuth 2.0. Linux source code is publicly available, yet when properly secured, Linux
   is hard secure operating system
 - **Least common mechanism**. Mechanisms to access a resource should not be shared
-  between multiple subjects to gain access to a resource. Example: provide different
+  between subjects subjects to gain access to a resource. Example: provide different
   login pages for different types of users; if one of the login pages is compromized,
   other login pages are not impacted. Sharing the access from Internet to a web site
   between attackers and legit users gives place to DoS attack
-- **Minimize attack surface area**. Asses risks introduced by a new feature, then adapt
-  feature design and define security controls to minimize the attack surface
+- **Minimize attack surface area**. Asses security risks introduced by a new feature,
+  then adapt feature design and define security controls to minimize the attack surface
   area. Example: a search function of an online help feature may be vulnerable to a SQL
   injection attack; expose the feature only to authorized users, use data validation and
   escaping, or eliminate search function from the feature design by providing a better
@@ -636,14 +637,20 @@ structure
 - **Do not trust services**. Do not assume that third party partners have the same or
   higher security policies then yours. Put necessary security controls on third party
   services
-- **Fix security issues correctly**. Once a security issue has been identified, a)
-  understand the root cause of it and determine the scope of it b) develop a fix for it
-  c) implement required tests for it d) add monitoring and auditing of it
-- **Weakest link**. A chain is only as strong as its weakest link. Focus on the weakest
+- **Fix security issues correctly**. Once a security issue has been identified, (a)
+  understand the root cause of it and determine the scope of it (b) develop a fix for it
+  (c) implement required tests for it (d) add monitoring and auditing of it
+- **Weakest link** #. A chain is only as strong as its weakest link. Focus on the weakest
   component in a system
 
 ## Object-oriented design principles (message-passing paradigm)
 
+- **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging
+  (uniform communication), state hiding (data abstraction), late binding (behavioral
+  polymorphism). Object has well encapsulated structure (properties) and provides
+  polymorphic behavior (methods) through a well defined interface
+  (messages). Abstraction (hierarchy), separation of concerns (composability) and
+  modularization (orthogonality) are the keys to master complexity
 - **Uniform metaphor**. A system should be designed around a powerful metaphor that can
   be uniformly applied in all areas. Large applications are viewed in the same way as
   the fundamental units from which the system is built. Examples: lists/functions in
@@ -654,18 +661,18 @@ structure
 - **Modulatiry**. No component in a system should depend on the internal details of any
   other component. Component interdependencies in a system should be minimized
 - **Factoring via inheritance**. Each component in a system should be defined only in
-  one place. Use inheritance to provide well-factored design and avoid
-  repetition. Inheritance propagates default behavior through increasingly more
+  one place. Use inheritance to provide well-factored design and avoid repetition
+  (duplication). Inheritance propagates default behavior through increasingly more
   specific hierarchy of classes
 - **Classification**. Group similar components into class hierarchy to reduce
-  complexity. Class abstraction describes a) message protocol that the object recognizes
-  (explicit communication) b) internal state of the object (implicit
+  complexity. Class abstraction describes (a) message protocol that the object recognizes
+  (explicit communication) (b) internal state change of the object (implicit
   communication). Object is a concrete instance of a class
 - **Objects**. Use object-oriented model for storage. Objects are created by sending a
   message to their classes. Objects are automatically disposed when they are not needed
   any more and automatically reclaimed by a GC
     - **Protocol** (explicit communication) is a set of messages that the object can
-      respond
+      respond to
     - **State** (implicit communication) defines object-specific response to a
       message. All access to the internal state of an object is exclusively performed
       via message protocol (message-passing)
@@ -674,8 +681,8 @@ structure
   messages. Message-passing metaphor decouples the intent (message) from actual
   execution (method)
   - **Message** = operation + arguments
-- **Polymorphism**. A system should specify only behavior (via message protocol) of
-  objects, not their representation
+- **Polymorphism**. A system should specify (via message protocol, interface) only
+  behavior (interpretation) of objects, not their implementation (representation)
 
 ## Philosophy of clarity in programming
 
