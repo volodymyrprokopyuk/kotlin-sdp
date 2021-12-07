@@ -642,6 +642,36 @@ structure
   (c) implement required tests for it (d) add monitoring and auditing of it
 - **Weakest link** #. A chain is only as strong as its weakest link. Focus on the weakest
   component in a system
+- **Zero trust security** (zero trust [network] architecture, perimeterless security).
+  Never trust (no trust by default), always verify even inside the network perimeter
+  (traditional IT network security trusts anyone within the network perimeter)
+    - Strict identity verification (MFA, mutual authentication, session expiration +
+      re-authentication)
+    - Device verification (integrity, authorization)
+    - Microsegmentation for access segregation to prevent lateral movement
+    - Strict access control (roles, permissions, policies)
+    - Continuous monitoring inside and outside of the network perimeter
+    
+## Structured programming (SP)
+
+- SP provides secure flow control structures that allow for program proof and
+  verification
+- SP requires a single entry point and ideally single exit point, but multiple
+  exist points are also allowed to simplify program code
+- SP components
+    - Selection (conditionals, branching) `if/elif/else`, `case/of/else`
+    - Iteration (repetition, looping) `while`, `for/in`
+    - Code blocks (delimited sequence of statements) `  code`
+    - Subroutings (named and parametrized code block) `proc`, `func`
+    - Recursion (self-referencing)
+- Deviations from SP
+    - Early exit from a function `return`
+    - Early exit from a loop `continue`, `break`
+    - Exceptions `try/except`
+    - Use unwind protection for automated resource management `try/finally`,
+      RAII (stack-only)
+    - Multiple entry points: coroutines, generators (yeild control / value +
+      resume execution)
 
 ## Object-oriented design principles (message-passing paradigm)
 
