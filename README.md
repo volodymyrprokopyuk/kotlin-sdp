@@ -343,73 +343,78 @@ structure
 # Fundamental software design principles
 
 - **KISS - Keep It Simple, Stupid**. Do the simplest thing that could possibly
-  work. Avoid unnecessary complexity. Maintain balance between code simplicity and
-  system flexibility, extensibility
-- **YAGNI - You Aren't Gonna Need It**. Do not write code that is not necessary at the
-  moment, but might be necessary in the future. Do the simplest thing that could
-  possibly work
-- **DRY - Don't Repeat Yourself**. Avoid duplication. Every piece of knowledge must have
-  a single, unambiguous, authoritative representation within the system. The
-  modification of any single element of the system does not require a change in other
-  logically unrelated elements
-- **Abstraction principle**. Function (interpretation) and structure (representation)
-  should be independent. It should be possible to use a value or a procedure whthout
-  knowing how it is implemented. It should be possible to change the implementation
-  without breaking the client code
-    - **Data abstraction** (abstract data types, ADT). Hide the representation of a data
-      type behind an interface (constructors, selectors, [mutators], type predicate)
-    - **Procedure abstraction** (higher-order functions, HOF). Define the generic
-      algorithm in a function that takes as a parameter(s) other function(s) to perform
-      specific task(s). Examples: map, filter, fold (fundamental iterator), unfold
-      (fundamental constructor)
-- **Information hiding**. Information should only be made available on a need-to-know
-  basis. **Locality principle** scopes should be as small as possible. One piece of code
-  that calls another piece of code should not know internals about that other piece of
-  code. This make it possible to change internal parts of the called piece of code
-  without being forced to change the calling piece of code accordingly. Expose as little
-  as possible of the internal implementation details of a module to promote Loose
-  Coupling between modules. Provide a stable interface to module functionality that will
-  protect the clients of the module from changes in module implementation. A module
-  implements the Information Hiding principle by applying the encapsulation technique
-- **High cohesion**. High Cohesion is a degree to which the components inside a module
-  belong together. A module has High Cohesion when the module responsibility is clearly
-  defined and the module has as few dependencies as possible. Single Responsibility
-  Principle fosters High Cohesion
-- **Loose coupling**. Each module in the system has as little knowledge as possible
-  about other modules in the system. Use interfaces to implement Loose Coupling between
-  modules. High Cohesion fosters Loose Coupling
-- **Robustness principle** (flexible input, compliant output). Be conservative in what
-  you do (produce outputs compliant with the specification). Be liberal in what you
-  accept from others (validate and sanitize inputs as long as the meaning is clear)
+  work. Avoid unnecessary complexity. Maintain balance between code simplicity
+  and system flexibility, extensibility
+- **YAGNI - You Aren't Gonna Need It**. Do not write code that is not necessary
+  at the moment, but might be necessary in the future. Do the simplest thing
+  that could possibly work
+- **DRY - Don't Repeat Yourself**. Avoid duplication. Every piece of knowledge
+  must have a single, unambiguous, authoritative representation within the
+  system. The modification of any single element of the system should not
+  require changes in other logically unrelated elements
+- **Abstraction principle**. Function (interpretation) and structure
+  (representation) should be decoupled and independent. It should be possible to
+  use a value or a function without knowing how it is implemented. It should be
+  possible to change the implementation without breaking a client code
+    - **Data abstraction** (abstract data types, ADT). Hide a representation
+      of a data type behind an interface (constructors, selectors, [mutators],
+      type predicate)
+    - **Procedure abstraction** (higher-order functions, HOF). Define a generic
+      algorithm in a function that takes as parameters other functions to
+      perform specific tasks. Examples: map, filter, reduce, fold (fundamental
+      iterator), unfold (fundamental constructor)
+- **Information hiding**. Information should only be made available on the
+  need-to-know basis. **Locality principle** scopes should be as small as
+  possible. One piece of code that calls another piece of code should not know
+  internals about that other piece of code. This make it possible to change
+  internal parts of the called piece of code without being forced to change the
+  calling piece of code accordingly. Expose as little as possible of the
+  internal implementation details of a module to promote loose coupling between
+  modules. Provide a stable interface to module functionality that will protect
+  clients of a module from changes in the module implementation
+- **High cohesion**. High cohesion is a degree to which the components inside a
+  module belong together. A module has high cohesion when the module
+  responsibility is clearly defined and the module has as few dependencies as
+  possible. Single Responsibility Principle fosters high cohesion
+- **Loose coupling**. Each module in the system has as little knowledge as
+  possible about other modules in the system. Use interfaces to implement loose
+  coupling between modules. High cohesion fosters loose coupling
+- **Robustness principle** (flexible input, compliant output). Be conservative
+  in what you produce (produce outputs compliant with a specification). Be
+  tolerant in what you accept from others (validate and sanitize inputs as long
+  as the meaning is clear)
 - **Top-down approach**. Mostly used in Object-Oriented Programming (OOP) with
   interfaces and abstract classes. Decomposition of a system into compositional
-  subsystems. An overview of the system is formulated specifying but not detailing any
-  first-level subsystems. Each subsystem is then refined in yet greater detail, until
-  the entire specification is reduced to base elements. Emphasize on complete
-  understanding of the system. No coding can begin until a sufficient level of detail
-  has been reached in the design phase
-- **Bottom-up approach**. Mostly used in Functional Programming (FP) with function
-  composition. Composition of basic elements together into a more complex
-  components. The individual base elements of a system are first specified in great
-  detail. These elements are then linked together to form larger subsystems, until a
-  complete top-level system is formed. Emphasize coding and early testing, which can
-  begin as soon as the first module has been specified. There is a risk of how the
-  modules can be linked together to form the top-level system
-- **RAII - Resource Acquisition Is Initialization**. Smart Pointer: constructor
-  acquires, destructor releases. Smart Pointer is the scope-based resource
-  management. When a resource gets out of scope via normal execution or thrown exception
-  the resource is deallocated automatically by the Smart Pointer destructor. RAII only
-  works for resources acquired and released by stack-allocated objects where there is
-  well-defined static object lifetime
-- **FCoI - Favor Composition + Delegation over Inheritance**. Composition is black box
-  reuse through an interface and promotes loose coupling. Inheritance is white box reuse
-  through public/protected members
+  subsystems. An overview of the system is formulated specifying but not
+  detailing any first-level subsystems. Each subsystem is then refined in yet
+  greater detail, until the entire specification is reduced to base elements.
+  Emphasizes complete understanding of a system and its subsystems. No coding
+  can begin until a sufficient level of detail has been reached in the design
+  phase
+- **Bottom-up approach**. Mostly used in Functional Programming (FP) with
+  function composition. Composition of basic elements together into a more
+  complex components. The individual base elements of a system are first
+  specified in great detail and immediately implemented. These elements are then
+  linked together to form larger subsystems, until a complete top-level system
+  is formed. Emphasizes coding and early testing, which can begin as soon as the
+  first module has been specified. There is an uncertainty in how modules can be
+  linked together to form a top-level system
+- **RAII - Resource Acquisition Is Initialization**. Smart pointer: constructor
+  acquires, destructor releases. Smart pointer is a scope-based resource
+  management. When a resource gets out of scope via normal execution or thrown
+  exception the resource is deallocated automatically by a smart pointer
+  destructor. RAII only works for resources acquired and released by
+  stack-allocated objects where there is a well-defined static object lifetime
+- **FCoI - Favor Composition + Delegation over Inheritance**. Composition is a
+  black box reuse through an interface and promotes loose coupling. Inheritance
+  is white box reuse through inherited members/methods and implies tight
+  coupling
+- **LoD - Law of Demeter**. The principle of least knowledge/dependencies -
+  don't talk to strangers, only talk to your immediate neighbors. LoD fosters
+  loose coupling and information hiding
 - **ADP - Acyclic Dependency Principle**. Circular dependencies should be
-  avoided. Dependency Inversion Principle and creation of a new package with common
-  components breaks circular dependencies
-- **LoD - Law of Demeter**. The Principle of Least Knowledge/Dependencies - don't talk
-  to strangers, only talk to your immediate neighbors. LoD fosters Loose Coupling and
-  Information Hiding
+  avoided. Dependency Inversion Principle and creation of a new package with
+  common components breaks circular dependencies
 
 # SOLID principles
 
@@ -651,7 +656,7 @@ structure
     - Microsegmentation for access segregation to prevent lateral movement
     - Strict access control (roles, permissions, policies)
     - Continuous monitoring inside and outside of the network perimeter
-    
+
 ## Structured programming (SP)
 
 - SP provides secure flow control structures that allow for program proof and
