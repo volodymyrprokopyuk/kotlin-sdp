@@ -418,144 +418,154 @@ structure
 
 # SOLID principles
 
-- **SRP - Single Responsibility Principle**. Software unit should have only one single
-  and well defined responsibility, only one reason to change. High Cohesion fosters SRP
+- **SRP - Single Responsibility Principle**. Software unit should have only one
+  single and well-defined responsibility, only one reason to change. High
+  cohesion fosters SRP
 - **OCP - Open-Closed Principle**. Software unit should be open for extension
-  (inheritance, Strategy or Decorator design patterns), but closed for modification
-  (interface with multiple polymorphic implementations)
-- **LSP - Liskov Substitution Principle**. Hierarchy is used to build specialized types
-  from a more general type. Polymorphism means that one single interface provides access
-  to objects of different types. Subtype must be completely substitutable for its
-  supertype. Preconditions cannot be strengthened in a subtype. Postconditions cannot be
-  weakened in a subtype. Supertype invariants must be preserved in a subtype
-- **ISP - Interface Segregation Principle**. Segregate one broad single interface into a
-  set of smaller and highly cohesive interfaces, so other program components depend only
-  on small cohesive interfaces instead of depending on a single broad interface, and
-  other program components won't be required to implement all the functionality of the
-  broad interface
-- **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules with
-  the mediation of an abstraction layer (interface). Each module should depend on an
-  abstraction (interface), not other modules directly. The abstraction (interface)
-  provides the behavior needed by the module through possibly multiple
-  implementations. Common features should be consolidated in a shared abstractions
-  exposed through interfaces. Dependency Inversion Principle fosters testability of
-  components
+  (inheritance, Strategy, or Decorator design patterns), but closed for
+  modification (interface with multiple polymorphic implementations)
+- **LSP - Liskov Substitution Principle**. Hierarchy is used to build
+  specialized types from a more general type. Polymorphism means that one single
+  interface has multiple implementations. Subtype must be completely
+  substitutable for its supertype. Preconditions cannot be strengthened in a
+  subtype. Postconditions cannot be weakened in a subtype. Supertype invariants
+  must be preserved in a subtype
+- **ISP - Interface Segregation Principle**. Segregate one broad single
+  interface into a set of smaller and highly cohesive interfaces, so other
+  program components depend only on small cohesive interfaces instead of
+  depending on a single broad interface, and other program components won't be
+  required to implement all the functionality of a broad interface
+- **DIP - Dependency Inversion Principle**. Avoid tight coupling between modules
+  with the mediation of an abstraction layer (interface). Each module should
+  depend on an abstraction (interface), not other modules directly. An
+  abstraction (interface) provides behavior needed by a module through possibly
+  multiple implementations. Common features should be consolidated in a shared
+  abstractions exposed through interfaces. Dependency Inversion Principle
+  fosters testability of components
 
 # UNIX principles
 
 - Make each program do one thing and do it well (quality components)
 - To do a new job build afresh rather than complicate old programs by adding new
   features (Single Responsibility Principle, separation of concerns)
-- Expect the output of every program to become the input to another program. Write
-  programs to handle text streams, because text is a universal interface. Don't clutter
-  the output with extraneous information. Don't insist for interactive input and allow
-  for scripting (uniform communication)
+- Expect the output of every program to become the input to another program.
+  Write programs to handle text streams, because text is a universal interface.
+  Don't clutter the output with extraneous information. Don't insist for
+  interactive input and allow for scripting (uniform communication)
 - Favor composability (bottom-up approach in FP) over monolithic design
 - Design and build software to be tried early (bottom-up approach in FP). Build
-  prototype as soon as possible. Don't hesitate to throw away bad design and rebuild
-  from scratch
-- Use tools or even build tools for repetitive task automation (DevOps)
+  prototype as soon as possible. Don't hesitate to throw away bad design and
+  rebuild from scratch
+- Use tools or even build tools to automate repetitive task (DevOps)
 
 # Unix philosophy
 
 - Modularity. Write simple parts connected by clean interfaces (modularity +
   composability)
 - Clarity. Clarity is better than cleverness
-- Composition. Design programms to be connected to other programs (composability +
-  uniform communication)
-- Separation. Separate policies from mechanisms. Separate interfaces from engines
-  (orthogonality)
+- Composition. Design programs to be connected to other programs
+  (composability + uniform communication)
+- Separation. Separate policies from mechanisms. Separate interfaces from
+  engines (orthogonality)
 - Simplicity. Design for simplicity. Add complexity only where you must
-- Parsimony. Write a big program only when nothgin else will do
-- Transparency. Design for visibility to make issue resolution easier (Dependency
-  Inversion Principle)
-- Representation. Fold knowledge into data, so program logic can be simple and robust
-  (first data structures and then algorithms)
+- Parsimony. Write a big program only when nothing else will do
+- Transparency. Design for visibility to make issue resolution easier
+  (Dependency Inversion Principle)
+- Representation. Fold knowledge into data, so program logic can be simple and
+  robust (first data structures and then algorithms)
 - Silence. When a program has nothing surprising to say, it should say nothing
 - Failure. When a program must fail, fail noisily as soon as possible
-- Generation. Write programs to write programs when you can (metaprogramming and DSL)
-- Optimization. Prototype before polishing. Get it working and correct before you
-  optimize it to be fast
-- Extensibility. Design for the future, because it will be here sooner than you think
+- Generation. Write programs to write programs when you can (metaprogramming and
+  DSL)
+- Optimization. Prototype before polishing. Get it working and correct before
+  you optimize it to be fast
+- Extensibility. Design for the future, because it will be here sooner than you
+  think
 
-# 12-factor SaaS cloud application
+# 12-factor cloud-native application
 
 1. **Codebase**. One codebase tracked in revision control, many deployments
-    - Use revision control system (Git) to track changes to the codebase
+    - Use revision control system (Git) to track changes to a codebase
     - Set up one repository per app/service
-    - Single codebase is deployed into multiple environments (dev, test, staging,
-      production) with different level of maturity/testing
+    - Single codebase is deployed into multiple environments (dev, test,
+      staging, production) with different level of maturity/testing
 1. **Dependencies**. Explicitly declare and isolate dependencies
-    - Use dependency management system (Yarn)
+    - Use a package manager (npm) to manage dependencies
     - Always explicitly define dependency versions (package.json)
-    - Isolate locally installed dependencies in `~/.local/lib` from interference with
-      system-wide packages in `/usr/local/lib`
-    - Only the language runtime and a dependency manager are required to run the
+    - Isolate locally installed dependencies in `~/.local/lib` from interference
+      with system-wide packages in `/usr/local/lib`
+    - Only a language runtime and a package manager are required to run an
       app/service
-    - Explicitly include (into Docker image) all system tools (curl, imagemagick,
-      pandoc) that app/service depends on
-1. **Configuration**. Store configuration in the environment
-    - Keep strict separation of the environment-specific configuration from the codebase
-    - Do not store any credentials and secretes in the codebase
-    - Store environment-specific configuration in the environment variables set up by
-      IaC deployment scripts
-1. **Backing services**. Treat backing services as attached resources accessible via URI
-    - Most of the apps/services use databases, queues, caches, email systems, cloud
-      services (resources)
-    - App/service can easily swap backing service by changing the resource URI provided
-      by the environment-specific configuration without any codebase changes
+    - Explicitly include (into a Docker image) all system tools (curl) that an
+      app/service depends on
+1. **Configuration**. Store configuration in each environment
+    - Keep strict separation of the environment-specific configuration from a
+      codebase
+    - Do not store any credentials and secretes in a codebase
+    - Store environment-specific configuration in environment variables set up
+      by IaC deployment scripts
+1. **Backing services**. Treat backing services as attached resources accessible
+   via URI
+    - Most of the apps/services use databases, queues, caches, email systems,
+      cloud services (resources)
+    - App/service can easily swap backing service by changing a resource URI
+      provided by an environment-specific configuration without any changes in
+      a codebase
 1. **Build, release, deploy**. Strictly separate build and run stages
-    - A codebase is transformed into a deployment through the below stages (verified
-      build -> immutable release -> automated deployment)
-    - Build stage transforms a source code (Git repository) into an executable artifact
-      (Docker image). Fetch specific tag, download dependencies, compile an executable
-      artifact, test the artifact
-    - Release stage combines the environment-independent executable artifact with the
-      environment-specific configuration into a deployment unit. Every release is
-      immutable and should be uniquely tagged. Any change must create a new release
-    - Deployment stage launches the app/service in an environment
-1. **Processes**. Execute the app as one or more stateless, share-nothing processes
-    - Any data that needs to persist must be stored in a stateful backing service
-    - Process memory and file system can be used only as a temporary cache
+    - A codebase is transformed into a deployment through the below stages
+      (verified build => immutable release => automated deployment)
+    - Build stage transforms a source code (Git repository) into an executable
+      artifact (Docker image). Fetch specific tag, download dependencies,
+      compile an executable artifact, build a Docker image, test the application
+    - Release stage combines an environment-independent executable artifact with
+      an environment-specific configuration into a deployment unit. Every
+      release is immutable and should be uniquely tagged. Any change must create
+      a new release
+    - Deployment stage launches an app/service in an environment
+1. **Processes**. Execute an app as one or more stateless, share-nothing
+   processes/containers
+    - Any data that needs to persist must be stored in a stateful database
+    - Process memory and a local file system can be used only as a temporary
+      ephemeral storage
     - Every app/service process should be idempotent
 1. **Port binding**. Export services via port binding + protocol
-    - Avoid executing apps/services inside a web server container (Tomcat, Apache
-      module)
-    - App/service should be completely self-contained and does not rely on any web
+    - App/service should be completely self-contained and does not rely on any
       server execution environment
-    - App/service should export HTTP/AMQP/Redis as a service (Restify.js) by binding to
-      a port
-    - In production a load balancer (NGINX) routes requests from a public-facing
-      hostname to the port-bound app/service
-1. **Concurrency**. Scale out via the OS process model
-    - Use first-class, share-nothing Unix processes/daemons (horizontal scalability)
-      for each type of work load (HTTP traffic, background workers, database)
+    - App/service should export HTTP/gRPC/AMQP as a service by binding to a
+      port
+    - In production a reverse proxy (NGINX) routes requests from a public-facing
+      host to a port-bound app/service
+1. **Concurrency**. Scale out via OS processes
+    - Use first-class, share-nothing Unix processes/daemons (horizontal
+      scalability) for each type of workload (HTTP endpoints, background
+      workers, databases)
     - App/service should rely on OS process manager (systemd)
-1. **Disposability**. Maximize robustness with fast startup and graceful shutdown
+1. **Disposability**. Maximize robustness with fast startup and graceful
+   shutdown
     - App/service should be disposable: can be started or stopped quickly that
-      facilitates fast elastic scaling and robust production deployments
-    - App/service should minimize startup time
+      facilitates fast elastic scalability
+    - App/service should minimize startup time and fail fast
     - App/service should shut down gracefully on SIGTERM:
         - For HTTP cease listening, let current request to finish, and then exit
-        - For AMPQ return current idempotent job to a queue
-1. **Dev/prod parity**. Keep development, testing, staging, and production as similar as
-   possible
+        - For AMPQ return current idempotent job to a queue, and then exit
+1. **Dev/prod parity**. Keep development, testing, staging, and production as
+   similar as possible
     - App/service delivery pipeline shout be completely automated and use CI/CD
-    - Use the same Git repository, Docker image in all environments (dev, test, stage,
-      prod)
+    - Use the same Git repository, Docker image in all environments (dev, test,
+      stage, prod)
 1. **Logs**. Treat logs as event streams
     - Instrumentalize app/service with logs to get insights, telemetry, and
       observability
     - Logs are a stream of time-ordered events collected in a centralized log
       aggregation system (Elasticsearch)
-    - App/serer should only emit all structured (JSON) logs to the STDOUT
-    - Execution environment manages to augment and forward logs to a centralized log
-      aggregation system (Elasticsearch) for introspection, real-time analysis, and
-      alerting
-1. **Admin processes**. Run admin/management task as one-off processes in the same
-   codebase
-    - IaC admin source code and dependencies should ship with the app/service source
-      code to avoid sync issues
+    - App/serer should only emit all structured (JSON) logs to STDOUT
+    - Execution environment manages to augment and forward logs to a centralized
+      log aggregation system (Elasticsearch) for introspection, real-time
+      analysis, and alerts
+1. **Admin processes**. Run admin/management task as one-off processes in the
+   same codebase
+    - IaC admin source code and dependencies should ship with a app/service
+      source code to avoid sync issues
 
 # Security by design principles
 
