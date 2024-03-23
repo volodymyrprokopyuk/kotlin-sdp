@@ -574,98 +574,104 @@ structure
     - Integrity - ensure that data is not altered by an unauthorized user
     - Availability - ensure that data is available only to an authorized user
 - **Information security in transit**. Alice sends a message to Bob
-    - Confidentiality - only Bob can read the message
-    - Integrity - Eve cannot alter the message
-    - Authenticity - only Alice could have sent the message
-- **Least privilege** #. A subject should have the least amount of privilege (CPU/RAM
-  quotas, file system/network access, data access permissions, business transaction
-  limits, time-based constraints) explicitly granted to perform its business process
-  with the objective to limit intentional or unintentional damage to data. The
-  permission should be granted just before performing the operation and should be
-  immediately revoked on a completion or failure of the operation. The function of the
-  subject (and not the identity) should control the assignment of permissions. Example:
-  if a user only needs to read a file, then he should not be granted permission to write
-  the file
-- **Secure defaults. Security baseline in terms of functionality**. Delivered
-  out-of-the-box functionality should be secure by default, and it should be up to the
-  user to reduce security and increase risk if they are allowed. Example: user password
-  expiration and complexity should be enabled by default, user might be allowed to
-  weaken password requirements
-- **Fail-safe defaults. Bottom line of user initial privileges**. Prefer explicitly
-  granted access over access exclusion. By default a user do not have access to any
-  resource until access to a resource is granted explicitly, so on an operation failure
-  the system security is not compromized
-- **Fail securely**. When a system fails, it should fail to a state where the security
-  of a system is not compromised. Automatically release resources, decrease privileges,
-  and maybe logout from the account on operation failure
-- **Defense in depth** #. Multiple security controls at each architectural level that
-  approach risk from different perspectives are better as it makes much more difficult
-  to exploit vulnerabilities. Example: secure coding + code reviews, explicit resource
-  acquisition and privileges granting, security testing, input data
-  validation/sanitization, secure deployment, proactive application monitoring and
-  auditing, continuous security and risk assessment. Example: administrative web
-  interface should be protected (a) by authentication, (b) only accessible from internal
-  network, (c) with enabled audit logging
+    - Confidentiality - only Bob can read a message
+    - Integrity - Eve cannot alter a message
+    - Authenticity - only Alice could have sent a message
+- **Least privilege** #. A subject should have the least amount of privilege
+  (CPU/RAM quotas, file system/network access, data access permissions, business
+  transaction limits, time-based constraints) explicitly granted to perform its
+  business process with the objective to limit intentional or unintentional
+  damage to data. The permission should be granted just before performing the
+  operation and should be immediately revoked on a completion or failure of the
+  operation. The function of the subject (not the identity) should control the
+  assignment of permissions. Example: if a user only needs to read a file, then
+  he should not be granted permission to write a file
+- **Secure by default: security baseline in terms of functionality**. Delivered
+  out-of-the-box functionality should be secure by default. A user might reduce
+  security and increase risk if he is allowed to do so. Example: a user password
+  expiration and complexity should be enabled by default. User might be allowed
+  to weaken password requirements
+- **Fail-safe defaults: bottom line of user initial privileges**. Prefer
+  explicitly granted access over access exclusion. By default a user do not have
+  access to any resource until access to a resource is granted explicitly, so on
+  an operation failure the system security is not compromized
+- **Fail securely**. When a system fails, it should fail to a state where
+  security of a system is not compromised. Immediately release resources,
+  decrease privileges, and maybe logout from an account on an operation failure
+- **Defense in depth** #. Multiple security controls at each architectural level
+  that approach risk from different perspectives are better as it makes much
+  more difficult to exploit vulnerabilities. Example: secure coding + code
+  reviews, explicit resource acquisition and privileges granting, security
+  testing, input data validation/sanitization, secure deployment, proactive
+  application monitoring and auditing, continuous security and risk assessment.
+  Example: administrative web interface should be protected (a) by
+  authentication, (b) only accessible from internal network, (c) with enabled
+  audit logging
 - **Complete mediation** #. Every access to every resource must be checked for
   authentication and authorization via system-wide central point of access
-  control. Subsequent accesses to the same resource should also be checked and not
-  cached. Performance (caching) vs security (explicit check of every request) trade off
-- **Separation of duties** #. Do not grant multiple unrelated privileges to a single
-  account. Require collaboration of multiple accounts to perform important operations
-  securely in order to prevent fraud or error. Example: application administrator
-  should not be a super user of the application; an administrator should not be able to
-  perform business operations on behalf of an application user
-- **Separation of privilege** #. Every security control should be based on more than a
-  single condition in order to remove a single point of failure. Example: when approving
-  a request validate that (a) user is authenticated (b) user status is active (c) user is
-  authorized to access the resource. Multi-factor authentication MFA (something you know,
-  you have, you are)
-- **Economy of mechanism. Keep security simple**. Avoid complex approaches to security
-  controls as it is much easier to spot functional defects and security flaws in simple
-  designs and it is very difficult to identify problems in complex designs. Complexity
-  does not add security
-- **Open design. Avoid security by obscurity**. Security of a system should not be
-  dependent on the secrecy of its design or implementation. Prefer well tested public
-  security standards over homegrown hidden security controls. Keeping passwords in
-  secret does not violate this principle as a password is not an algorithm. It is better
-  to know the security level of standard security controls rather than not know at all
-  the security level of homegrown not extensively tested security controls. Examples:
-  OAuth 2.0. Linux source code is publicly available, yet when properly secured, Linux
-  is hard secure operating system
-- **Least common mechanism**. Mechanisms to access a resource should not be shared
-  between subjects subjects to gain access to a resource. Example: provide different
-  login pages for different types of users; if one of the login pages is compromized,
-  other login pages are not impacted. Sharing the access from Internet to a web site
-  between attackers and legit users gives place to DoS attack
-- **Minimize attack surface area**. Asses security risks introduced by a new feature,
-  then adapt feature design and define security controls to minimize the attack surface
-  area. Example: a search function of an online help feature may be vulnerable to a SQL
-  injection attack; expose the feature only to authorized users, use data validation and
-  escaping, or eliminate search function from the feature design by providing a better
-  structured user interface to reduce the attack surface area
-- **Psychological acceptability**. Security controls should not make resources more
-  difficult to access than if the security controls were not present. The more user
-  friendly the interface is, the less likely a user will make a mistake when configuring
-  and using a security control and expose the system to security breaches. Error
-  messages should be descriptive and actionable but not convey unnecessary design
-  details that may be used to compromise the system
-- **Do not trust services**. Do not assume that third party partners have the same or
-  higher security policies then yours. Put necessary security controls on third party
-  services
-- **Fix security issues correctly**. Once a security issue has been identified, (a)
-  understand the root cause of it and determine the scope of it (b) develop a fix for it
-  (c) implement required tests for it (d) add monitoring and auditing of it
-- **Weakest link** #. A chain is only as strong as its weakest link. Focus on the weakest
-  component in a system
-- **Zero trust security** (zero trust [network] architecture, perimeterless security).
-  Never trust (no trust by default), always verify even inside the network perimeter
-  (traditional IT network security trusts anyone within the network perimeter)
-    - Strict identity verification (MFA, mutual authentication, session expiration +
-      re-authentication)
-    - Device verification (integrity, authorization)
+  control. Subsequent accesses to the same resource should also be checked and
+  not cached. Performance (caching) vs security (explicit check of every
+  request) trade off
+- **Separation of duties** #. Do not grant multiple unrelated privileges to a
+  single account. Require collaboration of multiple accounts to perform
+  important operations securely in order to prevent intentional fraud or
+  unintentional error. Example: application administrator should not be a super
+  user of an application; an administrator should not be able to perform
+  business operations on behalf of an application user
+- **Separation of privilege** #. Every security control should be based on more
+  than a single condition in order to remove a single point of failure. Example:
+  when approving a request validate that (a) user is authenticated (b) user
+  status is active (c) user is authorized to access the resource. Multi-factor
+  authentication MFA (something you know, you have, you are)
+- **Economy of mechanism. Keep security simple**. Avoid complex approaches to
+  security controls as it is much easier to spot functional defects and security
+  flaws in simple designs while it is very difficult to identify problems in
+  complex designs. Complexity does not add security
+- **Open design. Avoid security by obscurity**. Security of a system should not
+  be dependent on secrecy of its design or implementation. Prefer well tested
+  public security standards over homegrown hidden security controls. Keeping
+  passwords in secret does not violate this principle as a password is not an
+  algorithm. It is better to know a security level of standard security
+  controls rather than do not know at all the security level of homegrown not
+  extensively tested security controls. Examples: OAuth 2.0. Linux source code
+  is publicly available, yet when properly secured, Linux is hard secure
+  operating system
+- **Least common mechanism**. Mechanisms to access a resource should not be
+  shared between different subjects. Example: provide different login pages for
+  different types of users; if one of the login pages is compromized, other
+  login pages are not impacted
+- **Minimize attack surface area**. Asses security risks introduced by a new
+  feature, then adapt feature design and define security controls to minimize
+  the attack surface area. Example: a search function of an online help feature
+  may be vulnerable to an SQL injection attack; expose the feature only to
+  authorized users, use data validation and escaping, or eliminate search
+  function from the feature design by providing a better structured user
+  interface to reduce the attack surface area
+- **Psychological acceptability**. Security controls should not make resources
+  more difficult to access than if security controls were not present. The more
+  user friendly an interface is, the less likely a user will make a mistake when
+  configuring and using a security control and expose a system to security
+  breaches. Error messages should be descriptive and actionable but not convey
+  unnecessary design details that may be used to compromise a system
+- **Do not trust services**. Do not assume that third party partners have the
+  same or higher security policies then yours. Put necessary security controls
+  on third party services
+- **Fix security issues correctly**. Once a security issue has been identified,
+  (a) understand the root cause of it and determine the scope of it (b) develop
+  a fix for it (c) implement required tests for it (d) add monitoring and
+  auditing of it
+- **Weakest link** #. A chain is only as strong as its weakest link. Focus on
+  the weakest component in a system
+- **Zero trust security** (zero trust [network] architecture, perimeterless
+  security). Never trust (no trust by default), always verify even inside a
+  network perimeter (traditional IT network security trusts anyone within a
+  network perimeter)
+    - Strict identity verification (MFA, mutual authentication, session
+      expiration + re-authentication)
+    - Device verification (integrity check, device authentication)
     - Microsegmentation for access segregation to prevent lateral movement
     - Strict access control (roles, permissions, policies)
-    - Continuous monitoring inside and outside of the network perimeter
+    - Continuous monitoring inside and outside of a network perimeter
 
 ## Structured programming (SP)
 
@@ -691,43 +697,46 @@ structure
 ## Object-oriented design principles (message-passing paradigm)
 
 - **OOP - Object-Oriented Programming**. OOP is like biological cells: messaging
-  (uniform communication), state hiding (data abstraction), late binding (behavioral
-  polymorphism). Object has well encapsulated structure (properties) and provides
-  polymorphic behavior (methods) through a well defined interface
-  (messages). Abstraction (hierarchy), separation of concerns (composability) and
-  modularization (orthogonality) are the keys to master complexity
-- **Uniform metaphor**. A system should be designed around a powerful metaphor that can
-  be uniformly applied in all areas. Large applications are viewed in the same way as
-  the fundamental units from which the system is built. Examples: lists/functions in
-  Scheme, relations/queries in SQL, objects/messages in Smalltalk
+  (uniform communication), state hiding (data abstraction), late binding
+  (behavioral polymorphism). Object has well encapsulated structure (properties)
+  and provides polymorphic behavior (methods) through a well defined interface
+  (messages). Abstraction (hierarchy), separation of concerns (composability)
+  and modularization (orthogonality) are the keys to master complexity
+- **Uniform metaphor**. A system should be designed around a powerful metaphor
+  that can be uniformly applied in all areas. Large applications are viewed in
+  the same way as the fundamental units from which the system is built.
+  Examples: lists/functions in Scheme, relations/queries in SQL,
+  objects/messages in Smalltalk
 - **Good design**. A system should be build with a minimum set of unchangeable
-  parts. The unchangeable parts should be as general as possible. All parts of a system
-  should be held in a uniform framework with a uniform interface
-- **Modulatiry**. No component in a system should depend on the internal details of any
-  other component. Component interdependencies in a system should be minimized
-- **Factoring via inheritance**. Each component in a system should be defined only in
-  one place. Use inheritance to provide well-factored design and avoid repetition
-  (duplication). Inheritance propagates default behavior through increasingly more
-  specific hierarchy of classes
+  parts. The unchangeable parts should be as general as possible. All parts of a
+  system should be held in a uniform framework with a uniform interface
+- **Modulatiry**. No component in a system should depend on the internal details
+  of any other component. Component interdependencies in a system should be
+  minimized
+- **Factoring via inheritance**. Each component in a system should be defined
+  only in one place. Use inheritance to provide well-factored design and avoid
+  repetition (duplication). Inheritance propagates default behavior through
+  increasingly more specific hierarchy of classes
 - **Classification**. Group similar components into class hierarchy to reduce
-  complexity. Class abstraction describes (a) message protocol that the object recognizes
-  (explicit communication) (b) internal state change of the object (implicit
-  communication). Object is a concrete instance of a class
-- **Objects**. Use object-oriented model for storage. Objects are created by sending a
-  message to their classes. Objects are automatically disposed when they are not needed
-  any more and automatically reclaimed by a GC
-    - **Protocol** (explicit communication) is a set of messages that the object can
-      respond to
+  complexity. Class abstraction describes (a) message protocol that the object
+  recognizes (explicit communication) (b) internal state change of the object
+  (implicit communication). Object is a concrete instance of a class
+- **Objects**. Use object-oriented model for storage. Objects are created by
+  sending a message to their classes. Objects are automatically disposed when
+  they are not needed any more and automatically reclaimed by a GC
+    - **Protocol** (explicit communication) is a set of messages that the object
+      can respond to
     - **State** (implicit communication) defines object-specific response to a
-      message. All access to the internal state of an object is exclusively performed
-      via message protocol (message-passing)
-- **Messages**. Use message-oriented model for processing. Computing should be intrinsic
-  capability of objects that can be uniformly invoked by sending
+      message. All access to the internal state of an object is exclusively
+      performed via message protocol (message-passing)
+- **Messages**. Use message-oriented model for processing. Computing should be
+  intrinsic capability of objects that can be uniformly invoked by sending
   messages. Message-passing metaphor decouples the intent (message) from actual
   execution (method)
   - **Message** = operation + arguments
-- **Polymorphism**. A system should specify (via message protocol, interface) only
-  behavior (interpretation) of objects, not their implementation (representation)
+- **Polymorphism**. A system should specify (via message protocol, interface)
+  only behavior (interpretation) of objects, not their implementation
+  (representation)
 
 ## Philosophy of clarity in programming
 
@@ -741,8 +750,8 @@ structure
 
 ### User story (high level, user perspective)
 
-**User story** describes in an informal language a software feature from the end user
-perspective
+**User story** describes in an informal language a software feature from the end
+user perspective
 
 ```
 As a <role, user, who>
@@ -752,26 +761,26 @@ so that <benefit, reason, why>
 
 ### Gherkin feature with scenarios (detailed BDD, test perspective)
 
-**Gherkin feature with scenarios** specifies expected software behavior in a logical
-language that a user can understand
+**Gherkin feature with scenarios** specifies expected software behavior in a
+logical language that a user can understand
 
 ```gherkin
 Feature: <feature name> (collection of scenarios)
     <feature description>
     Scenario: <scenario> (colleciton of steps)
-        Given: <precondition>
-        When: <action>
-        Then: <result>
+        Given: <preconditions setup>
+        When: <action trigger>
+        Then: <result verification>
 ```
 
-### Use case (actor interaction with a system)
+### Use case (actor interactions with a system)
 
-**Use case** describes in text + diagram interaction between an actor (human or external
-system) and a system to achieve a goal
+**Use case** describes in text + diagram interaction between an actor (human or
+external system) and a system to achieve a goal
 
 ```
 Title: <active verb one-liner>
-Actor: <primary actory>
+Actor: <primary actor>
 Goal: <goal in context>
 Precondition: <initial system state>
 Trigger: <actor action>
